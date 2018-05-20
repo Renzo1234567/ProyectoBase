@@ -16,7 +16,7 @@ class Sign extends MY_Controller
     }
     
     public function in() {
-        echo "Sig in";
+        echo "Sign in";
     }
     
     public function up() {
