@@ -82,7 +82,7 @@
         </div>
         <!-- Products -->
         <div class="col-sm-9">
-            <?php for($i = 0; $i < 3; $i++): ?>
+            <?php for($i = 0; $i < 3; $i++): ?>            
             <div class="row">
                 <?php for($j = 1; $j <= 3; $j++): ?>
                 <div class="col-sm-4">

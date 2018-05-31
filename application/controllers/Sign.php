@@ -12,7 +12,7 @@ class Sign extends MY_Controller
 
     public function index()
     {
-        echo 1;
+        echo "Esto no muestra nada";
     }
     
     public function in() {
