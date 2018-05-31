@@ -16,7 +16,21 @@ class Sign extends MY_Controller
     }
     
     public function in() {
-        echo "Sign in";
+        
+        if(isset($_POST['email'])) {
+            
+            $session_data = array(
+                'email' => $_POST['email']
+            );
+            $this->session->set_userdata($session_data);
+            redirect(base_url());
+            
+        } else {
+            
+            $this->template_light('sign/signin');
+            
+        }
+        
     }
     
     public function up() {

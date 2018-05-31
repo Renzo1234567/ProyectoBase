@@ -35,7 +35,7 @@
     <!-- Main area -->
     <div class="row">
         <!-- Filters -->
-        <div class="col-sm-3">
+        <div class="col-md-3">
             <form>
                 <div class="form-group">
                     <div class="input-group mb-2">
@@ -81,11 +81,11 @@
             </form>
         </div>
         <!-- Products -->
-        <div class="col-sm-9">
+        <div class="col-md-9">
             <?php for($i = 0; $i < 3; $i++): ?>            
             <div class="row">
                 <?php for($j = 1; $j <= 3; $j++): ?>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <div class="card text-center">
                         <img class="card-img-top" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/Diapositiva<?php echo $j ?>.PNG" alt="Card image cap">
                         <div class="card-body">

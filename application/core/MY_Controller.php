@@ -24,6 +24,20 @@ class MY_Controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view('template/footer', $data);
     }
+    
+    /**
+     * Load a basic template light
+     * 
+     * @param $view strig       Dir of the view
+     * @param $data object      Data to display
+     * @return  void
+     */
+    protected function template_light($view, $data = NULL)
+    {
+        $this->load->view('template/head', $data);
+        $this->load->view('template/navbar', $data);
+        $this->load->view($view, $data);
+    }
 
     
 
