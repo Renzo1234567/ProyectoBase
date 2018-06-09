@@ -7,15 +7,15 @@
         <div class="col-4 text-center">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <form class="text-left" action="<?php echo base_url(); ?>" method="POST">
+                    <form class="text-left" action="<?php echo base_url() ?>sign/in" method="POST">
                         <div class="form-group">
                           <label for="email">Ingresa tu correo</label>
-                          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo" required="">
+                          <input type="email" class="form-control" id="email" name="email"placeholder="Ingresa tu correo" required="">
 
                         </div>
                         <div class="form-group">
                           <label for="pass">Contraseña</label>
-                          <input type="password" class="form-control" id="pass" placeholder="Contraseña" required="">
+                          <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" required="">
                         </div>
                         <div class="form-check">
                           <input type="checkbox" class="form-check-input" id="exampleCheck1">

@@ -17,12 +17,12 @@ class Sign extends MY_Controller
     
     public function in() {
         
-        if(isset($_POST['email'])) {
+        if($this->input->post('email') !== null) {
             
-            $session_data = array(
-                'email' => $_POST['email']
+            $data = array(
+                'email' => $this->input->post('email')
             );
-            $this->session->set_userdata($session_data);
+            $this->session->set_userdata($data);
             redirect(base_url());
             
         } else {
@@ -33,12 +33,18 @@ class Sign extends MY_Controller
         
     }
     
-    public function up() {
+    public function up() 
+    {
         echo "Sign up";
     }
     
-    public function out() {
-        echo "Sig out";
+    /**
+     * Destroy all session data
+     */
+    public function out() 
+    {
+        $this->session->sess_destroy();
+        redirect(base_url());
     } 
     
     public function remember() {
