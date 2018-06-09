@@ -5,14 +5,13 @@
             <li class="nav-item active text-center">
                 <?php if(isset($this->session->email)): ?>
                 <a class="nav-link" href="<?php echo base_url() ?>sign/out">
-                    <img src="public/img/usuario.jpg" width="60" height="60" alt="usuario">
-                    <!-- <i class="fas fa-user fa-2x text-dark"></i>  --><br>
+                    <!-- <img src="public/img/usuario.jpg" width="60" height="60" alt="usuario"> -->
+                    <i class="fas fa-user fa-2x text-dark"></i> <br>
                     <small>Cerrar Sesión</small>
                 </a>
                 <?php else: ?>
                 <a class="nav-link" href="<?php echo base_url() ?>sign/in">
-                    <img src="public/img/usuario.jpg" width="60" height="60" alt="usuario">
-                    <!-- <i class="fas fa-user fa-2x text-dark"></i>  --><br>
+                    <i class="fas fa-user fa-2x text-dark"></i><br>
                     <small>Iniciar Sesión</small>
                 </a>
                 <?php endif; ?>
