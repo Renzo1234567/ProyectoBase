@@ -12,10 +12,16 @@
         <!-- CSS -->
         <link rel="stylesheet" href="<?php echo base_url() ?>public/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <link rel="stylesheet" href="<?php echo base_url() ?>public/css/micss.css" type="text/css" media="all"> 
         <link href="<?php echo base_url() ?>public/font/fontawesome-free/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo base_url() ?>public/css/micss.css" type="text/css" media="all"> 
+        <link rel="stylesheet" href="<?php echo base_url() ?>public/css/master-detail.css" type="text/css" media="all">         
         <!-- JS -->
         <script src="<?php echo base_url() ?>public/js/jquery-3.3.1.min.js"></script>
         <script src="<?php echo base_url() ?>public/js/bootstrap.min.js"></script>
+
+        <!-- JS global vars -->
+        <script>
+            var BASE_URL = "<?php echo base_url() ?>";
+        </script>
     </head>
     <body>
