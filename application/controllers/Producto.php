@@ -22,7 +22,7 @@ class Producto extends MY_Controller
      */
     public function index()
     {
-        $this->template_light('master_detail/index');
+        $this->template_light('producto/index');
     }
 
     /**
@@ -31,7 +31,7 @@ class Producto extends MY_Controller
     public function list() 
     {
         $data = $this->crud_model->get();
-        $this->load->view('master_detail/list', array('data' => $data));
+        $this->load->view('producto/list', array('data' => $data));
     }
 
     /**
@@ -42,11 +42,11 @@ class Producto extends MY_Controller
         if ($this->input->post())
         {
             $this->crud_model->insert();
-            redirect('/master_detail/index');
+            redirect('/producto/index');
         }
         else
         {
-            $this->load->view('master_detail/create');
+            $this->load->view('producto/create');
         }
     }
 
@@ -56,7 +56,7 @@ class Producto extends MY_Controller
     public function view($id)
     {
         $message = $this->crud_model->get_where($id);
-        $this->load->view('master_detail/view', $message[0]);
+        $this->load->view('producto/view', $message[0]);
     }
 
     /**
@@ -67,12 +67,12 @@ class Producto extends MY_Controller
         if ($this->input->post())
         {
             $this->crud_model->update($id);
-            redirect('/master_detail/index');
+            redirect('/producto/index');
         }
         else
         {
             $message = $this->crud_model->get_where($id);
-            $this->load->view('master_detail/edit', $message[0]);
+            $this->load->view('producto/edit', $message[0]);
         }
     }
 
@@ -82,7 +82,7 @@ class Producto extends MY_Controller
     public function delete($id)
     {
         $this->crud_model->delete($id);
-        redirect('/master_detail/index');
+        redirect('/producto/index');
     }
 
 }
