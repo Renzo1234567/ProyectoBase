@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Sign extends MY_Controller
+class Registrar extends MY_Controller
 {
 
     public function __construct()
@@ -12,24 +12,16 @@ class Sign extends MY_Controller
 
     public function index()
     {
-        echo "Esto no muestra nada";
+        echo "Esto no muestra nadaa";
     }
     
-    public function in() {
+    public function registrar() {
         
-        if($this->input->post('email') !== null) {
+            $this->template_light('Registrar/registrar');
+            $x = $this->input->post('PrimerApellido');
             
-            $data = array(
-                'email' => $this->input->post('email'),
-            );
-            $this->session->set_userdata($data);
-            redirect(base_url());
             
-        } else {
-            
-            $this->template_light('sign/signin');
-            
-        }
+        
         
     }
     

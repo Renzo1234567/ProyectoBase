@@ -32,5 +32,20 @@
         <div class="col-4"></div>
     </div>
 </div>
+<br>
+<div class="container">s
+  <div class="row">
+   <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <label>Nuevo en el sitio? </label><a href="<?php echo base_url() ?>Registrar/registrar"> Registrate aqui</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+    </div>
+</div>
 
 

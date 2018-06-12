@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-md bg-white">
+<nav class="navbar fixed-top navbar-expand-md bg-white" id="main-nav">
     <!-- Left section -->
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto ">

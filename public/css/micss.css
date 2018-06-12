@@ -2,3 +2,6 @@
 	justify-content: center;
 	color: black;
 }
+#main-nav{
+        border-bottom: solid 3px #010101;
+  }  
