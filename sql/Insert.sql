@@ -1590,6 +1590,22 @@ Insert into producto_bd(prod_nombre, prod_descripcion) values
 ('Choco Candy', 'Caramelos de Chocolate'),
 ('Blue', 'Caramelosrellenos')
 
+Insert into tipo_bd(prod_nombre) values
+	
+('Normal'),
+('Macizo'),
+('Con Chicle'),
+('Piruleta'),
+('Bombon'),
+('Gelatina'),
+('t7', 'Algodón de Azúcar'),
+('Con Chocolate'),
+('De Fruta'),
+('De Regaliz'),
+('Sin Azúcar'),
+('Picantes'),
+('Acidos'),
+('Con colorantes que tinten la lengua')
 
 
 
