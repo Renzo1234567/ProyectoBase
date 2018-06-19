@@ -1,5 +1,3 @@
-CREATE DB candy_ucab;
-
 Create table Lugar_bd (
     Luga_Codigo serial,
     Luga_Nombre varchar(200) not null,
@@ -53,7 +51,6 @@ CREATE TABLE producto_bd (
     prod_id serial,
     prod_nombre varchar(100) NOT NULL,
     prod_descripcion varchar(100) NOT NULL,
-    cf_prod_tipo integer,
     Constraint CP_prod_id primary key(prod_id)
 );
 
@@ -132,7 +129,7 @@ Create table empleado_bd(
 Create table Usuario_bd(
     usua_token varchar(100),
     usua_nombre varchar(100) NOT NULL,
-    usua_contrase ñ a varchar(100) NOT NULL,
+    usua_contrasena varchar(100) NOT NULL,
     usua_fecharegistro date NOT NULL,
     cf_usua_juridico numeric,
     cf_usua_natural numeric,
