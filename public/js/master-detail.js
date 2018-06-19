@@ -52,5 +52,17 @@ $( document ).ready(function() {
             console.log(response);
         });
     });
+
+     $('#boton').click(function() {
+        $.ajax({
+            url: BASE_URL + "masterdetail/create",
+        }).done(function(response) {
+            detail.html(response);
+        }).fail(function(response) {
+            alert('Lo sentimos, algo salió mal :(');
+            console.log(response);
+        });
+    });
+    
     
 });

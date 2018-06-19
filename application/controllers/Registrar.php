@@ -18,16 +18,23 @@ class Registrar extends MY_Controller
     public function registrar() {
         
             $this->template_light('Registrar/registrar');
-            $x = $this->input->post('PrimerApellido');
+           
             
             
         
         
     }
     
-    public function up() 
+    public function comoregistrarse() 
     {
-        echo "Sign up";
+        $this->template_light('Registrar/comoregistrarse');
+            
+    }
+
+         public function registrarjuridica() 
+    {
+        $this->template_light('Registrar/registrarjuridica');
+            
     }
     
     /**

@@ -53,8 +53,8 @@
                     <label for="apellidos" class="cols-sm-2 control-label">Apellidos</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="PrimerApellido" id="Primernombre"  placeholder="Primer Apellido"/>
-                            <input type="text" class="form-control" name="SegundoApellido" id="Segundonombre"  placeholder="Segundo Apellido"/>
+                            <input type="text" class="form-control" name="PrimerApellido" id="PrimerApellido"  placeholder="Primer Apellido"/>
+                            <input type="text" class="form-control" name="SegundoApellido" id="SegundoApellido"  placeholder="Segundo Apellido"/>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 <label for="Telefonos" class="cols-sm-2 control-label">Correo Electronico</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-                        <input type="email" class="form-control" name="Correo Electronico" id="CorreoElectronico"  placeholder="Correo Electronico"/>
+                        <input type="email" class="form-control" name="CorreoElectronico" id="CorreoElectronico"  placeholder="Correo Electronico"/>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                 <label for="password" class="cols-sm-2 control-label">Contraseña</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-                        <input type="password" class="form-control" name="password" id="Contraseña"  placeholder="Ingresa tu contraseña"/>
+                        <input type="password" class="form-control" name="Contraseña" id="Contraseña"  placeholder="Ingresa tu contraseña"/>
                     </div>
                 </div>
             </div>

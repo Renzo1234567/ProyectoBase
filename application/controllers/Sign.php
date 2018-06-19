@@ -17,21 +17,38 @@ class Sign extends MY_Controller
     
     public function in() {
         
+        
         if($this->input->post('email') !== null) {
             
-            $data = array(
-                'email' => $this->input->post('email'),
-            );
+           
+            $this->load->model('Sigin');
+            $resp=$this->Sigin->view();
+            if ($resp){
+            $data = [
+                "email" => $this->input->post('email')
+            ];
+
+            
             $this->session->set_userdata($data);
-            redirect(base_url());
+                redirect(base_url());
+            
+            }
+            else {
+               echo"error";
+            }
+               
             
         } else {
             
             $this->template_light('sign/signin');
             
+            
         }
         
-    }
+            }
+            
+        
+    
     
     public function up() 
     {
