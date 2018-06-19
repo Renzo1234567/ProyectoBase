@@ -51,6 +51,7 @@ CREATE TABLE producto_bd (
     prod_id serial,
     prod_nombre varchar(100) NOT NULL,
     prod_descripcion varchar(100) NOT NULL,
+    prod_imagen varchar(255),
     Constraint CP_prod_id primary key(prod_id)
 );
 

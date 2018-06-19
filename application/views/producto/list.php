@@ -6,11 +6,19 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($data as $row): ?>
-            <tr class="item-row" data-id="<?php echo $row->id; ?>">
-                <th scope="row"><?php echo $row->id; ?></th>
-                <td><?php echo $row->name; ?></td>
+        <?php if(!empty($productos)): ?>
+            <?php foreach ($data as $row): ?>
+                <tr class="item-row" data-id="<?php echo $row->id; ?>">
+                    <td scope="row"><?php echo $row->id; ?></td>
+                    <td><?php echo $row->name; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="2">
+                    <span class="text-info">Sin inventario</span>
+                </td>
             </tr>
-        <?php endforeach; ?>
+        <?php endif; ?>
     </tbody>
 </table>

@@ -13,8 +13,7 @@ class Producto extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        //Usamos este modelo de ejemplo
-        $this->load->model('crud_model');
+        $this->load->model('producto_model');
     }
 
     /**
@@ -30,8 +29,8 @@ class Producto extends MY_Controller
      */
     public function list() 
     {
-        $data = $this->crud_model->get();
-        $this->load->view('producto/list', array('data' => $data));
+        $productos = $this->producto_model->get_list();
+        $this->load->view('producto/list', array('productos' => $productos));
     }
 
     /**
@@ -41,7 +40,7 @@ class Producto extends MY_Controller
     {
         if ($this->input->post())
         {
-            $this->crud_model->insert();
+            $this->producto_model->insert();
             redirect('/producto/index');
         }
         else

@@ -13,8 +13,6 @@
                 <a class="nav-link" href="<?php echo base_url() ?>sign/in">
                     <i class="fas fa-user fa-2x text-dark"></i><br>
                     <small>Iniciar Sesión </small>
-                    <br>
-                    <small>Registrate</small>
                 </a>
                 <?php endif; ?>
                     

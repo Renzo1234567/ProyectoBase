@@ -1,5 +1,12 @@
 .master-detail {
     height: 100%;
     margin-top: -72px;
-    padding-top: 92px;
+    padding-top: 106px;
+}
+
+.master-detail .fa-spinner {
+    text-align: center;
+    margin: 4px;
+    display: block;
+    z-index: 100000;
 }
