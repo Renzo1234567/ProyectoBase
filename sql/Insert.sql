@@ -1590,7 +1590,7 @@ Insert into producto_bd(prod_nombre, prod_descripcion) values
 ('Choco Candy', 'Caramelos de Chocolate'),
 ('Blue', 'Caramelosrellenos')
 
-Insert into tipo_bd(prod_nombre) values
+Insert into tipo_bd(tipo_nombre) values
 	
 ('Normal'),
 ('Macizo'),
