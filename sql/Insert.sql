@@ -1542,3 +1542,31 @@ Insert into tienda_bd(tien_nombre,tien_tipo,cf_tien_lugar) values
 ('Coro', 'Mini Candy Shop',2),
 ('Trujillo','Mini Candy Shop',322)
 
+Insert into estatus_bd(Esta_nombre) values
+
+('En proceso'),
+('Listo para la entrega'),
+('Entregado')
+
+Insert into permiso_bd(perm_clave,perm_accion) values
+
+('Editar Caramelos'),
+('Comprar'),
+('Editar Darío'),
+('Actualizar valor de punto'),
+('Editar Empleados de Candy Ucab')
+
+Insert into rol_bd(rol_nombre,rol_descripcion) values
+
+('Comprador','Persona que compra'),
+('Empleado','Tabajador de Candy Ucab'),
+('Jefe de Pasillo','Encargado del pasillo')
+('Encargado del Diario','Persona que administra el diario'),
+('Gerente','Gerente de la tienda'),
+('Recursos Humanos','Encargado de los procesos de recursos humanos')
+('Sub Generente','Asistente del gerente'),
+('Administrador','Encargador de la página'),
+('Finanzas','Encargado de supervisar los movimientos del capital de Candy Ucab'),
+('Evaluador','Encargado de evaluar la pagina')
+
+
