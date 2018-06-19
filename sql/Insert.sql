@@ -1577,21 +1577,22 @@ Insert into diario_bd(diar_fechapublicacion,diar_fechafin) values
 (22/04/2018,22/05/2018),
 (08/08/2018,08/09/2018)
 
-Insert into producto_bd(prod_nombre, prod_descripcion) values
+Insert into producto_bd(prod_nombre,prod_descripcion) values
 
-('Chupetas Rimbombin', 'Caramelo con palo'),
-('Ricolin', 'Caramelo de frutas con vitamina C'),
-(‘LosFiriFiri', 'Tabletas sabor a menta'),
-('Chupetas de Corazon', 'Chupetas con forma de un corazón, con sabor a fresa'),
-('Los pirulitos', 'Caramelos blandos'),
+('Chupetas Rimbombin','Caramelo con palo'),
+('Ricolin','Caramelo de frutas con vitamina C'),
+('LosFiriFiri','Tabletas sabor a menta'),
+('Chupetas de Corazon','Chupetas con forma de un corazón, con sabor a fresa'),
+('Los pirulitos','Caramelos blandos'),
 ('Ricura', 'Bola de caramelo picante'),
-('El original', 'Caramelos cítricos'),
-('Dulcin', 'Caramelos masticables'),
-('Choco Candy', 'Caramelos de Chocolate'),
-('Blue', 'Caramelosrellenos')
+('El original','Caramelos cítricos'),
+('Dulcin','Caramelos masticables'),
+('Choco Candy','Caramelos de Chocolate'),
+('Blue','Caramelos rellenos')
+
 
 Insert into tipo_bd(tipo_nombre) values
-	
+
 ('Normal'),
 ('Macizo'),
 ('Con Chicle'),
@@ -1606,6 +1607,25 @@ Insert into tipo_bd(tipo_nombre) values
 ('Picantes'),
 ('Acidos'),
 ('Con colorantes que tinten la lengua')
+
+Insert into producto_tipo(Cf_prod_tipo_prodcuto,cf_prod_tipo_tipo) values
+
+(1,1),
+(2,2),
+(3,3),
+(7,5),
+(8,1)
+
+Insert into tarjeta_bd(tarj_codigo,  tarj_numero,  tarj_tipo,cf_tarj_banco) values
+
+('Banco de Venezuela'),
+('Banesco'),
+('BOD'),
+('Mercantil'),
+('BBVA Provincial')
+
+
+
 
 
 
