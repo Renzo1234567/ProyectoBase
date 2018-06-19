@@ -11,7 +11,20 @@ function loadDetail(id) {
         detail.html(response);
         $('#delete-item-btn').click(function() {
             if(confirm('¿Seguro?')) {
-                alert('listo');
+                var id = $(this).data('id');
+                $.ajax({
+                    url: BASE_URL + "producto/delete/" + id,
+                }).done(function(response) {
+                    console.log(response);
+                    if(response.length > 0) {
+                        alert(response);
+                    } else {
+                        refreshList();
+                    }
+                }).fail(function(response) {
+                    alert('Lo sentimos, algo salió mal :(');
+                    console.log(response);
+                });
             }
         });
         $('#edit-item-btn').click(function() {

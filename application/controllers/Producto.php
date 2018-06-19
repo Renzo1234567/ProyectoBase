@@ -85,8 +85,9 @@ class Producto extends MY_Controller
      */
     public function delete($id)
     {
-        $this->crud_model->delete($id);
-        redirect('/producto/index');
+        $has_error = $this->producto_model->delete($id);
+        if($has_error)
+                echo 'Hubo un error: Eliminación fallida';
     }
 
 }

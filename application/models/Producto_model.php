@@ -90,6 +90,17 @@ class Producto_model extends MY_Model
         return !$return;
     }
     
+    /**
+     * Inserta un producto
+     */
+    public function delete($id) {        
+        $sql = "DELETE FROM producto_bd WHERE prod_id = '$id'";
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+    
 }
 	
 
