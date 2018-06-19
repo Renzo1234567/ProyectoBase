@@ -67,13 +67,13 @@ class Producto extends MY_Controller
     {
         if ($this->input->post())
         {
-            $this->crud_model->update($id);
+            $this->producto_model->update_where($this->input->post());
             redirect('/producto/index');
         }
         else
         {
-            $message = $this->crud_model->get_where($id);
-            $this->load->view('producto/edit', $message[0]);
+            $producto = $this->producto_model->get_where_id($id);
+            $this->load->view('producto/edit', $producto);
         }
     }
 

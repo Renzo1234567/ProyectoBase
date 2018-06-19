@@ -11,7 +11,7 @@ public function __construct()
     }
 
 public function view(){
-	$dbconn3 = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=zncvgjn3m");
+	$dbconn3 = pg_connect("host=localhost port=5432 dbname=candy_ucab user=postgres password=1234");
 	if (!$dbconn3) {
   		echo "An error occurred.\n";
   		exit;
@@ -20,7 +20,7 @@ public function view(){
 
 	  $email=$this->input->post('email');
 	  $contraseña=$this->input->post('pass');
-	  $result= pg_query($dbconn3, "SELECT email,pass  FROM login WHERE email='" . $email . "' AND pass='" . $contraseña . "' ;" );
+	  $result= pg_query($dbconn3, "SELECT usua_nombre, usua_contrasena  FROM usuario_bd WHERE usua_nombre='" . $email . "' AND usua_contrasena='" . $contraseña . "' ;" );
 	  $row=pg_fetch_assoc($result);
 	  if (!$result) {
  			 echo "Ocurrió un error.\n";

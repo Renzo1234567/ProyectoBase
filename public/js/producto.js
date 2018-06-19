@@ -9,6 +9,31 @@ function loadDetail(id) {
         url: BASE_URL + "producto/view/" + id,
     }).done(function(response) {
         detail.html(response);
+        $('#delete-item-btn').click(function() {
+            if(confirm('¿Seguro?')) {
+                alert('listo');
+            }
+        });
+        $('#edit-item-btn').click(function() {
+            detail.html('<i class="fas fa-spinner fa-pulse"></i>');
+            var id = $(this).data('id');
+            loadEdit(id);
+        });
+    }).fail(function(response) {
+        alert('Lo sentimos, algo salió mal :(');
+        console.log(response);
+    });
+}
+
+function loadEdit(id) {
+    $.ajax({
+        url: BASE_URL + "producto/edit/" + id,
+    }).done(function(response) {
+        detail.html(response);
+        $('.edit-form').submit(function( event ) {
+            event.preventDefault();
+            createItem();
+        });
     }).fail(function(response) {
         alert('Lo sentimos, algo salió mal :(');
         console.log(response);
@@ -22,6 +47,30 @@ function createItem() {
     var data = $( '.create-form' ).serialize();
     $.ajax({
         url: BASE_URL + "producto/create",
+        method: "POST",
+        data: data
+    }).done(function(response) {
+        detail.html('<i class="fas fa-spinner fa-pulse"></i>');
+        list.html('<i class="fas fa-spinner fa-pulse"></i>');
+        console.log(response);
+        if(response.length > 0) {
+            alert(response);
+        } else {
+            refreshList();
+        }
+    }).fail(function(response) {
+        alert('Lo sentimos, algo salió mal :(');
+        console.log(response);
+    });
+}
+
+/**
+ * Update item
+ */
+function updateItem() {
+    var data = $( '.edit-form' ).serialize();
+    $.ajax({
+        url: BASE_URL + "producto/edit",
         method: "POST",
         data: data
     }).done(function(response) {

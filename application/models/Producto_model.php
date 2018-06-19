@@ -73,6 +73,21 @@ class Producto_model extends MY_Model
         return !$return;
     }
     
+    /**
+     * Inserta un producto
+     */
+    public function update_where() {
+        $nombre = $this->input->post('prod_nombre');
+        $descripcion = $this->input->post('prod_descripcion');
+        
+        $sql = "INSERT INTO producto_bd (prod_nombre, prod_descripcion, prod_imagen)
+                VALUES ('$nombre', '$descripcion', null);";
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+    
 }
 	
 

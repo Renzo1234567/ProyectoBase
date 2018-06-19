@@ -25,6 +25,16 @@
         <div class="col-3">
             <p><?php echo $prod_descripcion ?></p>
         </div>  
-    </div>            
+    </div>  
+    <div class="row">
+        <div class="col-12 text-right">
+            <button id="edit-item-btn" class="btn btn-success" data-id="<?php echo $prod_id; ?>">
+                Editar
+            </button>
+            <button id="delete-item-btn" class="btn btn-danger" data-id="<?php echo $prod_id; ?>">
+                Eliminar
+            </button>
+        </div>
+    </div>
 </div>
 
