@@ -27,7 +27,7 @@ class Producto extends MY_Controller
     /**
      * Get all items
      */
-    public function list() 
+    public function get_list() 
     {
         $productos = $this->producto_model->get_list();
         $this->load->view('producto/list', array('productos' => $productos));
@@ -40,8 +40,10 @@ class Producto extends MY_Controller
     {
         if ($this->input->post())
         {
-            $this->producto_model->insert();
-            redirect('/producto/index');
+            $has_error = $this->producto_model->insert();
+            
+            if($has_error)
+                echo 'Hubo un error: Insersión fallida';
         }
         else
         {
@@ -54,8 +56,8 @@ class Producto extends MY_Controller
      */
     public function view($id)
     {
-        $message = $this->crud_model->get_where($id);
-        $this->load->view('producto/view', $message[0]);
+        $producto = $this->producto_model->get_where_id($id);
+        $this->load->view('producto/view', $producto);
     }
 
     /**

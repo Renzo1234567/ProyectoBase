@@ -7,10 +7,10 @@
     </thead>
     <tbody>
         <?php if(!empty($productos)): ?>
-            <?php foreach ($data as $row): ?>
-                <tr class="item-row" data-id="<?php echo $row->id; ?>">
-                    <td scope="row"><?php echo $row->id; ?></td>
-                    <td><?php echo $row->name; ?></td>
+            <?php foreach ($productos as $producto): ?>
+                <tr class="item-row" data-id="<?php echo $producto['prod_id']; ?>">
+                    <td scope="row"><?php echo $producto['prod_id']; ?></td>
+                    <td><?php echo $producto['prod_nombre']; ?></td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
