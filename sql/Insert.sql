@@ -1,3 +1,5 @@
+Insert into lugar_bd(Luga_Nombre,Luga_Tipo,CF_luga_lugar) values
+
 ('Venezuela','Pais',Null),
 ('Amazonas','Estado',1),
 ('Anzoátegui','Estado',1),
