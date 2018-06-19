@@ -42,7 +42,7 @@ rol_bd(rol_codigo)
 CREATE TABLE tipo_bd
 (
 tipo_id serial,
-prod_nombre varchar(255) NOT NULL,
+tipo_nombre varchar(255) NOT NULL,
 Constraint CP_tipo_id primary key(tipo_id)
 );
 
@@ -364,4 +364,5 @@ Inve_cantidad numeric(255),
 Cf_inventario_tienda integer,
 Cf_inventario_producto integer
 );
+
 
