@@ -1,5 +1,3 @@
-Insert into lugar_bd(Luga_Nombre,Luga_Tipo,CF_luga_lugar) values
-
 ('Venezuela','Pais',Null),
 ('Amazonas','Estado',1),
 ('Anzoátegui','Estado',1),
@@ -1499,3 +1497,46 @@ Insert into lugar_bd(Luga_Nombre,Luga_Tipo,CF_luga_lugar) values
 ('Santa Teresa','Parroquia',361),
 ('Sucre (Catia)','Parroquia',361),
 ('23 de enero','Parroquia',361)
+
+Insert into tienda_bd(tien_nombre,tien_tipo,cf_tien_lugar) values
+
+ ('El Cafetal','Mini Candy Shop',972),
+('Maracaibo','Mini Candy Shop',353),
+('Barquisimeto','Mini Candy Shop',13),
+('El Tigre','Mini Candy Shop',960),
+('Guanare','Mini Candy Shop',1087),
+('Paraguaná','Mini Candy Shop',11),
+('Valle la Pascua','Mini Candy Shop',800),
+('Urañe', 'Mini Candy Shop',1223),
+('San Félix', 'Mini Candy Shop',745),
+('Carora', 'Mini Candy Shop',13),
+('Acarigua', 'Mini Candy Shop',18),
+('Petare', 'Mini Candy Shop',1009),
+('Maracay', 'Mini Candy Shop',5),
+('Puerto Ordaz', 'Mini Candy Shop',7),
+('San Cristobal', 'Mini Candy Shop',1175),
+('Los Teques', 'Mini Candy Shop',986),
+('Anaco', 'Mini Candy Shop',387),
+('San Casimiro', 'Mini Candy Shop',496),
+('San Antonio de los Altos','Mini Candy Shop',996),
+('Antimano', 'Mini Candy Shop',1479),
+('La Guaira', 'Mini Candy Shop',1345),
+('Margarita', 'Mini Candy Shop',17),
+('Guanta', 'Mini Candy Shop',401),
+('Puerto la Cruz','Mini Candy Shop',411),
+('Mérida', 'Mini Candy Shop',14),
+('Barinas', 'Mini Candy Shop',530),
+('tucacas','Mini Candy Shop',740),
+('Costa Oriental del Lago','Mini Candy Shop',1386),
+('La Victoria','Mini Candy Shop',1472),
+ ('Villa la Cura','Mini Candy Shop',5),
+('Ciudad Ojeda','Mini Candy Shop',24),
+('Cuidad Bolivar','Mini Candy Shop',7),
+('Barcelona','Mini Candy Shop',2),
+('San Fernando de Apure','Mini Candy Shop',4),
+('Valencia', 'Mini Candy Shop',116),
+('Maiquetia', 'Mini Candy Shop',1347),
+('Carupano', 'Mini Candy Shop',19),
+('Coro', 'Mini Candy Shop',2),
+('Trujillo','Mini Candy Shop',322)
+
