@@ -1569,4 +1569,27 @@ Insert into rol_bd(rol_nombre,rol_descripcion) values
 ('Finanzas','Encargado de supervisar los movimientos del capital de Candy Ucab'),
 ('Evaluador','Encargado de evaluar la pagina')
 
+Insert into diario_bd(diar_fechapublicacion,diar_fechafin) values
+
+(26/05/2018,26/06/2018),
+(14/01/2018,14/02/2018),
+(18/02/2018,18/03/2018),
+(22/04/2018,22/05/2018),
+(08/08/2018,08/09/2018)
+
+Insert into producto_bd(prod_nombre, prod_descripcion) values
+
+('Chupetas Rimbombin', 'Caramelo con palo'),
+('Ricolin', 'Caramelo de frutas con vitamina C'),
+(‘LosFiriFiri', 'Tabletas sabor a menta'),
+('Chupetas de Corazon', 'Chupetas con forma de un corazón, con sabor a fresa'),
+('Los pirulitos', 'Caramelos blandos'),
+('Ricura', 'Bola de caramelo picante'),
+('El original', 'Caramelos cítricos'),
+('Dulcin', 'Caramelos masticables'),
+('Choco Candy', 'Caramelos de Chocolate'),
+('Blue', 'Caramelosrellenos')
+
+
+
 
