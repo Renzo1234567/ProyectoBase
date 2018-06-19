@@ -23,31 +23,21 @@ class Producto_model extends MY_Model
         return $return;
     }
 
-    public function view(){
+    
+    public function insert() {
+        $sql = 'INSERT INTO producto_bd (column1, column2, column3, ...)
+                VALUES (value1, value2, value3, ...);';
+        $result = pg_query($this->conn, $sql);
 
-        /*
-        $email=$this->input->post('email');
-        $contraseña=$this->input->post('pass');
-        $result= pg_query($dbconn3, "SELECT email,pass  FROM login WHERE email='" . $email . "' AND pass='" . $contraseña . "' ;" );
-        $row = pg_fetch_assoc($result);
-        if (!$result) {
-                echo "Ocurrió un error.\n";
-                    
-                    }
-                    else{
-                            if($email=$row['email'] && $contraseña=$row['pass'] ){
-                                return true;
-                            }
-                                else{
-                                    return false;
-                                }
-                            }		
-                        
-                        }
+        //Si no hay resultados devuelve un arreglo vacio
+        if(!$result)
+            return array();
+        
+        $return = array();
+        while($row = pg_fetch_assoc($result))
+            $return[] = $row;
 
-                    **/
-                    }
-            
+        return $return;
     }
 	
 
