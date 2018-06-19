@@ -63,7 +63,7 @@ class Producto extends MY_Controller
     /**
      * Edit one item in detail
      */
-    public function edit($id)
+    public function edit($id = null)
     {
         if ($this->input->post())
         {
@@ -73,7 +73,7 @@ class Producto extends MY_Controller
             if($has_error)
                 echo 'Hubo un error: Actualización fallida';
         }
-        else
+        else if(isset($id) && $id > 0)
         {
             $producto = $this->producto_model->get_where_id($id);
             $this->load->view('producto/edit', $producto);

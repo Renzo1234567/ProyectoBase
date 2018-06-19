@@ -25,6 +25,9 @@ function loadDetail(id) {
     });
 }
 
+/**
+ * Load form to edit
+ */
 function loadEdit(id) {
     $.ajax({
         url: BASE_URL + "producto/edit/" + id,
@@ -32,7 +35,7 @@ function loadEdit(id) {
         detail.html(response);
         $('.edit-form').submit(function( event ) {
             event.preventDefault();
-            createItem();
+            updateItem();
         });
     }).fail(function(response) {
         alert('Lo sentimos, algo salió mal :(');
@@ -69,6 +72,7 @@ function createItem() {
  */
 function updateItem() {
     var data = $( '.edit-form' ).serialize();
+    var id = $('input[name="prod_id"]').val();
     $.ajax({
         url: BASE_URL + "producto/edit",
         method: "POST",
@@ -80,7 +84,7 @@ function updateItem() {
         if(response.length > 0) {
             alert(response);
         } else {
-            refreshList();
+            refreshList(id);
         }
     }).fail(function(response) {
         alert('Lo sentimos, algo salió mal :(');
@@ -88,12 +92,13 @@ function updateItem() {
     });
 }
 
-function refreshList() {
+function refreshList(id = false) {
     $.ajax({
         url: BASE_URL + "producto/get_list",
     }).done(function(response) {
         list.html(response);
-        detail.html('');
+        console.log('Estos');console.log(id);
+        id ? loadDetail(id) : detail.html('');
         $('.item-row').click(function() {
             var id = $(this).data('id');
             loadDetail(id);
@@ -144,4 +149,4 @@ $( document ).ready(function() {
     
 });
 
-console.log(5);
+console.log(6);
