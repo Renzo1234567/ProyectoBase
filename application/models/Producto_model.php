@@ -76,12 +76,14 @@ class Producto_model extends MY_Model
     /**
      * Inserta un producto
      */
-    public function update_where() {
+    public function update($id) {
         $nombre = $this->input->post('prod_nombre');
         $descripcion = $this->input->post('prod_descripcion');
         
-        $sql = "INSERT INTO producto_bd (prod_nombre, prod_descripcion, prod_imagen)
-                VALUES ('$nombre', '$descripcion', null);";
+        $sql = "UPDATE producto_bd SET 
+                prod_nombre = '$nombre', 
+                prod_descripcion = '$descripcion', 
+                prod_imagen = null;";
         $return = pg_query($this->conn, $sql);
         
         //Return false if have error

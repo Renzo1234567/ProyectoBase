@@ -1,37 +1,4 @@
-/**
-     * Inserta un producto
-     */
-    public function update($id) {
-        $nombre = $this->input->post('prod_nombre');
-        $descripcion = $this->input->post('prod_descripcion');
-        
-        $sql = "UPDATE producto_bd SET 
-                prod_nombre = '$nombre', 
-                prod_descripcion = '$descripcion', 
-                prod_imagen = null;";
-        $return = pg_query($this->conn, $sql);
-        
-        //Return false if have error
-        return !$return;
-    }
 
 
-    /**
-     * Edit one item in detail
-     */
-    public function edit($id)
-    {
-        if ($this->input->post())
-        {
-            $id = $this->input->post('prod_id');
-            $has_error = $this->producto_model->update($id);
-            
-            if($has_error)
-                echo 'Hubo un error: Actualización fallida';
-        }
-        else
-        {
-            $producto = $this->producto_model->get_where_id($id);
-            $this->load->view('producto/edit', $producto);
-        }
-    }
+
+    

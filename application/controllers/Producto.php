@@ -67,8 +67,11 @@ class Producto extends MY_Controller
     {
         if ($this->input->post())
         {
-            $this->producto_model->update_where($this->input->post());
-            redirect('/producto/index');
+            $id = $this->input->post('prod_id');
+            $has_error = $this->producto_model->update($id);
+            
+            if($has_error)
+                echo 'Hubo un error: Actualización fallida';
         }
         else
         {
