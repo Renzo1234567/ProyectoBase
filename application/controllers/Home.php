@@ -12,7 +12,18 @@ class Home extends MY_Controller
 
     public function index()
     {
-        $this->template('home/index');
+        $this->load->model('producto_model');
+        $productos = $this->producto_model->get_list(); //next step: Solo tomar 9
+        
+        if(count($productos) < 9 ) {
+            echo 'No existen suficientes productos';
+            die;
+        }
+        $data = array(
+            'productos' => $productos
+        );
+
+        $this->template('home/index', $data);
     }
 
 }

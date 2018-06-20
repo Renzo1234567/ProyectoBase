@@ -84,14 +84,15 @@
         <div class="col-md-9">
             <?php for($i = 0; $i < 3; $i++): ?>            
             <div class="row">
-                <?php for($j = 1; $j <= 3; $j++): ?>
+                <?php for($j = 0; $j < 3; $j++): ?>
+                <?php $producto = $productos[($i * 3) + $j]; ?>
                 <div class="col-md-4">
                     <div class="card text-center">
-                        <img class="card-img-top" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/Diapositiva<?php echo $j ?>.PNG" alt="Card image cap">
+                        <img class="card-img-top" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/Diapositiva<?php echo $j + 1 ?>.PNG" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Caramelo <?php echo $j ?></h5>
-                            <p class="card-text">Some quick example text to build on the card</p>
-                            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            <h5 class="card-title"><?php echo $producto['prod_nombre'] ?></h5>
+                            <p class="card-text"><?php echo $producto['prod_descripcion'] ?></p>
+                            <a href="#<?php echo $producto['prod_id'] ?>" class="btn btn-primary">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
