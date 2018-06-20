@@ -339,3 +339,10 @@ constraint cf_inv_tienda foreign key(cf_inv_tienda) references tienda_bd(tien_cl
 constraint cf_inv_producto_tipo foreign key(cf_inv_producto_tipo) references producto_tipo (prod_tipo_clave)
 );
 
+create table departamento_bd (
+depa_clave serial,
+depa_nombre varchar(255) not null,
+constraintcp_depa_clave primary key(depa_clave)
+);
+
+
