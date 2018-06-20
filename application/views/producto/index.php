@@ -21,3 +21,4 @@
 </div>
 
 <script src="<?php echo base_url() ?>public/js/producto.js"></script>
+<script src="<?php echo base_url() ?>public/js/resize-master-detail.js"></script>
