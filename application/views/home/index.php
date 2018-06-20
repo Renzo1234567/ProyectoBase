@@ -92,7 +92,14 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $producto['prod_nombre'] ?></h5>
                             <p class="card-text"><?php echo $producto['prod_descripcion'] ?></p>
-                            <a href="#<?php echo $producto['prod_id'] ?>" class="btn btn-primary">Agregar al carrito</a>
+                            <button data-id="<?php echo $producto['prod_id'] ?>" class="btn btn-primary agregar-prodcuto-carrito">Agregar al carrito</button>
+                            <form style="display: none" class="agregar-prodcuto-form">
+                                <div class="form-group">
+                                    <input type="number" name="cantidad" > <br>
+                                    <input type="text" name="producto-id" value="<?php echo $producto['prod_id'] ?>" hidden="" >
+                                    <input type="submit" value="Agregar" class="btn btn-success" > 
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -105,3 +112,5 @@
 </div>
 
 <hr>
+
+<script src="<?php echo base_url() ?>public/js/home.js"></script>
