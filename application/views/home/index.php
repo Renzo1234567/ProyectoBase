@@ -88,7 +88,7 @@
                 <?php $producto = $productos[($i * 3) + $j]; ?>
                 <div class="col-md-4">
                     <div class="card text-center">
-                        <img class="card-img-top" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/Diapositiva<?php echo $j + 1 ?>.PNG" alt="Card image cap">
+                        <img class="card-img-top" src="<?php echo base_url() ?>public/img/producto/<?php echo $producto['prod_imagen'] ?>" alt="Imagen de <?php echo $producto['prod_nombre'] ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $producto['prod_nombre'] ?></h5>
                             <p class="card-text"><?php echo $producto['prod_descripcion'] ?></p>
