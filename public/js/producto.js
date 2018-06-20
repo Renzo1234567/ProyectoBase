@@ -60,17 +60,15 @@ function loadEdit(id) {
  * Create item
  */
 function createItem() {   
-    console.log(1.1);
     var data = new FormData();
     jQuery.each($('input[type=file]')[0].files, function(i, file) {
         data.append('imagen', file);
     });
-    console.log(2.1);
     var other_data = $( '.create-form' ).serializeArray();
     $.each(other_data, function(key, input){
         data.append(input.name, input.value);
     });
-    console.log(3);
+    
     $.ajax({
         url: BASE_URL + "producto/create",
         method: "POST",
@@ -98,11 +96,24 @@ function createItem() {
  * Update item
  */
 function updateItem() {
-    var data = $( '.edit-form' ).serialize();
+    console.log(1);
     var id = $('input[name="prod_id"]').val();
+    
+    var data = new FormData();
+    jQuery.each($('input[type=file]')[0].files, function(i, file) {
+        data.append('imagen', file);
+    });
+    var other_data = $( '.create-form' ).serializeArray();
+    $.each(other_data, function(key, input){
+        data.append(input.name, input.value);
+    });
+    
     $.ajax({
         url: BASE_URL + "producto/edit",
         method: "POST",
+        cache: false,
+        contentType: false,
+        processData: false,
         data: data
     }).done(function(response) {
         detail.html('<i class="fas fa-spinner fa-pulse"></i>');

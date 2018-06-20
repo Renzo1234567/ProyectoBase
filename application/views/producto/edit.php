@@ -22,6 +22,9 @@
                        name="prod_descripcion" 
                        placeholder="Descripcion" require>
             </div>
+            <div class="form-group">
+                <input type="file" name="prod_imagen" accept="image/*">
+            </div>
             <input type="hidden" name="prod_id" value="<?php echo $prod_id; ?>">
             <button type="submit" class="btn btn-primary">Editar</button>
         </form>   

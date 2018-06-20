@@ -81,10 +81,20 @@ class Producto_model extends MY_Model
         $nombre = $this->input->post('prod_nombre');
         $descripcion = $this->input->post('prod_descripcion');
         
-        $sql = "UPDATE producto_bd SET 
+        if($_FILES && count($_FILES) === 1) {
+            $img = $_FILES['imagen']['name'];
+            $sql = "UPDATE producto_bd SET 
                 prod_nombre = '$nombre', 
                 prod_descripcion = '$descripcion', 
-                prod_imagen = null;";
+                prod_imagen = '$img';";
+            echo 'actualizado?';
+        } else {
+            $sql = "UPDATE producto_bd SET 
+                prod_nombre = '$nombre', 
+                prod_descripcion = '$descripcion';";
+            echo 'no';
+        }        
+        
         $return = pg_query($this->conn, $sql);
         
         //Return false if have error

@@ -43,7 +43,7 @@ class Producto extends MY_Controller
             if($_FILES && count($_FILES) === 1) {
                 $has_error = $this->guardar_imagen();
                 if($has_error) {
-                    echo 'Hubo un error: Problema de archivo';
+                    echo 'Hubo un error: Problema con la imagen';
                     return;
                 }
             }   
@@ -78,10 +78,21 @@ class Producto extends MY_Controller
         if ($this->input->post())
         {
             $id = $this->input->post('prod_id');
-            $has_error = $this->producto_model->update($id);
             
-            if($has_error)
+            if($_FILES && count($_FILES) === 1) {
+                echo 'a'; die;
+                $has_error = $this->guardar_imagen();
+                if($has_error) {
+                    echo 'Hubo un error: Problema con la imagen archivo';
+                    return;
+                }
+            }   
+            echo 'b'; die;
+            $has_error = $this->producto_model->update($id);
+            if($has_error) {
                 echo 'Hubo un error: Actualización fallida';
+                return;
+            }
         }
         else if(isset($id) && $id > 0)
         {
