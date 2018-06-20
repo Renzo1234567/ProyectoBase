@@ -194,7 +194,6 @@ constraint cf_empl_hora_horario foreign key(cf_empl_hora_horario) references hor
 create table departamento_bd (
 depa_clave serial,
 depa_nombre varchar(255) not null,
-depa_tipo varchar(255) not null,
 constraint cp_depa_clave primary key(depa_clave)
 );
 
@@ -339,11 +338,3 @@ cf_inv_producto_tipo integer,
 constraint cf_inv_tienda foreign key(cf_inv_tienda) references tienda_bd(tien_clave),
 constraint cf_inv_producto_tipo foreign key(cf_inv_producto_tipo) references producto_tipo (prod_tipo_clave)
 );
-
-create table departamento_bd (
-depa_clave serial,
-depa_nombre varchar(255) not null,
-constraintcp_depa_clave primary key(depa_clave)
-);
-
-
