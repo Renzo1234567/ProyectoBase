@@ -1498,7 +1498,7 @@ Insert into lugar_bd(Luga_Nombre,Luga_Tipo,CF_luga_lugar) values
 ('Santa Rosalía','Parroquia',361),
 ('Santa Teresa','Parroquia',361),
 ('Sucre (Catia)','Parroquia',361),
-('23 de enero','Parroquia',361)
+('23 de enero','Parroquia',361);
 
 Insert into tienda_bd(tien_nombre,tien_tipo,cf_tien_lugar) values
 
@@ -1540,13 +1540,13 @@ Insert into tienda_bd(tien_nombre,tien_tipo,cf_tien_lugar) values
 ('Maiquetia', 'Mini Candy Shop',1347),
 ('Carupano', 'Mini Candy Shop',19),
 ('Coro', 'Mini Candy Shop',2),
-('Trujillo','Mini Candy Shop',322)
+('Trujillo','Mini Candy Shop',322);
 
 Insert into estatus_bd(Esta_nombre) values
 
 ('En proceso'),
 ('Listo para la entrega'),
-('Entregado')
+('Entregado');
 
 Insert into permiso_bd(perm_clave,perm_accion) values
 
@@ -1554,20 +1554,20 @@ Insert into permiso_bd(perm_clave,perm_accion) values
 ('Comprar'),
 ('Editar Darío'),
 ('Actualizar valor de punto'),
-('Editar Empleados de Candy Ucab')
+('Editar Empleados de Candy Ucab');
 
 Insert into rol_bd(rol_nombre,rol_descripcion) values
 
 ('Comprador','Persona que compra'),
 ('Empleado','Tabajador de Candy Ucab'),
-('Jefe de Pasillo','Encargado del pasillo')
+('Jefe de Pasillo','Encargado del pasillo'),
 ('Encargado del Diario','Persona que administra el diario'),
 ('Gerente','Gerente de la tienda'),
-('Recursos Humanos','Encargado de los procesos de recursos humanos')
-('Sub Generente','Asistente del gerente'),
+('Recursos Humanos','Encargado de los procesos de recursos humanos'),
+('Sub Gerente','Asistente del gerente'),
 ('Administrador','Encargador de la página'),
 ('Finanzas','Encargado de supervisar los movimientos del capital de Candy Ucab'),
-('Evaluador','Encargado de evaluar la pagina')
+('Evaluador','Encargado de evaluar la pagina');
 
 Insert into diario_bd(diar_fechapublicacion,diar_fechafin) values
 
@@ -1575,7 +1575,7 @@ Insert into diario_bd(diar_fechapublicacion,diar_fechafin) values
 (14/01/2018,14/02/2018),
 (18/02/2018,18/03/2018),
 (22/04/2018,22/05/2018),
-(08/08/2018,08/09/2018)
+(08/08/2018,08/09/2018);
 
 Insert into producto_bd(prod_nombre,prod_descripcion) values
 
@@ -1588,7 +1588,7 @@ Insert into producto_bd(prod_nombre,prod_descripcion) values
 ('El original','Caramelos cítricos'),
 ('Dulcin','Caramelos masticables'),
 ('Choco Candy','Caramelos de Chocolate'),
-('Blue','Caramelos rellenos')
+('Blue','Caramelos rellenos');
 
 
 Insert into tipo_bd(tipo_nombre) values
@@ -1606,7 +1606,7 @@ Insert into tipo_bd(tipo_nombre) values
 ('Sin Azúcar'),
 ('Picantes'),
 ('Acidos'),
-('Con colorantes que tinten la lengua')
+('Con colorantes que tinten la lengua');
 
 Insert into producto_tipo(Cf_prod_tipo_prodcuto,cf_prod_tipo_tipo) values
 
@@ -1614,7 +1614,7 @@ Insert into producto_tipo(Cf_prod_tipo_prodcuto,cf_prod_tipo_tipo) values
 (2,2),
 (3,3),
 (7,5),
-(8,1)
+(8,1);
 
 Insert into tarjeta_bd(tarj_codigo,  tarj_numero,  tarj_tipo,cf_tarj_banco) values
 
@@ -1622,10 +1622,4 @@ Insert into tarjeta_bd(tarj_codigo,  tarj_numero,  tarj_tipo,cf_tarj_banco) valu
 ('Banesco'),
 ('BOD'),
 ('Mercantil'),
-('BBVA Provincial')
-
-
-
-
-
-
+('BBVA Provincial');
