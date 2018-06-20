@@ -15,13 +15,20 @@ class Registrar extends MY_Controller
         echo "Esto no muestra nadaa";
     }
     
-    public function registrar() {
-        
-            $this->template_light('Registrar/registrar');
-           
+    public function registrar() {           
+            $this->load->model('Lugar_model');
             
+            $estados = $this->Lugar_model->get_where("luga_tipo = 'Estado'");            
+            $municipio = $this->Lugar_model->get_where("luga_tipo = 'Municipio'");
+            $parroquia = $this->Lugar_model->get_where("luga_tipo = 'Parroquia'");
             
+            $data = array(
+                'estados' => $estados,
+                'municipios' => $municipio,
+                'parroquias' => $parroquia
+            );
         
+            $this->template_light('Registrar/registrar', $data);
         
     }
     
@@ -33,7 +40,20 @@ class Registrar extends MY_Controller
 
          public function registrarjuridica() 
     {
-        $this->template_light('Registrar/registrarjuridica');
+              $this->load->model('Lugar_model');
+            
+            $estados = $this->Lugar_model->get_where("luga_tipo = 'Estado'");            
+            $municipio = $this->Lugar_model->get_where("luga_tipo = 'Municipio'");
+            $parroquia = $this->Lugar_model->get_where("luga_tipo = 'Parroquia'");
+            
+            $data = array(
+                'estados' => $estados,
+                'municipios' => $municipio,
+                'parroquias' => $parroquia
+            );
+        
+            
+        $this->template_light('Registrar/registrarjuridica',$data);
             
     }
     

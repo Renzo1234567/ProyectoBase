@@ -100,22 +100,10 @@
                 <div class="cols-sm-4">
                     <div class="input-group">
 
-                        <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </div>
-
-                </div>
-            </div>
-            <div class="form-group"> 
-                <label for="Direccion" class="cols-sm-2 control-label">Parroquia</label>
-                <div class="cols-sm-10">
-                    <div class="input-group">
-
-                        <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
+                        <select class="js-example-basic-multiple form-control" name="states[]" >
+                           <?php foreach ($estados as $estado): ?>
+                                <option value="<?php echo $estado['luga_codigo'] ?>"><?php echo $estado['luga_nombre'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -126,9 +114,24 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
 
-                        <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
+                        <select class="js-example-basic-multiple form-control" name="states[]" >
+                           <?php foreach ($municipios as $estado): ?>
+                                <option value="<?php echo $estado['luga_codigo'] ?>"><?php echo $estado['luga_nombre'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label for="Direccion" class="cols-sm-2 control-label">Parroquia</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+
+                        <select class="js-example-basic-multiple form-control" name="states[]" >
+                            <?php foreach ($parroquias as $estado): ?>
+                                <option value="<?php echo $estado['luga_codigo'] ?>"><?php echo $estado['luga_nombre'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -140,22 +143,10 @@
                 <div class="cols-sm-4">
                     <div class="input-group">
 
-                        <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </div>
-
-                </div>
-            </div>
-            <div class="form-group"> 
-                <label for="Direccion" class="cols-sm-2 control-label">Parroquia</label>
-                <div class="cols-sm-10">
-                    <div class="input-group">
-
-                        <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
+                        <select class="js-example-basic-multiple form-control" name="states[]" >
+                           <?php foreach ($estados as $estado): ?>
+                                <option value="<?php echo $estado['luga_codigo'] ?>"><?php echo $estado['luga_nombre'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -166,9 +157,24 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
 
-                        <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
+                        <select class="js-example-basic-multiple form-control" name="states[]">
+                            <?php foreach ($municipios as $estado): ?>
+                                <option value="<?php echo $estado['luga_codigo'] ?>"><?php echo $estado['luga_nombre'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label for="Direccion" class="cols-sm-2 control-label">Parroquia</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+
+                        <select class="js-example-basic-multiple form-control" name="states[]" >
+                            <?php foreach ($parroquias as $estado): ?>
+                                <option value="<?php echo $estado['luga_codigo'] ?>"><?php echo $estado['luga_nombre'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 

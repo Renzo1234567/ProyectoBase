@@ -8,18 +8,17 @@ $('#closeboton').on('click', function(c){
 	});	
 	$("#login").submit(function(event){
 		event.preventDefault();
-
 		$.ajax({
 			url:$(this).attr("action"),
-			type:$(this).attr("method"),
+			method:$(this).attr("method"),
 			data:$(this).serialize(),
 			success:function(resp){
-				if(resp==="error"){
-					$("#error1").show();
-				}
-				else{
-					window.location.href="http://localhost/proyectobase"
-				}
+                                console.log(resp);
+                                if(resp.length > 0) {
+                                    $("#error1").show();
+                                } else {
+                                    window.location.href= BASE_URL;
+                                }
 			}
 
 		});

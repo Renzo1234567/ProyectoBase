@@ -17,17 +17,16 @@ public function view(){
   		exit;
 		}
 		else{
-
 	  $email=$this->input->post('email');
 	  $contraseña=$this->input->post('pass');
-	  $result= pg_query($dbconn3, "SELECT usua_nombre, usua_contrasena  FROM usuario_bd WHERE usua_nombre='" . $email . "' AND usua_contrasena='" . $contraseña . "' ;" );
+	  $result= pg_query($dbconn3, "SELECT usua_correo, usua_contraseña FROM usuario_bd WHERE usua_correo='" . $email . "' AND usua_contraseña='" . $contraseña . "' ;" );
 	  $row=pg_fetch_assoc($result);
 	  if (!$result) {
  			 echo "Ocurrió un error.\n";
   				
 				}
 				else{
-						if($email=$row['email'] && $contraseña=$row['pass'] ){
+						if($email===$row['usua_correo'] && $contraseña===$row['usua_contraseña'] ){
 							return true;
 						}
 							else{

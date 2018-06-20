@@ -21,7 +21,7 @@
         <div class="col-4 text-center">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <form  id="login" class="text-left" action="<?php echo base_url() ?>sign/in" method="POST" ">
+                    <form  id="login" class="text-left" action="<?php echo base_url() ?>sign/in" method="POST">
                         <div class="form-group">
                           <label for="email">Ingresa tu correo</label>
                           <input type="email" class="form-control" id="email" name="email"placeholder="Ingresa tu correo" required="">
