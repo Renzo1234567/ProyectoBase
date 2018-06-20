@@ -143,7 +143,7 @@ constraint cf_empl_tienda foreign key(cf_empl_tienda) references tienda_bd(tien_
 
 create table usuario_bd(
 usua_token varchar(255),
-usua_nombre varchar(255) not null,
+usua_Correo varchar(255) not null,
 usua_contraseña varchar(255) not null,
 usua_fecharegistro date not null,
 cf_usua_juridico numeric,
@@ -156,6 +156,7 @@ constraint cf_usua_juridico foreign key(cf_usua_juridico) references juridico_bd
 constraint cf_usua_natural foreign key(cf_usua_natural) references natural_bd(natu_rif),
 constraint cf_usua_empleado foreign key(cf_usua_empleado) references empleado_bd(empl_ci)
 );
+
 
 create table vacacion_bd(
 vaca_clave serial,
