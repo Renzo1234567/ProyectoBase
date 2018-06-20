@@ -1,7 +1,13 @@
 .master-detail {
-    height: 100%;
-    margin-top: -72px;
-    padding-top: 106px;
+    margin-top: -70px;
+}
+
+.master-detail #item-list, .master-detail #item-detail {
+    overflow: scroll;
+}
+
+.master-detail #item-detail {
+    padding: 30px;
 }
 
 .master-detail .fa-spinner {
@@ -9,4 +15,11 @@
     margin: 4px;
     display: block;
     z-index: 100000;
+}
+
+.master-detail #new-item-btn {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 1000;
 }

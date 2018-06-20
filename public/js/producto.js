@@ -110,7 +110,6 @@ function refreshList(id = false) {
         url: BASE_URL + "producto/get_list",
     }).done(function(response) {
         list.html(response);
-        console.log('Estos');console.log(id);
         id ? loadDetail(id) : detail.html('');
         $('.item-row').click(function() {
             var id = $(this).data('id');
