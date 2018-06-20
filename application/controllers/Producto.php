@@ -39,11 +39,21 @@ class Producto extends MY_Controller
     public function create()
     {
         if ($this->input->post())
-        {
-            $has_error = $this->producto_model->insert();
+        {            
+            if($_FILES && count($_FILES) === 1) {
+                $has_error = $this->guardar_imagen();
+                if($has_error) {
+                    echo 'Hubo un error: Problema de archivo';
+                    return;
+                }
+            }   
             
-            if($has_error)
+            $has_error = $this->producto_model->insert();
+            if($has_error) {
                 echo 'Hubo un error: Insersión fallida';
+                return;
+            }
+                
         }
         else
         {
@@ -88,6 +98,15 @@ class Producto extends MY_Controller
         $has_error = $this->producto_model->delete($id);
         if($has_error)
                 echo 'Hubo un error: Eliminación fallida';
+    }
+    
+    private function guardar_imagen() {
+        
+        if($_FILES && count($_FILES) === 1) {
+            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/proyectobase/public/img/producto/' . $_FILES['imagen']['name'];
+            return !move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
+        }
+        return !false;
     }
 
 }

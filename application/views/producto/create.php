@@ -14,6 +14,9 @@
                 <label for="prod_descripcion">Descripcion: </label>
                 <input type="text" class="form-control" name="prod_descripcion" placeholder="Descripcion" require>
             </div>
+            <div class="form-group">
+                <input type="file" name="prod_imagen" accept="image/*">
+            </div>
             <button type="submit" class="btn btn-primary">Crear</button>
         </form>   
     </div>

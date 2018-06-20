@@ -59,13 +59,27 @@ function loadEdit(id) {
 /**
  * Create item
  */
-function createItem() {
-    var data = $( '.create-form' ).serialize();
+function createItem() {   
+    console.log(1.1);
+    var data = new FormData();
+    jQuery.each($('input[type=file]')[0].files, function(i, file) {
+        data.append('imagen', file);
+    });
+    console.log(2.1);
+    var other_data = $( '.create-form' ).serializeArray();
+    $.each(other_data, function(key, input){
+        data.append(input.name, input.value);
+    });
+    console.log(3);
     $.ajax({
         url: BASE_URL + "producto/create",
         method: "POST",
+        cache: false,
+        contentType: false,
+        processData: false,
         data: data
     }).done(function(response) {
+        console.log(4);
         detail.html('<i class="fas fa-spinner fa-pulse"></i>');
         list.html('<i class="fas fa-spinner fa-pulse"></i>');
         console.log(response);
@@ -161,4 +175,4 @@ $( document ).ready(function() {
     
 });
 
-console.log(6);
+console.log(0);

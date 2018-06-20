@@ -64,9 +64,10 @@ class Producto_model extends MY_Model
     public function insert() {
         $nombre = $this->input->post('prod_nombre');
         $descripcion = $this->input->post('prod_descripcion');
+        $img = $_FILES['imagen']['name'];
         
         $sql = "INSERT INTO producto_bd (prod_nombre, prod_descripcion, prod_imagen)
-                VALUES ('$nombre', '$descripcion', null);";
+                VALUES ('$nombre', '$descripcion', '$img');";
         $return = pg_query($this->conn, $sql);
         
         //Return false if have error
