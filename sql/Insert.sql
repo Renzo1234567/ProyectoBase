@@ -1,5 +1,4 @@
 Insert into lugar_bd(Luga_Nombre,Luga_Tipo,CF_luga_lugar) values
-
 ('Venezuela','Pais',Null),
 ('Amazonas','Estado',1),
 ('Anzoátegui','Estado',1),
@@ -1500,9 +1499,10 @@ Insert into lugar_bd(Luga_Nombre,Luga_Tipo,CF_luga_lugar) values
 ('Sucre (Catia)','Parroquia',361),
 ('23 de enero','Parroquia',361);
 
+
 Insert into tienda_bd(tien_nombre,tien_tipo,cf_tien_lugar) values
 
- ('El Cafetal','Mini Candy Shop',972),
+('El Cafetal','Mini Candy Shop',972),
 ('Maracaibo','Mini Candy Shop',353),
 ('Barquisimeto','Mini Candy Shop',13),
 ('El Tigre','Mini Candy Shop',960),
@@ -1531,9 +1531,9 @@ Insert into tienda_bd(tien_nombre,tien_tipo,cf_tien_lugar) values
 ('tucacas','Mini Candy Shop',740),
 ('Costa Oriental del Lago','Mini Candy Shop',1386),
 ('La Victoria','Mini Candy Shop',1472),
- ('Villa la Cura','Mini Candy Shop',5),
+('Villa la Cura','Mini Candy Shop',5),
 ('Ciudad Ojeda','Mini Candy Shop',24),
-('Cuidad Bolivar','Mini Candy Shop',7),
+('CuidadBolivar','Mini Candy Shop',7),
 ('Barcelona','Mini Candy Shop',2),
 ('San Fernando de Apure','Mini Candy Shop',4),
 ('Valencia', 'Mini Candy Shop',116),
@@ -1542,19 +1542,6 @@ Insert into tienda_bd(tien_nombre,tien_tipo,cf_tien_lugar) values
 ('Coro', 'Mini Candy Shop',2),
 ('Trujillo','Mini Candy Shop',322);
 
-Insert into estatus_bd(Esta_nombre) values
-
-('En proceso'),
-('Listo para la entrega'),
-('Entregado');
-
-Insert into permiso_bd(perm_clave,perm_accion) values
-
-('Editar Caramelos'),
-('Comprar'),
-('Editar Darío'),
-('Actualizar valor de punto'),
-('Editar Empleados de Candy Ucab');
 
 Insert into rol_bd(rol_nombre,rol_descripcion) values
 
@@ -1564,32 +1551,28 @@ Insert into rol_bd(rol_nombre,rol_descripcion) values
 ('Encargado del Diario','Persona que administra el diario'),
 ('Gerente','Gerente de la tienda'),
 ('Recursos Humanos','Encargado de los procesos de recursos humanos'),
-('Sub Gerente','Asistente del gerente'),
+('Sub Generente','Asistente del gerente'),
 ('Administrador','Encargador de la página'),
 ('Finanzas','Encargado de supervisar los movimientos del capital de Candy Ucab'),
 ('Evaluador','Encargado de evaluar la pagina');
 
-Insert into diario_bd(diar_fechapublicacion,diar_fechafin) values
+Insert into permiso_bd(perm_accion) values
 
-(26/05/2018,26/06/2018),
-(14/01/2018,14/02/2018),
-(18/02/2018,18/03/2018),
-(22/04/2018,22/05/2018),
-(08/08/2018,08/09/2018);
+('Editar Caramelos'),
+('Comprar'),
+('Editar Darío'),
+('Actualizar valor de puntos'),
+('Editar Empleados de Candy Ucab');
 
-Insert into producto_bd(prod_nombre,prod_descripcion) values
 
-('Chupetas Rimbombin','Caramelo con palo'),
-('Ricolin','Caramelo de frutas con vitamina C'),
-('LosFiriFiri','Tabletas sabor a menta'),
-('Chupetas de Corazon','Chupetas con forma de un corazón, con sabor a fresa'),
-('Los pirulitos','Caramelos blandos'),
-('Ricura', 'Bola de caramelo picante'),
-('El original','Caramelos cítricos'),
-('Dulcin','Caramelos masticables'),
-('Choco Candy','Caramelos de Chocolate'),
-('Blue','Caramelos rellenos');
 
+Insert into permiso_rol(cf_perm_rol_permiso,cf_perm_rol_rol) values
+
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
 
 Insert into tipo_bd(tipo_nombre) values
 
@@ -1597,29 +1580,68 @@ Insert into tipo_bd(tipo_nombre) values
 ('Macizo'),
 ('Con Chicle'),
 ('Piruleta'),
-('Bombon'),
+('Bombón'),
 ('Gelatina'),
-('t7', 'Algodón de Azúcar'),
+('Algodón de Azúcar'),
 ('Con Chocolate'),
 ('De Fruta'),
 ('De Regaliz'),
 ('Sin Azúcar'),
 ('Picantes'),
-('Acidos'),
+('Ácidos'),
 ('Con colorantes que tinten la lengua');
 
-Insert into producto_tipo(Cf_prod_tipo_prodcuto,cf_prod_tipo_tipo) values
 
-(1,1),
-(2,2),
-(3,3),
-(7,5),
-(8,1);
+Insert into producto_bd(prod_nombre, prod_descripcion) values
 
-Insert into tarjeta_bd(tarj_codigo,  tarj_numero,  tarj_tipo,cf_tarj_banco) values
+('Chupetas Rimbombin','Caramelo con palo'),
+('Ricolin', 'Caramelo de frutas con vitamina C'),
+('Los Firi Firi', 'Tabletas sabor a menta'),
+('Chupetas de Corazón','Chupetas con forma de un corazón, con sabor a fresa'),
+('Los pirulitos', 'Caramelos blandos'),
+('Ricura', 'Bola de caramelo picante'),
+('El original', 'Caramelos cítricos'),
+('Dulcin', 'Caramelos masticables'),
+('Choco Candy', 'Caramelos de Chocolate'),
+('Blue', 'Caramelos rellenos');
 
-('Banco de Venezuela'),
-('Banesco'),
-('BOD'),
-('Mercantil'),
-('BBVA Provincial');
+Insert into producto_tipo(Cf_prod_tipo_producto,cf_prod_tipo_tipo) values
+(1,3),
+(6,13),
+(9,8),
+(7,1),
+(8,9);
+
+Insert into diario_bd(diar_fechapublicacion,diar_fechafin) values
+('2018-05-06', '2018-06-06'),
+('2018-07-01', '2018-08-01'),
+('2018-03-11', '2018-04-11'),
+('2018-07-17', '2018-06-17'),
+('2018-01-14', '2018-02-14');
+
+Insert into oferta_bd(ofer_porcentaje, cf_ofer_Prod_tipo,cf_ofer_diario) values
+(25,1,1),
+(30,2,1),
+(45,3,1),
+(10,4,1),
+(25,5,1),
+(50,1,2),
+(20,2,2),
+(25,3,2),
+(35,4,2),
+(25,5,2),
+(15,1,3),
+(05,2,3),
+(25,3,3),
+(30,4,3),
+(35,5,3),
+(25,1,4),
+(50,2,4),
+(05,3,4),
+(35,4,4),
+(25,5,4),
+(05,1,5),
+(30,2,5),
+(10,3,5),
+(25,4,5),
+(45,5,5);
