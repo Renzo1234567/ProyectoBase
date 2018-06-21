@@ -15,7 +15,16 @@ class Registrar extends MY_Controller
         echo "Esto no muestra nadaa";
     }
     
-    public function registrar() {           
+    public function registrar() {      
+     if($this->input->post('CorreoElectronico') !== null) {
+                        
+        $this->load->model('Registrar_model');
+          $va= $this->Registrar_model->view();
+          redirect(base_url());
+
+
+
+           } else{     
             $this->load->model('Lugar_model');
             
             $estados = $this->Lugar_model->get_where("luga_tipo = 'Estado'");            
@@ -29,6 +38,7 @@ class Registrar extends MY_Controller
             );
         
             $this->template_light('Registrar/registrar', $data);
+        }
         
     }
     

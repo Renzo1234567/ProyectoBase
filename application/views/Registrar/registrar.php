@@ -22,7 +22,7 @@
                                 <option value="2">E</option>
                                 <option value="3">P</option>
                             </select>
-                            <input type="text" class="form-control" name="Rif" id="Rif" placeholder="Ingresa tu RIF "/>
+                            <input  required type="text" class="form-control" name="Rif" id="Rif" placeholder="Ingresa tu RIF "/>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                                 <option selected value="1">V</option>
                                 <option value="2">E</option>
                             </select>
-                            <input type="text" class="form-control" name="Cedula" id="Cedula"  placeholder="Ingresa tu Cedula"/>
+                            <input required type="text" class="form-control" name="Cedula" id="Cedula"  placeholder="Ingresa tu Cedula"/>
                         </div>
                     </div>
                 </div>
@@ -44,8 +44,8 @@
                     <label for="nombres" class="cols-sm-2 control-label">Nombres</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="PrimerNombre" id="PrimerNombre"  placeholder="Primer Nombre"/>
-                            <input type="text" class="form-control" name="SegundoNombre" id="SegundoNombre"  placeholder="Segundo Nombre"/>
+                            <input required type="text" class="form-control" name="PrimerNombre" id="PrimerNombre"  placeholder="Primer Nombre"/>
+                            <input  type="text" class="form-control" name="SegundoNombre" id="SegundoNombre"  placeholder="Segundo Nombre"/>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <label for="apellidos" class="cols-sm-2 control-label">Apellidos</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="PrimerApellido" id="PrimerApellido"  placeholder="Primer Apellido"/>
+                            <input required type="text" class="form-control" name="PrimerApellido" id="PrimerApellido"  placeholder="Primer Apellido"/>
                             <input type="text" class="form-control" name="SegundoApellido" id="SegundoApellido"  placeholder="Segundo Apellido"/>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                 <label for="Telefonos" class="cols-sm-2 control-label">Correo Electronico</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-                        <input type="email" class="form-control" name="CorreoElectronico" id="CorreoElectronico"  placeholder="Correo Electronico"/>
+                        <input required type="email" class="form-control" name="CorreoElectronico" id="CorreoElectronico"  placeholder="Correo Electronico"/>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                 <label for="password" class="cols-sm-2 control-label">Contraseña</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-                        <input type="password" class="form-control" name="Contraseña" id="Contraseña"  placeholder="Ingresa tu contraseña"/>
+                        <input  required type="password" class="form-control" name="Contraseña" id="Contraseña"  placeholder="Ingresa tu contraseña"/>
                     </div>
                 </div>
             </div>
@@ -131,9 +131,9 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
 
-                        <select class="js-example-basic-multiple form-control" name="states[]">
+                        <select class="js-example-basic-multiple form-control" name="lugar" >
                             <?php foreach ($parroquias as $municipio): ?>
-                                <option value="<?php echo $municipio['luga_codigo'] ?>"><?php echo $municipio['luga_nombre'] ?></option>
+                                <option name="lugar" value="<?php echo $municipio['luga_codigo'] ?>"><?php echo $municipio['luga_nombre'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

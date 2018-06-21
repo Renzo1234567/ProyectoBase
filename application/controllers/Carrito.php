@@ -72,9 +72,9 @@ class Carrito extends MY_Controller
     public function recibo() {
         $this->template('carrito/recibo');
     }
-    
+
     public function debug_session() {
         var_dump($_SESSION);
-    }
+}
 
 }
