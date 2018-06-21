@@ -1,83 +1,83 @@
-Drop table lugar_bd;
+Drop table lugar_bd  cascade;
 
-Drop table tienda_bd ;
+Drop table tienda_bd   cascade;
 
-Drop table rol_bd;
+Drop table rol_bd  cascade;
 
-Drop table permiso_bd ;
+Drop table permiso_bd   cascade;
 
-Drop table permiso_rol ;
+Drop table permiso_rol   cascade;
 
-Drop table tipo_bd;
+Drop table tipo_bd  cascade;
 
-Drop table producto_bd;
+Drop table producto_bd  cascade;
 
-Drop table producto_tipo;
+Drop table producto_tipo  cascade;
 
-Drop table diario_bd;
+Drop table diario_bd  cascade;
 
-Drop table oferta_bd;
+Drop table oferta_bd  cascade;
 
-Drop table natural_bd;
+Drop table natural_bd  cascade;
 
-Drop table juridico_bd;
+Drop table juridico_bd  cascade;
 
-Drop table persona_bd;
+Drop table persona_bd  cascade;
 
-Drop table personacontacto_bd;
+Drop table personacontacto_bd  cascade;
 
-Drop table tienda_cliente;
+Drop table tienda_cliente  cascade;
 
-Drop table carnet_bd;
+Drop table carnet_bd  cascade;
 
-Drop table empleado_bd;
+Drop table empleado_bd  cascade;
 
-Drop table usuario_bd;
+Drop table usuario_bd  cascade;
 
-Drop table vacacion_bd;
+Drop table vacacion_bd  cascade;
 
-Drop table horario_bd;
+Drop table horario_bd  cascade;
 
-Drop table empleado_horario;
+Drop table empleado_horario  cascade;
 
-Drop table departamento_bd ;
+Drop table departamento_bd   cascade;
 
-Drop table departamento_tienda ;
+Drop table departamento_tienda   cascade;
 
-Drop table telefono_bd;
+Drop table telefono_bd  cascade;
 
-Drop table banco_bd;
+Drop table banco_bd  cascade;
 
-Drop table punto_bd;
+Drop table punto_bd  cascade;
 
-Drop table cliente_punto;
+Drop table cliente_punto  cascade;
 
-Drop table presupuesto_bd;
+Drop table presupuesto_bd  cascade;
 
-Drop table tarjeta_bd;
+Drop table tarjeta_bd  cascade;
 
-Drop table cheque_bd;
+Drop table cheque_bd  cascade;
 
-Drop table estatus_bd;
+Drop table estatus_bd  cascade;
 
-Drop table compra_fisica;
+Drop table compra_fisica  cascade;
 
-Drop table compra_bd;
+Drop table compra_bd  cascade;
 
-Drop table compra_estatus;
+Drop table compra_estatus  cascade;
 
-Drop table presupuesto_producto_bd;
+Drop table presupuesto_producto_bd  cascade;
 
-Drop TABLE mediospago;
+Drop TABLE mediospago  cascade;
 
-Drop table pago_bd;
+Drop table pago_bd  cascade;
 
-Drop table ordenreposicion_bd;
+Drop table ordenreposicion_bd  cascade;
 
-Drop table orden_producto;
+Drop table orden_producto  cascade;
 
-Drop table inventario_bd;
+Drop table inventario_bd  cascade;
 
-Drop table asistencia_bd;
+Drop table asistencia_bd  cascade;
 
 
