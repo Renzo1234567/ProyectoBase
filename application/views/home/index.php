@@ -97,6 +97,7 @@
                                 <div class="form-group">
                                     <input type="number" name="cantidad" value="1" > <br>
                                     <input type="text" name="producto-id" value="<?php echo $producto['prod_id'] ?>" hidden="" >
+                                    <input type="text" name="producto-nombre" value="<?php echo $producto['prod_nombre'] ?>" hidden="" >
                                     <input type="submit" value="Agregar" class="btn btn-success" > 
                                 </div>
                             </form>

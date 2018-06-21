@@ -34,8 +34,16 @@
                                 </tr>
                             <?php endforeach; ?>
                             <tr class="table-light">
-                                <td colspan="4" class="text-right"><b>Total: </b></td>
+                                <td colspan="4" class="text-right"><b>Sub total: </b></td>
                                 <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] ?> Bs</b></td>
+                            </tr>
+                            <tr class="table-light">
+                                <td colspan="4" class="text-right"><b>Iva: </b></td>
+                                <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] * 0.12 ?> Bs</b></td>
+                            </tr>
+                            <tr class="table-light">
+                                <td colspan="4" class="text-right"><b>Total: </b></td>
+                                <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] * 1.12 ?> Bs</b></td>
                             </tr>
                         </tbody>
                     </table>
@@ -43,12 +51,13 @@
             </div>
             <div class="row">
                 <div class="col-12 text-right">
-                    <button class="btn btn-success">
+                    <a href="<?php echo base_url(); ?>carrito/pagar" class="btn btn-success">
                         Realizar compra
-                    </button>
+                    </a>
                 </div>
             </div>   
         </div>
         <div class="col-sm-1"></div>
     </div>
 </div>
+<hr>

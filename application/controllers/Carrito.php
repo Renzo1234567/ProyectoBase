@@ -54,8 +54,21 @@ class Carrito extends MY_Controller
     }
 
     /**
-     * 
+     * Cargar los medios de pago de un cliente
      */
+    public function pagar() {
+        $this->template('carrito/pagar');
+    }
     
+    /**
+     * Cargar los medios de pago de un cliente
+     */
+    public function recibo() {
+        $this->template('carrito/index');
+    }
+    
+    public function debug_session() {
+        var_dump($_SESSION);
+    }
 
 }
