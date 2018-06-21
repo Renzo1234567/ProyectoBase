@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <br>
                     <h3>
-                        Carrito <i class="fas fa-shopping-cart"></i> 
+                        Recibo de compra <i class="fas fa-shopping-cart"></i> 
                     </h3>
                     <br>
                 </div>
@@ -25,28 +25,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $subtotal = 0; ?>
                                 <?php foreach($_SESSION['carrito'] as $key => $producto): ?>
                                     <tr>
                                         <td><?php echo $key + 1?></td>
-                                        <td><?php echo $producto['nombre'] ?></td>
+                                        <td><?php echo $producto['id'] ?></td>
                                         <td><?php echo $producto['id'] ?> Bs</td>
                                         <td><?php echo $producto['cantidad'] ?></td>
-                                        <td><?php echo $producto['cantidad'] * $producto['id'] ?> Bs</td>
+                                        <td><?php echo $producto['cantidad'] * $producto['cantidad'] ?> Bs</td>
                                     </tr>
-                                    <?php $subtotal += $producto['cantidad'] * $producto['id'] ; ?>
                                 <?php endforeach; ?>
                                 <tr class="table-light">
                                     <td colspan="4" class="text-right"><b>Sub total: </b></td>
-                                    <td><b><?php echo $subtotal ?> Bs</b></td>
+                                    <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] ?> Bs</b></td>
                                 </tr>
                                 <tr class="table-light">
                                     <td colspan="4" class="text-right"><b>Iva: </b></td>
-                                    <td><b><?php echo $subtotal * 0.12 ?> Bs</b></td>
+                                    <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] * 0.12 ?> Bs</b></td>
                                 </tr>
                                 <tr class="table-light">
                                     <td colspan="4" class="text-right"><b>Total: </b></td>
-                                    <td><b><?php echo $subtotal * 1.12 ?> Bs</b></td>
+                                    <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] * 1.12 ?> Bs</b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -56,28 +54,7 @@
                         No ha agregado productos a su carrito
                     </i></p>
                 <?php endif; ?>
-            </div>
-            <div class="row">
-                <div class="col-12 text-right">
-                    
-                    <?php if(isset($_SESSION['usua_token']) && isset($_SESSION['carrito'])): ?>
-                        <a href="<?php echo base_url(); ?>carrito/pagar" class="btn btn-success">
-                            Realizar compra
-                        </a>
-                    <?php elseif(isset($_SESSION['carrito'])): ?>
-                        <a href="<?php echo base_url(); ?>sign/in" class="btn btn-primary">
-                            Iniciar session
-                        </a>
-                        <a href="<?php echo base_url(); ?>Registrar/comoregistrarse" class="btn btn-secondary">
-                            Registrarse
-                        </a>
-                    <?php else: ?>
-                        <a href="<?php echo base_url(); ?>" class="btn btn-primary">
-                            Ir a comprar
-                        </a>
-                    <?php endif; ?>
-                </div>
-            </div>   
+            </div>  
         </div>
         <div class="col-sm-1"></div>
     </div>

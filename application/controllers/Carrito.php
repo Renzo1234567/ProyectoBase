@@ -22,7 +22,8 @@ class Carrito extends MY_Controller
             $carrito = array(
                     array(
                         'id' => $this->input->post('producto-id'),
-                        'cantidad' => $this->input->post('cantidad')
+                        'cantidad' => $this->input->post('cantidad'),
+                        'nombre' => $this->input->post('producto-nombre')
                     )
                 )
             ;
@@ -38,7 +39,8 @@ class Carrito extends MY_Controller
             if(!$estaba) {
                 $item = array(
                         'id' => $this->input->post('producto-id'),
-                        'cantidad' => $this->input->post('cantidad')
+                        'cantidad' => $this->input->post('cantidad'),
+                        'nombre' => $this->input->post('producto-nombre')
                     );
                 $_SESSION['carrito'][] = $item;
             }
@@ -57,14 +59,18 @@ class Carrito extends MY_Controller
      * Cargar los medios de pago de un cliente
      */
     public function pagar() {
-        $this->template('carrito/pagar');
+        if(isset($_SESSION['usua_token']) && isset($_SESSION['carrito'])) {
+            $this->template('carrito/pagar');
+        } else {
+            redirect(base_url('#acceso-denegado'));
+        }        
     }
     
     /**
      * Cargar los medios de pago de un cliente
      */
     public function recibo() {
-        $this->template('carrito/index');
+        $this->template('carrito/recibo');
     }
     
     public function debug_session() {

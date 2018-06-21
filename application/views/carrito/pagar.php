@@ -18,9 +18,19 @@
             </div>
             <div class="row">
                 <div class="col-12 text-right">
-                    <a href="<?php echo base_url(); ?>carrito/recibo" class="btn btn-success">
-                        Pagar
-                    </a>
+                    <?php if(isset($_SESSION['usua_token'])): ?>
+                        <a href="<?php echo base_url(); ?>carrito/recibo" class="btn btn-success">
+                            Pagar
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php echo base_url(); ?>carrito/recibo" class="btn btn-primary">
+                            Iniciar session
+                        </a>
+                        <a href="<?php echo base_url(); ?>carrito/recibo" class="btn btn-secondary">
+                            Registrarse
+                        </a>
+                    <?php endif; ?>
+                    
                 </div>
             </div>   
         </div>

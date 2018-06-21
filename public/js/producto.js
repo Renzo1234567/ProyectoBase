@@ -118,7 +118,6 @@ function updateItem() {
     }).done(function(response) {
         detail.html('<i class="fas fa-spinner fa-pulse"></i>');
         list.html('<i class="fas fa-spinner fa-pulse"></i>');
-        console.log("Edit response:");
         console.log(response);
         if(response.length > 0) {
             alert(response);
