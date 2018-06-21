@@ -18,17 +18,21 @@ class Sign extends MY_Controller
     public function in() {
         
         if($this->input->post('email') !== null) {
-                        
             $this->load->model('Sigin');
             $resp=$this->Sigin->view();
             if ($resp){
-            $data = [
-                "email" => $this->input->post('email'),
-                //'carrito' => array()
-                //Insertar datos del cliente
-            ];
-            
-            $this->session->set_userdata($data);
+                $this->load->model('usuario_model');
+                $where = "usua_correo = '" . $this->input->post('email') . "'";
+                
+                $user_data = $this->usuario_model->get_where($where)[0];
+                /*$data = [
+                    "email" => $this->input->post('email'),
+                    'usua_token' => $user_data['usua_token']
+                    //Insertar datos del cliente
+                ];*/
+                $_SESSION['email'] = $this->input->post('email');
+                $_SESSION['usua_token'] = $user_data['usua_token'];
+                //$this->session->set_userdata($data);
             
             
             }
