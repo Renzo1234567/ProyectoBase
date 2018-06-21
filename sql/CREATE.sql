@@ -291,7 +291,7 @@ create table compra_fisica(
 comp_fisc_clave serial,
 cf_comp_fisc_tienda integer,
 constraint cp_comp_fisc_clave primary key(comp_fisc_clave),
-constraint cf_comp_fisc_tienda foreign key(cf_comp_fisc_tienda) references tienda(tien_clave),
+constraint cf_comp_fisc_tienda foreign key(cf_comp_fisc_tienda) references tienda(tien_clave)
 );
 
 create table compra_bd(
