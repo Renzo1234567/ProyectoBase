@@ -25,26 +25,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $subtotal = 0; ?>
                                 <?php foreach($_SESSION['carrito'] as $key => $producto): ?>
                                     <tr>
                                         <td><?php echo $key + 1?></td>
-                                        <td><?php echo $producto['id'] ?></td>
+                                        <td><?php echo $producto['nombre'] ?></td>
                                         <td><?php echo $producto['id'] ?> Bs</td>
                                         <td><?php echo $producto['cantidad'] ?></td>
-                                        <td><?php echo $producto['cantidad'] * $producto['cantidad'] ?> Bs</td>
+                                        <td><?php echo $producto['cantidad'] * $producto['id'] ?> Bs</td>
                                     </tr>
+                                    <?php $subtotal += $producto['cantidad'] * $producto['id'] ; ?>
                                 <?php endforeach; ?>
                                 <tr class="table-light">
                                     <td colspan="4" class="text-right"><b>Sub total: </b></td>
-                                    <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] ?> Bs</b></td>
+                                    <td><b><?php echo $subtotal ?> Bs</b></td>
                                 </tr>
                                 <tr class="table-light">
                                     <td colspan="4" class="text-right"><b>Iva: </b></td>
-                                    <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] * 0.12 ?> Bs</b></td>
+                                    <td><b><?php echo $subtotal * 0.12 ?> Bs</b></td>
                                 </tr>
                                 <tr class="table-light">
                                     <td colspan="4" class="text-right"><b>Total: </b></td>
-                                    <td><b><?php echo $producto['cantidad'] * $producto['cantidad'] * 1.12 ?> Bs</b></td>
+                                    <td><b><?php echo $subtotal * 1.12 ?> Bs</b></td>
                                 </tr>
                             </tbody>
                         </table>
