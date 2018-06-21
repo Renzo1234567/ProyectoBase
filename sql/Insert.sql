@@ -2227,7 +2227,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu70','Marco@hotmail.com','23497','2018-01-14',25148521,null,null,2),
 ('Usu71','Margo@hotmail.com','3489','2018-01-04',14751854,null,null,2),
 ('Usu72','Usu72@hotmail.com','64897','2018-01-25',27444548,null,null,2),
-('Usu73','Usu73@hotmail.com','micontraseñaesjara','2018-01-01',null,265215285.null,1),
+('Usu73','Usu73@hotmail.com','micontraseñaesjara','2018-01-01',null,265215285,null,1),
 ('Usu74','Usu74@hotmail.com','0000','2018-01-02',null,265215285,null,1),
 ('Usu75','Usu75@hotmail.com','0150052','2018-01-03',null,225115295,null,1),
 ('Usu76','Usu76@hotmail.com','098541','2018-01-02',null,225115295,null,1),
@@ -2241,7 +2241,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu84','Usu84@hotmail.com','Harry02','2018-01-05',null,231225848,null,1),
 ('Usu85','Usu85@hotmail.com','IronStar','2018-01-01',null,125482251,null,1),
 ('Usu86','Usu86@hotmail.com','521400','2018-01-04',null,125482251,null,1),
-('Usu87','Usu87@hotmail.com','02580','2018-01-06',null,245812222,null,2)
+('Usu87','Usu87@hotmail.com','02580','2018-01-06',null,245812222,null,2),
 ('Usu88','Usu88@hotmail.com','045582','2018-01-08',null,245812222,null,1),
 ('Usu89','Usu89@hotmail.com','Sabroso','2018-01-04',null,198254582,null,1),
 ('Usu90','Usu90@hotmail.com','0424','2018-01-02',null,198254582,null,1),
@@ -2259,7 +2259,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu102','Usu102@hotmail.com','0594','2018-01-12',null,298545845,null,1),
 ('Usu103','Usu103@hotmail.com','2568','2018-01-18',null,154821547,null,1),
 ('Usu104','Usu104@hotmail.com','9654','2018-01-20',null,154821547,null,1),
-('Usu105','Usu105@hotmail.com','482','2018-01-21',null,132512548,null,2)
+('Usu105','Usu105@hotmail.com','482','2018-01-21',null,132512548,null,2),
 ('Usu106','Usu106@hotmail.com','52642','2018-01-14',null,132512548,null,1),
 ('Usu107','Usu107@hotmail.com','65482','2018-01-16',null,17452114,null,1),
 ('Usu108','Usu108@hotmail.com','65824','2018-01-17',null,17452114,null,1),
@@ -2298,7 +2298,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu141','Usu141@hotmail.com','38975','2018-01-14',null,123521400,null,1),
 ('Usu142','Usu142@hotmail.com','23497','2018-01-14',null,123521400,null,1),
 ('Usu143','Usu143@hotmail.com','3489','2018-01-04',null,155214125,null,1),
-('Usu144','Usu144@hotmail.com','64897','2018-01-25',null,155214125,null,2);
+('Usu144','Usu144@hotmail.com','64897','2018-01-25',null,155214125,null,2),
 ('Usu145','Usu145@hotmail.com','0000','2018-01-02',null,116542852,null,1),
 ('Usu146','Usu146@hotmail.com','0150052','2018-01-03',null,116542852,null,1),
 ('Usu147','Usu147@hotmail.com','098541','2018-01-02',null,174451102,null,1),
@@ -2312,7 +2312,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu155','Usu155@hotmail.com','Harry02','2018-01-05',null,174582211,null,1),
 ('Usu156','Usu156@hotmail.com','IronStar','2018-01-01',null,174582211,null,1),
 ('Usu157','Usu157@hotmail.com','521400','2018-01-04',null,152425158,null,1),
-('Usu158','Usu158@hotmail.com','02580','2018-01-06',null,152425158,null,2)
+('Usu158','Usu158@hotmail.com','02580','2018-01-06',null,152425158,null,2),
 ('Usu159','Usu159@hotmail.com','045582','2018-01-08',null,165251284,null,1),
 ('Usu160','Usu160@hotmail.com','Sabroso','2018-01-04',null,165251284,null,1),
 ('Usu161','Usu161@hotmail.com','0424','2018-01-02',null,175821548,null,1),
@@ -2330,7 +2330,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu173','Usu173@hotmail.com','0594','2018-01-12',null,236251258,null,1),
 ('Usu174','Usu174@hotmail.com','2568','2018-01-18',null,236251258,null,1),
 ('Usu175','Usu175@hotmail.com','9654','2018-01-20',null,236251258,null,1),
-('Usu176','Usu176@hotmail.com','482','2018-01-21',null,236251258,null,2)
+('Usu176','Usu176@hotmail.com','482','2018-01-21',null,236251258,null,2),
 ('Usu177','Usu177@hotmail.com','52642','2018-01-14',null,245136695,null,1),
 ('Usu178','Usu178@hotmail.com','65482','2018-01-16',null,245136695,null,1),
 ('Usu179','Usu179@hotmail.com','65824','2018-01-17',null,256395425,null,1),
@@ -2370,20 +2370,20 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu213','Usu213@hotmail.com','23497','2018-01-14',null,145215203,null,1),
 ('Usu214','Usu214@hotmail.com','3489','2018-01-04',null,145215203,null,1),
 ('Usu215','Usu215@hotmail.com','64897','2018-01-25',null,178452120,null,1),
-('Usu216','Usu216@hotmail.com','micontraseñaesjara','2018-01-01',null,178452120.null,1);
+('Usu216','Usu216@hotmail.com','micontraseñaesjara','2018-01-01',null,178452120,null,1),
 ('Usu300','Usu300@hotmail.com','5397','2018-01-14',null,165214282,null,1),
 ('Usu301','Usu301@hotmail.com','38975','2018-01-14',null,165214282,null,1),
 ('Usu302','Usu302@hotmail.com','23497','2018-01-14',null,136251522,null,1),
 ('Usu303','Usu303@hotmail.com','3489','2018-01-04',null,136251522,null,1),
 ('Usu304','Usu304@hotmail.com','64897','2018-01-25',null,136985215,null,1),
-('Usu305','Usu305@hotmail.com','micontraseñaesjara','2018-01-01',null,136985215.null,1),
+('Usu305','Usu305@hotmail.com','micontraseñaesjara','2018-01-01',null,136985215,null,1),
 ('Usu306','Usu306@hotmail.com','3489','2018-01-04',null,148542120,null,1),
 ('Usu307','Usu307@hotmail.com','64897','2018-01-25',null,148542120,null,1),
-('Usu308','Usu308@hotmail.com','micontraseñaesjara','2018-01-01',null,178452000.null,1),
+('Usu308','Usu308@hotmail.com','micontraseñaesjara','2018-01-01',null,178452000,null,1),
 ('Usu309','Usu309@hotmail.com','3489','2018-01-04',null,178452000,null,1),
 ('Usu310','Usu310@hotmail.com','64897','2018-01-25',null,195645820,null,1),
-('Usu311','Usu311@hotmail.com','micontraseñaesjara','2018-01-01',null,195645820.null,1),
-('Usus217','Usus217@hotmail.com','micontraseñaesjara','2018-01-01',null,null.256331215,1),
+('Usu311','Usu311@hotmail.com','micontraseñaesjara','2018-01-01',null,195645820,null,1),
+('Usus217','Usus217@hotmail.com','micontraseñaesjara','2018-01-01',null,null,256331215,1),
 ('Usu218','Usu218@hotmail.com','0000','2018-01-02',null,null,211852158,1),
 ('Usu219','Usu219@hotmail.com','0150052','2018-01-03',null,null,198251253,1),
 ('Usu220','Usu220@hotmail.com','098541','2018-01-02',null,null,145325148,1),
@@ -2397,7 +2397,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu228','Usu228@hotmail.com','Harry02','2018-01-05',null,null,162548215,1),
 ('Usu229','Usu229@hotmail.com','IronStar','2018-01-01',null,null,169365218,1),
 ('Usu230','Usu230@hotmail.com','521400','2018-01-04',null,null,174824582,1),
-('Usu231','Usu231@hotmail.com','02580','2018-01-06',null,null,196520002,2)
+('Usu231','Usu231@hotmail.com','02580','2018-01-06',null,null,196520002,2),
 ('Usu232','Usu232@hotmail.com','045582','2018-01-08',null,null,236250120,1),
 ('Usu233','Usu233@hotmail.com','Sabroso','2018-01-04',null,null,142852158,1),
 ('Usu234','Usu234@hotmail.com','0424','2018-01-02',null,null,145212582,1),
@@ -2415,7 +2415,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu246','Usu246@hotmail.com','0594','2018-01-12',null,null,263255269,1),
 ('Usu247','Usu247@hotmail.com','2568','2018-01-18',null,null,189525448,1),
 ('Usu248','Usu248@hotmail.com','9654','2018-01-20',null,null,189623521,1),
-('Usu249','Usu249@hotmail.com','482','2018-01-21',null,null,175425814,2)
+('Usu249','Usu249@hotmail.com','482','2018-01-21',null,null,175425814,2),
 ('Usu250','Usu250@hotmail.com','52642','2018-01-14',null,null,162235125,1),
 ('Usu251','Usu251@hotmail.com','65482','2018-01-16',null,null,142150002,1),
 ('Usu252','Usu252@hotmail.com','65824','2018-01-17',null,null,262415825,1),
@@ -2454,7 +2454,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu285','Usu285@hotmail.com','38975','2018-01-14',null,null,265825452,1),
 ('Usu286','Usu286@hotmail.com','23497','2018-01-14',null,null,236254878,1),
 ('Usu287','Usu287@hotmail.com','3489','2018-01-04',null,null,236254878,1),
-('Usu288','Usu288@hotmail.com','64897','2018-01-25',null,null,121524258,2);
+('Usu288','Usu288@hotmail.com','64897','2018-01-25',null,null,121524258,2),
 ('Usu289','Usu289@hotmail.com','0000','2018-01-02',null,null,121524258,1),
 ('Usu290','Usu290@hotmail.com','0150052','2018-01-03',null,null,263265888,1),
 ('Usu291','Usu291@hotmail.com','098541','2018-01-02',null,null,263265888,1),
@@ -2468,7 +2468,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu299','Usu299@hotmail.com','Harry02','2018-01-05',null,null,145821584,1),
 ('Usu230','Usu230@hotmail.com','IronStar','2018-01-01',null,null,165821582,1),
 ('Usu231','Usu231@hotmail.com','521400','2018-01-04',null,null,165821582,1),
-('Usu232','Usu232@hotmail.com','02580','2018-01-06',null,null,112512548,2)
+('Usu232','Usu232@hotmail.com','02580','2018-01-06',null,null,112512548,2),
 ('Usu233','Usu233@hotmail.com','045582','2018-01-08',null,null,112512548,1),
 ('Usu234','Usu234@hotmail.com','Sabroso','2018-01-04',null,null,136258425,1),
 ('Usu235','Usu235@hotmail.com','0424','2018-01-02',null,null,136258425,1),
@@ -2486,7 +2486,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu247','Usu247@hotmail.com','0594','2018-01-12',null,null,196521825,1),
 ('Usu248','Usu248@hotmail.com','2568','2018-01-18',null,null,362952478,1),
 ('Usu249','Usu249@hotmail.com','9654','2018-01-20',null,null,362952478,1),
-('Usu250','Usu250@hotmail.com','482','2018-01-21',null,null,174582158,2)
+('Usu250','Usu250@hotmail.com','482','2018-01-21',null,null,174582158,2),
 ('Usu251','Usu251@hotmail.com','52642','2018-01-14',null,null,174582158,1),
 ('Usu252','Usu252@hotmail.com','65482','2018-01-16',null,null,252125841,1),
 ('Usu253','Usu253@hotmail.com','65824','2018-01-17',null,null,252125841,1),
@@ -2526,7 +2526,7 @@ Insert into Usuario_bd(usua_token,usua_Correo,usua_contraseña,usua_fecharegistr
 ('Usu287','Usu287@hotmail.com','23497','2018-01-14',null,null,174452186,1),
 ('Usu288','Usu288@hotmail.com','3489','2018-01-04',null,null,176522154,1),
 ('Usu289','Usu289@hotmail.com','64897','2018-01-25',null,null,263255269,1),
-('Usu290','Usu216@hotmail.com','micontraseñaesjara','2018-01-01',null,null.189623521,1);
+('Usu290','Usu216@hotmail.com','micontraseñaesjara','2018-01-01',null,null,189623521,1),
 ('Usu291','Usu291@hotmail.com','1010','2018-01-04',null,null,175425814,1),
 ('Usu292','Usu292@hotmail.com','1121','2018-01-25',null,null,162235125,1),
 ('Usu293','Usu293@hotmail.com','aa11','2018-01-04',null,null,142150002,1),
@@ -3038,6 +3038,7 @@ Insert into inventario_bd(Inve_cantidad,Cf_inv_tienda,Cf_inv_producto_tipo) valu
 (40,18,4),
 (75,14,5),
 (86,7,2);
+
 
 
 
