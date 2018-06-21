@@ -3039,16 +3039,3 @@ Insert into inventario_bd(Inve_cantidad,Cf_inv_tienda,Cf_inv_producto_tipo) valu
 (75,14,5),
 (86,7,2);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
