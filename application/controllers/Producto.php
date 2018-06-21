@@ -80,14 +80,13 @@ class Producto extends MY_Controller
             $id = $this->input->post('prod_id');
             
             if($_FILES && count($_FILES) === 1) {
-                echo 'a'; die;
                 $has_error = $this->guardar_imagen();
                 if($has_error) {
                     echo 'Hubo un error: Problema con la imagen archivo';
                     return;
                 }
             }   
-            echo 'b'; die;
+            
             $has_error = $this->producto_model->update($id);
             if($has_error) {
                 echo 'Hubo un error: Actualización fallida';

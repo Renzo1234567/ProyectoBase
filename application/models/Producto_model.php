@@ -86,13 +86,13 @@ class Producto_model extends MY_Model
             $sql = "UPDATE producto_bd SET 
                 prod_nombre = '$nombre', 
                 prod_descripcion = '$descripcion', 
-                prod_imagen = '$img';";
-            echo 'actualizado?';
+                prod_imagen = '$img'
+                WHERE prod_id = $id;";
         } else {
             $sql = "UPDATE producto_bd SET 
                 prod_nombre = '$nombre', 
-                prod_descripcion = '$descripcion';";
-            echo 'no';
+                prod_descripcion = '$descripcion'
+                WHERE prod_id = $id;";
         }        
         
         $return = pg_query($this->conn, $sql);

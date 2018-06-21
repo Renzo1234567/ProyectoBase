@@ -96,14 +96,14 @@ function createItem() {
  * Update item
  */
 function updateItem() {
-    console.log(1);
+    
     var id = $('input[name="prod_id"]').val();
     
     var data = new FormData();
     jQuery.each($('input[type=file]')[0].files, function(i, file) {
         data.append('imagen', file);
     });
-    var other_data = $( '.create-form' ).serializeArray();
+    var other_data = $( '.edit-form' ).serializeArray();
     $.each(other_data, function(key, input){
         data.append(input.name, input.value);
     });
@@ -118,6 +118,7 @@ function updateItem() {
     }).done(function(response) {
         detail.html('<i class="fas fa-spinner fa-pulse"></i>');
         list.html('<i class="fas fa-spinner fa-pulse"></i>');
+        console.log("Edit response:");
         console.log(response);
         if(response.length > 0) {
             alert(response);
