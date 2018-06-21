@@ -29,9 +29,9 @@ class Carrito extends MY_Controller
             $_SESSION['carrito'] = $carrito;
         } else {
             $estaba = FALSE;
-            foreach($_SESSION['carrito'] as &$car) {
-                if($car['id'] === $this->input->post('producto-id')) {
-                    $car['cantidad'] = $this->input->post('cantidad');
+            foreach($_SESSION['carrito'] as &$cart) {
+                if($cart['id'] === $this->input->post('producto-id')) {
+                    $cart['cantidad'] = $this->input->post('cantidad');
                     $estaba = true;
                 }
             }
@@ -46,13 +46,16 @@ class Carrito extends MY_Controller
     }
 
     /**
-     * Load the master detail
+     * Ver detalle del carrtio
      */
     public function index()
     {
-        var_dump($_SESSION);
+        $this->template('carrito/index');
     }
 
+    /**
+     * 
+     */
     
 
 }
