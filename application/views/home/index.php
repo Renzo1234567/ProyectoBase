@@ -95,7 +95,7 @@
                             <button data-id="<?php echo $producto['prod_id'] ?>" class="btn btn-primary agregar-prodcuto-carrito">Agregar al carrito</button>
                             <form style="display: none" class="agregar-prodcuto-form">
                                 <div class="form-group">
-                                    <input type="number" name="cantidad" > <br>
+                                    <input type="number" name="cantidad" value="1" > <br>
                                     <input type="text" name="producto-id" value="<?php echo $producto['prod_id'] ?>" hidden="" >
                                     <input type="submit" value="Agregar" class="btn btn-success" > 
                                 </div>

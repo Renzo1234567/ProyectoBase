@@ -57,7 +57,7 @@
                 </a>
             </li> -->
             <li class="nav-item text-center">
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="<?php echo base_url(); ?>carrito">
                     <!-- <img src="public/img/carrito.png " width="60" height="60" alt="carrito"> -->
                     <i class="fas fa-shopping-cart fa-2x text-dark"></i> <br>
                     <small>Ver carrito</small>
