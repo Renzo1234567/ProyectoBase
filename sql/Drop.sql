@@ -1,39 +1,83 @@
-drop table IF EXISTS  lugar_bd
-drop table IF EXISTS  tienda_bd 	
-drop table IF EXISTS  rol_bd
-drop table IF EXISTS  permiso_rol 
-drop table IF EXISTS  tipo_bd
-drop table IF EXISTS  producto_tipo
-drop table IF EXISTS  producto_bd
-drop table IF EXISTS  diario_bd
-drop table IF EXISTS  oferta_bd
-drop table IF EXISTS  natural_bd
-drop table IF EXISTS  juridico_bd
-drop table IF EXISTS  tienda_cliente
-drop table IF EXISTS  carnet_bd
-drop table IF EXISTS  empleado_bd
-drop table IF EXISTS  usuario_bd
-drop table IF EXISTS  vacacion_bd
-drop table IF EXISTS  asistencia_bd 
-drop table IF EXISTS  horario_bd
-drop table IF EXISTS  empleado_horario
-drop table IF EXISTS  departamento_bd 
-drop table IF EXISTS  telefono_bd
-drop table IF EXISTS  banco_bd
-drop table IF EXISTS  punto_bd
-drop table IF EXISTS  cliente_punto
-drop table IF EXISTS  presupuesto_bd
-drop table IF EXISTS  tarjeta_bd
-drop table IF EXISTS  cheque_bd
-drop table IF EXISTS  efectivo_bd
-drop table IF EXISTS  estatus_bd
-drop table IF EXISTS  compra_bd
-drop table IF EXISTS  compra_estatus
-drop table IF EXISTS  presupuesto_producto_bd
-drop table IF EXISTS  pago_bd
-drop table IF EXISTS  ordenreposicion_bd
-drop table IF EXISTS  orden_producto
-drop table IF EXISTS  mediospago
-drop table IF EXISTS  inventario
+Drop table lugar_bd;
+
+Drop table tienda_bd ;
+
+Drop table rol_bd;
+
+Drop table permiso_bd ;
+
+Drop table permiso_rol ;
+
+Drop table tipo_bd;
+
+Drop table producto_bd;
+
+Drop table producto_tipo;
+
+Drop table diario_bd;
+
+Drop table oferta_bd;
+
+Drop table natural_bd;
+
+Drop table juridico_bd;
+
+Drop table persona_bd;
+
+Drop table personacontacto_bd;
+
+Drop table tienda_cliente;
+
+Drop table carnet_bd;
+
+Drop table empleado_bd;
+
+Drop table usuario_bd;
+
+Drop table vacacion_bd;
+
+Drop table horario_bd;
+
+Drop table empleado_horario;
+
+Drop table departamento_bd ;
+
+Drop table departamento_tienda ;
+
+Drop table telefono_bd;
+
+Drop table banco_bd;
+
+Drop table punto_bd;
+
+Drop table cliente_punto;
+
+Drop table presupuesto_bd;
+
+Drop table tarjeta_bd;
+
+Drop table cheque_bd;
+
+Drop table estatus_bd;
+
+Drop table compra_fisica;
+
+Drop table compra_bd;
+
+Drop table compra_estatus;
+
+Drop table presupuesto_producto_bd;
+
+Drop TABLE mediospago;
+
+Drop table pago_bd;
+
+Drop table ordenreposicion_bd;
+
+Drop table orden_producto;
+
+Drop table inventario_bd;
+
+Drop table asistencia_bd;
 
 
