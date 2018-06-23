@@ -27,7 +27,7 @@ class Usuario_model extends MY_Model
     }
     
     /**
-     * Retorna una lista de prodcutos dada una condicion en SQL
+     * Retorna una lista de usuarios dada una condicion en SQL
      */
     public function get_where($where) {
         $sql = "SELECT * FROM usuario_bd WHERE $where";
@@ -40,6 +40,46 @@ class Usuario_model extends MY_Model
         $return = array();
         while($row = pg_fetch_assoc($result))
             $return[] = $row;
+
+        return $return;
+    }
+
+    /**
+     * Obtener los permisos de un rol de usuario
+     * @param int $rol clave primaria del rol
+     * @return array vector asociativo con los datos del rol
+     */
+    public function get_rol_permisos($rol) {
+        $sql = "SELECT * 
+                FROM rol_bd, permiso_bd, permiso_rol
+                WHERE rol_codigo = cf_perm_rol_rol 
+                    AND cf_perm_rol_permiso = perm_clave 
+                    AND rol_codigo = $rol";
+
+        $result = pg_query($this->conn, $sql);
+
+        $return = array();
+
+        if($result) {
+            $first = TRUE;
+            while($row = pg_fetch_assoc($result)) {
+                //Todas las filas tienen los datos del rol (solo tomamos la primera)
+                if($first) {
+                    $return = array(
+                        'codigo' => $row['rol_codigo'],
+                        'nombre' => $row['rol_nombre'],
+                        'descripcion' => $row['rol_descripcion'],
+                        'permisos' => array()
+                    );
+                    $first = FALSE;
+                }
+                //Tomamos el resto de los permisos
+                $return['permisos'][] = array(
+                    'clave' => $row['perm_clave'],
+                    'accion' => $row['perm_accion']
+                );
+            }
+        }
 
         return $return;
     }

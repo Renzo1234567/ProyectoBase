@@ -25,14 +25,12 @@ class Sign extends MY_Controller
                 $where = "usua_correo = '" . $this->input->post('email') . "'";
                 
                 $user_data = $this->usuario_model->get_where($where)[0];
-                /*$data = [
-                    "email" => $this->input->post('email'),
-                    'usua_token' => $user_data['usua_token']
-                    //Insertar datos del cliente
-                ];*/
+                $rol_permisos = $this->usuario_model->get_rol_permisos($user_data['cf_usua_rol']);
+                unset($rol_permisos['descripcion']);
+
                 $_SESSION['email'] = $this->input->post('email');
                 $_SESSION['usua_token'] = $user_data['usua_token'];
-                //$this->session->set_userdata($data);
+                $_SESSION['rol'] = $rol_permisos;
             
             
             }

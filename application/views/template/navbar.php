@@ -23,11 +23,7 @@
                 </a>
             </li>
             <?php endif; ?>
-                    
-                
-            
             <li class="nav-item text-center">
-                    <!-- <img src="public/img/localizar.jpg" width="60" height="60" alt="localizar"> -->
                 <a class="nav-link" href="#">
                     <i class="fas fa-map-marker-alt fa-2x text-dark"></i> <br>
                     <small>Encuentranos</small>
