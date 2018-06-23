@@ -2,22 +2,29 @@
     <!-- Left section -->
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto ">
-            <li class="nav-item active text-center">
-                <?php if(isset($this->session->email)): ?>
-                <a class="nav-link" href="<?php echo base_url() ?>sign/out">
-                    <!-- <img src="public/img/usuario.jpg" width="60" height="60" alt="usuario"> -->
+            <?php if(isset($this->session->email)): ?>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user fa-2x text-dark"></i> <br>
-                    <small>Cerrar Sesión</small>
+                    <small>USER</small>
                 </a>
-                <?php else: ?>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item" href="#">Metodos de pago</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="<?php echo base_url() ?>sign/out">Cerrar sesión</a>
+                </div>
+            </li>
+            <?php else: ?>
+            <li class="nav-item active text-center">
                 <a class="nav-link" href="<?php echo base_url() ?>sign/in">
                     <i class="fas fa-user fa-2x text-dark"></i><br>
                     <small>Iniciar Sesión </small>
                 </a>
-                <?php endif; ?>
+            </li>
+            <?php endif; ?>
                     
                 
-            </li>
             
             <li class="nav-item text-center">
                     <!-- <img src="public/img/localizar.jpg" width="60" height="60" alt="localizar"> -->
