@@ -26,4 +26,9 @@ class Home extends MY_Controller
         $this->template('home/index', $data);
     }
 
+    public function admin() {
+        //$this->template_light();
+        echo "Hola";
+    }
+
 }

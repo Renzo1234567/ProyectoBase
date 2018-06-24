@@ -9,38 +9,66 @@
     </div>
     <div class="row">
         <div class="col-sm-6 lista-tarjetas">
-            <h5>
-                Tarjetas
-            </h5>
-            <?php echo "<p>Tarjetas</p>" ?>
-            <form id="form-añadir-tarjeta">
-                <div class="form-group">
-                    <label for="numero">Numero de tarjeta</label>
-                    <input class="form-control" type="number" name="numero" require placeholder="Numero de tarjeta">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Tarjetas</h5>
                 </div>
-                <div class="form-group">
-                    <label for="tipo">Tipo</label>
-                    <select name="tipo" class="form-control">
-                        <option value="null">Seleccione</option>
-                        <option value="c">Credito</option>
-                        <option value="d">Debito</option>
-                    </select>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <?php echo "<p>Tarjetas</p>" ?>
                 </div>
-                <div class="form-group">
-                    <label for="banco">Banco</label>
-                    <select name="banco" class="form-control">
-                        <option value="null">Seleccione</option>
-                        <option value="c">Credito</option>
-                        <option value="d">Debito</option>
-                    </select>
+            </div>
+            <div class="row"> <!-- Formulario para añadir tarjetas -->
+                <div class="col-12">
+                    <!-- No AJAX por razones de tiempo -->
+                    <form id="form-añadir-tarjeta" 
+                        style="display: none"
+                        method="POST"
+                        action="<?php echo base_url() ?>medio_pago/anadir_tarjeta"
+                        >
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="numero">Numero de tarjeta</label>
+                                    <input class="form-control" type="number" name="numero" require placeholder="Numero de tarjeta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="tipo">Tipo</label>
+                                    <select name="tipo" class="form-control">
+                                        <option value="c">Credito</option>
+                                        <option value="d">Debito</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="banco">Banco</label>
+                                    <select class="form-control" name="banco">
+                                        <?php foreach ($bancos as $banco): ?>
+                                            <option value="<?php echo $banco['banc_codigo'] ?>"><?php echo $banco['banc_nombre'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Añadir" class="form-control btn btn-success">
+                                </div>
+                            </div>
+                        </div>                        
+                    </form>
+                    <button class="btn btn-primary" id="btn-añadir-tarjeta">
+                        Añadir tarjeta
+                    </button>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Añadir" class="btn btn-success">
-                </div>
-            </form>
-            <button class="btn btn-primary" id="btn-añadir-tarjeta">
-                Añadir tarjeta
-            </button>
+            </div>
         </div>
         <div class="col-sm-6 lista-cheques">
             <h5>
@@ -54,4 +82,4 @@
     </div>
 </div>
 
-<script src="<?php base_url(); ?>public/js/medio_pago.js"></script>
+<script src="<?php echo base_url(); ?>public/js/medio_pago.js"></script>

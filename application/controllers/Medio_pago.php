@@ -16,8 +16,32 @@ class Medio_pago extends MY_Controller
     
     public function index() {
         $this->medio_pago_model->get_list_tarjeta();
+        $bancos = $this->medio_pago_model->get_bancos();
         
-        $this->template_light('medio_pago/administrar');
+        $data = array(
+            'bancos' => $bancos
+        );
+
+        $this->template_light('medio_pago/administrar', $data);
+    }
+
+    public function anadir_tarjeta() {
+        //Añado la tarjeta
+        $has_error = $this->medio_pago_model->insertar_tarjeta();
+        if($has_error) {
+            echo "Lo sentimos ha ocurrido un error insertando la tarjeta :(";
+            return;
+        }
+
+        //Añado en la relacion n a n
+        $has_error = $this->medio_pago_model->insertar_medio_pago('t');
+        if($has_error) {
+            echo "Lo sentimos ha ocurrido un error vinculando su tarjeta :(";
+            return;
+        }
+
+        //redirect to index function
+        redirect('medio_pago');
     }
 
 }

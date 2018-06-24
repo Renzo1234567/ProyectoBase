@@ -1,11 +1,10 @@
 $(document).ready(function () {
-
+    
     $('#btn-añadir-tarjeta').click(function () {
-        alert(1);
+        $(this).hide();
+        $('#form-añadir-tarjeta').show();
     });
-    $('#form-añadir-tarjeta').submit(function(evnet) {
-        event.preventDefault();
-        alert(2);
-    });
+    //No AJAX por razones de tiempo
+    //$('#form-añadir-tarjeta').submit(function(evnet) {});
 
 });
