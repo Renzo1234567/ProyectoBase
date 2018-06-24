@@ -75,6 +75,6 @@ class Carrito extends MY_Controller
 
     public function debug_session() {
         var_dump($_SESSION);
-}
+    }
 
 }

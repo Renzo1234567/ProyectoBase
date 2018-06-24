@@ -4,13 +4,13 @@
         <ul class="navbar-nav mr-auto ">
             <?php if(isset($this->session->email)): ?>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user fa-2x text-dark"></i> <br>
-                    <small>USER</small>
+                    <small><?php echo $_SESSION['nombre_usuario'] ?></small>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Perfil</a>
-                    <a class="dropdown-item" href="#">Metodos de pago</a>
+                    <a class="dropdown-item" href="medio_pago">Medios de pago</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo base_url() ?>sign/out">Cerrar sesión</a>
                 </div>
