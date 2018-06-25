@@ -12,8 +12,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    medios de pago
+                <div class="col-sm-6">
+                    <?php foreach($tarjetas as $tarjeta): ?>
+                        <?php if($tarjeta['tarj_tipo'] !== 'c') continue; ?>
+                        <div class="tarjeta">
+                            <div class="row">
+                                <div class="col-9">
+                                    <b><?php echo $tarjeta['tarj_numero'] ?></b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <i><?php echo $tarjeta['tarj_tipo'] === 'c' ? 'credito' : 'debito' ?></i>
+                                </div>
+                                <div class="col-6">
+                                    <span><?php echo $tarjeta['banc_nombre'] ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="row">

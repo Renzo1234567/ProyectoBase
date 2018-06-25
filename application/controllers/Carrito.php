@@ -60,7 +60,21 @@ class Carrito extends MY_Controller
      */
     public function pagar() {
         if(isset($_SESSION['usua_token']) && isset($_SESSION['carrito'])) {
-            $this->template('carrito/pagar');
+
+            
+            $this->load->model('medio_pago_model');
+            
+            $bancos = $this->medio_pago_model->get_bancos();
+            $tarjetas = $this->medio_pago_model->get_mis_tarjetas();
+            $cheques = $this->medio_pago_model->get_mis_cheques();
+            
+            $data = array(
+                'bancos' => $bancos,
+                'tarjetas' => $tarjetas,
+                'cheques' => $cheques
+            );
+
+            $this->template('carrito/pagar', $data);
         } else {
             redirect(base_url('#acceso-denegado'));
         }        
