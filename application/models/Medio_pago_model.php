@@ -9,7 +9,7 @@ class Medio_pago_model extends MY_Model
     }
     
     /**
-     * Retorna la lista total de tarjetas de un cliente ordenados descendente
+     * Retorna la lista total de tarjetas de un cliente
      */
     public function get_mis_tarjetas() {
 
@@ -32,6 +32,44 @@ class Medio_pago_model extends MY_Model
                 FROM mediospago, tarjeta_bd, banco_bd
                 WHERE tarj_codigo = cf_clie_medi_tarjeta 
                     AND cf_tarj_banco = banc_codigo
+                    AND $columna_persona = $persona_id;";
+        $result = pg_query($this->conn, $sql);
+
+        //Si no hay resultados devuelve un arreglo vacio
+        if(!$result)
+            return array();
+        
+        $return = array();
+        while($row = pg_fetch_assoc($result))
+            $return[] = $row;
+
+        return $return;
+    }
+    
+    /**
+     * Retorna la lista total de cheques de un cliente
+     */
+    public function get_mis_cheques() {
+
+        $persona_id = (int) $_SESSION['data_id'];
+
+        //Tipo de cliente
+        if($_SESSION['tipo'] === "trabajador") {
+            //Problema. Los empleados no pueden insertar medios de pago
+            return TRUE;
+        } else if($_SESSION['tipo'] === "cliente natural") {
+            $columna_persona = "cf_clie_medi_natural";            
+        } else if($_SESSION['tipo'] === "cliente juridico") {
+            $columna_persona = "cf_clie_medi_juridico";            
+        } else {
+            //Problemas en la variable de session
+            return TRUE;
+        }
+        
+        $sql = "SELECT medi_clave, cheq_codigo, cheq_numero, banc_nombre
+                FROM mediospago, cheque_bd, banco_bd
+                WHERE cheq_codigo = cf_clie_medi_cheque 
+                    AND cf_cheq_banco = banc_codigo
                     AND $columna_persona = $persona_id;";
         $result = pg_query($this->conn, $sql);
 
@@ -98,6 +136,22 @@ class Medio_pago_model extends MY_Model
         
         $sql = "INSERT INTO tarjeta_bd (tarj_numero, tarj_tipo, cf_tarj_banco)
                 VALUES ('$numero', '$tipo', $banco);";
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+
+    /**
+     * Inserta una chequera
+     * LIKE $this->insertar_tarjeta
+     */
+    public function insertar_chequera() {
+        $numero = $this->input->post('numero');
+        $banco = $this->input->post('banco');
+        
+        $sql = "INSERT INTO cheque_bd (cheq_numero, cf_cheq_banco)
+                VALUES ('$numero', $banco);";
         $return = pg_query($this->conn, $sql);
         
         //Return false if have error

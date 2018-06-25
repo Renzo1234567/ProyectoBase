@@ -17,10 +17,12 @@ class Medio_pago extends MY_Controller
     public function index() {
         $bancos = $this->medio_pago_model->get_bancos();
         $tarjetas = $this->medio_pago_model->get_mis_tarjetas();
+        $cheques = $this->medio_pago_model->get_mis_cheques();
         
         $data = array(
             'bancos' => $bancos,
-            'tarjetas' => $tarjetas
+            'tarjetas' => $tarjetas,
+            'cheques' => $cheques
         );
 
         $this->template_light('medio_pago/administrar', $data);
@@ -28,6 +30,7 @@ class Medio_pago extends MY_Controller
 
     public function anadir_tarjeta() {
         $has_error = false;
+
         //Añado la tarjeta
         $has_error = $this->medio_pago_model->insertar_tarjeta();
         if($has_error) {
@@ -39,6 +42,27 @@ class Medio_pago extends MY_Controller
         $has_error = $this->medio_pago_model->insertar_medio_pago('t');
         if($has_error) {
             echo "Lo sentimos ha ocurrido un error vinculando su tarjeta :(";
+            return;
+        }
+
+        //redirect to index function
+        redirect('medio_pago');
+    }
+
+    public function anadir_chequera() {
+        $has_error = false;
+
+        //Añado la chequera
+        $has_error = $this->medio_pago_model->insertar_chequera();
+        if($has_error) {
+            echo "Lo sentimos ha ocurrido un error insertando la chequera :(";
+            return;
+        }
+
+        //Añado en la relacion n a n
+        $has_error = $this->medio_pago_model->insertar_medio_pago('c');
+        if($has_error) {
+            echo "Lo sentimos ha ocurrido un error vinculando su chequera :(";
             return;
         }
 

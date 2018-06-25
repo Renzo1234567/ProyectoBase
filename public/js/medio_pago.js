@@ -7,4 +7,9 @@ $(document).ready(function () {
     //No AJAX por razones de tiempo
     //$('#form-añadir-tarjeta').submit(function(evnet) {});
 
+    $('#btn-añadir-chequera').click(function () {
+        $(this).hide();
+        $('#form-añadir-chequera').show();
+    });
+
 });
