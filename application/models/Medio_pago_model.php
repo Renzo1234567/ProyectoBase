@@ -11,11 +11,28 @@ class Medio_pago_model extends MY_Model
     /**
      * Retorna la lista total de tarjetas de un cliente ordenados descendente
      */
-    public function get_list_tarjeta() {
-        $sql = 'SELECT * 
-                FROM tarjeta_bd, banco_bd 
-                WHERE cf_tarj_banco = banc_codigo
-                ORDER BY tarj_codigo DESC;';
+    public function get_mis_tarjetas() {
+
+        $persona_id = (int) $_SESSION['data_id'];
+
+        //Tipo de cliente
+        if($_SESSION['tipo'] === "trabajador") {
+            //Problema. Los empleados no pueden insertar medios de pago
+            return TRUE;
+        } else if($_SESSION['tipo'] === "cliente natural") {
+            $columna_persona = "cf_clie_medi_natural";            
+        } else if($_SESSION['tipo'] === "cliente juridico") {
+            $columna_persona = "cf_clie_medi_juridico";            
+        } else {
+            //Problemas en la variable de session
+            return TRUE;
+        }
+        
+        $sql = "SELECT medi_clave, tarj_codigo, tarj_numero, tarj_tipo, banc_nombre
+                FROM mediospago, tarjeta_bd, banco_bd
+                WHERE tarj_codigo = cf_clie_medi_tarjeta 
+                    AND cf_tarj_banco = banc_codigo
+                    AND $columna_persona = $persona_id;";
         $result = pg_query($this->conn, $sql);
 
         //Si no hay resultados devuelve un arreglo vacio
@@ -103,7 +120,7 @@ class Medio_pago_model extends MY_Model
         $persona_id = (int) $_SESSION['data_id'];
         $medio_id = 0;
         $columan_medio = "";
-        $columna_perona = "";
+        $columna_persona = "";
 
         //Tipo de medio de pago
         if($tipo === "t") {
@@ -126,16 +143,16 @@ class Medio_pago_model extends MY_Model
             //Los empleados no pueden insertar medios de pago
             return TRUE;
         } else if($_SESSION['tipo'] === "cliente natural") {
-            $columna_perona = "cf_clie_medi_natural";            
+            $columna_persona = "cf_clie_medi_natural";            
         } else if($_SESSION['tipo'] === "cliente juridico") {
-            $columna_perona = "cf_clie_medi_juridico";            
+            $columna_persona = "cf_clie_medi_juridico";            
         } else {
             //Problemas en la variable de session
             return TRUE;
         }
         
 
-        $sql = "INSERT INTO mediospago ($columan_medio, $columna_perona)
+        $sql = "INSERT INTO mediospago ($columan_medio, $columna_persona)
                 VALUES ($medio_id, $persona_id);";
         $return = pg_query($this->conn, $sql);
         

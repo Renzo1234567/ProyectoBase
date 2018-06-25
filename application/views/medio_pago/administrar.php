@@ -16,7 +16,19 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <?php echo "<p>Tarjetas</p>" ?>
+                    <?php foreach($tarjetas as $tarjeta): ?>
+                        <div class="tarjeta">
+                            <p><b><?php echo $tarjeta['tarj_numero'] ?></b></p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <i><?php echo $tarjeta['tarj_tipo'] === 'c' ? 'credito' : 'debito' ?></i>
+                                </div>
+                                <div class="col-6">
+                                    <span><?php echo $tarjeta['banc_nombre'] ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="row"> <!-- Formulario para añadir tarjetas -->

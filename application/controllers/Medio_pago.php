@@ -15,11 +15,12 @@ class Medio_pago extends MY_Controller
     }
     
     public function index() {
-        $this->medio_pago_model->get_list_tarjeta();
         $bancos = $this->medio_pago_model->get_bancos();
+        $tarjetas = $this->medio_pago_model->get_mis_tarjetas();
         
         $data = array(
-            'bancos' => $bancos
+            'bancos' => $bancos,
+            'tarjetas' => $tarjetas
         );
 
         $this->template_light('medio_pago/administrar', $data);
