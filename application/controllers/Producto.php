@@ -67,6 +67,7 @@ class Producto extends MY_Controller
     public function view($id)
     {
         $producto = $this->producto_model->get_where_id($id);
+        var_dump($producto);
         $this->load->view('producto/view', $producto);
     }
 

@@ -12,7 +12,9 @@ class Producto_model extends MY_Model
      * Retorna la lista total de productos ordenados descendente
      */
     public function get_list() {
-        $sql = 'SELECT * FROM producto_bd ORDER BY prod_id DESC;';
+        $sql = 'SELECT * FROM producto_bd, producto_tipo, tipo_bd 
+                WHERE cf_prod_tipo_producto = prod_id AND cf_prod_tipo_tipo = tipo_id
+                ORDER BY prod_id DESC;';
         $result = pg_query($this->conn, $sql);
 
         //Si no hay resultados devuelve un arreglo vacio
@@ -48,7 +50,11 @@ class Producto_model extends MY_Model
      * Retorna 1 producto dada su clave primaria
      */
     public function get_where_id($id) {
-        $sql = "SELECT * FROM producto_bd WHERE prod_id = $id";
+        //$sql = "SELECT * FROM producto_bd WHERE prod_id = $id";
+        $sql = "SELECT * FROM producto_bd, producto_tipo, tipo_bd 
+                 WHERE cf_prod_tipo_producto = prod_id 
+                    AND cf_prod_tipo_tipo = tipo_id
+                    AND prod_id = $id";
         $result = pg_query($this->conn, $sql);
 
         //Si no hay resultados devuelve un arreglo vacio
