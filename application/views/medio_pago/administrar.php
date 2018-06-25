@@ -18,7 +18,18 @@
                 <div class="col-12">
                     <?php foreach($tarjetas as $tarjeta): ?>
                         <div class="tarjeta">
-                            <p><b><?php echo $tarjeta['tarj_numero'] ?></b></p>
+                            <div class="row">
+                                <div class="col-9">
+                                    <b><?php echo $tarjeta['tarj_numero'] ?></b>
+                                </div>
+                                <div class="col-3">
+                                    <!-- Elimina medios de pago por get -->
+                                    <a class="btn btn-danger" 
+                                        href="<?php echo base_url() . 'medio_pago/desvincular/' . $tarjeta['medi_clave']; ?>">
+                                        x
+                                    </a>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-6">
                                     <i><?php echo $tarjeta['tarj_tipo'] === 'c' ? 'credito' : 'debito' ?></i>

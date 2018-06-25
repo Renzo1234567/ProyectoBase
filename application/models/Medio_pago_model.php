@@ -160,5 +160,27 @@ class Medio_pago_model extends MY_Model
         return !$return;
     }
 
+    /**
+     * Elimina la vinculacion del cliente con el medio de pago
+     */
+    public function delete_medio_pago($id) {
+        $sql = "DELETE FROM mediospago WHERE medi_clave = $id";
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+
+    /**
+     * Elimina una tarjeta
+     */
+    public function delete_tarjeta($id) {
+        $sql = "DELETE FROM tarjeta_bd WHERE tarj_codigo = $id";
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+
 
 }

@@ -27,6 +27,7 @@ class Medio_pago extends MY_Controller
     }
 
     public function anadir_tarjeta() {
+        $has_error = false;
         //Añado la tarjeta
         $has_error = $this->medio_pago_model->insertar_tarjeta();
         if($has_error) {
@@ -44,5 +45,28 @@ class Medio_pago extends MY_Controller
         //redirect to index function
         redirect('medio_pago');
     }
+
+    /**
+     * Elimina por GET un medio de pago
+     * 
+     * Nota: Solo desvinculamos porque (no es el caso) podríamos tener mas de una tarjeta
+     * vinculada a distintos clientes, no nos interesa borrar las tarjetas o cheques.
+     * Esto generaría errores con la clave foranea
+     * @param int $medio_clave Medio de pago
+     */
+    public function desvincular($medio_clave) {        
+        $has_error = false;
+        
+        $has_error = $this->medio_pago_model->delete_medio_pago($medio_clave);
+        if($has_error) {
+            echo "Lo sentimos ha ocurrido un error desvinculando su medio de pago :(";
+            return;
+        }
+
+        //redirect to index function
+        redirect('medio_pago');
+    }
+
+    
 
 }
