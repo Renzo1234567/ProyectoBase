@@ -80,4 +80,8 @@ Drop table inventario_bd CASCADE;
 
 Drop table asistencia_bd CASCADE;
 
+Drop table ingrediente_bd CASCADE;
+
+Drop table ingrediente_producto_tipo CASCADE;
+
 
