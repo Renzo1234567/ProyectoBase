@@ -1593,10 +1593,10 @@ Insert into tipo_bd(tipo_nombre) values
 ('Con colorantes que tinten la lengua');
 
 
-Insert into producto_bd(prod_nombre, prod_descripcion,prod_imagen) values
+Insert into producto_bd(prod_nombre,prod_descripcion) values
 
-('Chupetas Rimbombin','Caramelo con palo','Diapositiva1.JPG'),
-('Ricolin', 'Caramelo de frutas con vitamina C','Diapositiva2.JPG'),
+('Chupetas Rimbombin','Caramelo con palo'),
+('Ricolin', 'Caramelo de frutas con vitamina C'),
 ('Los Firi Firi', 'Tabletas sabor a menta','Diapositiva3.JPG'),
 ('Chupetas de Corazón','Chupetas con forma de un corazón, con sabor a fresa','Diapositiva4.JPG'),
 ('Los pirulitos', 'Caramelos blandos','Diapositiva5.JPG'),
@@ -1606,12 +1606,17 @@ Insert into producto_bd(prod_nombre, prod_descripcion,prod_imagen) values
 ('Choco Candy', 'Caramelos de Chocolate','Diapositiva9.JPG'),
 ('Blue', 'Caramelos rellenos','Diapositiva10.JPG');
 
-Insert into producto_tipo(Cf_prod_tipo_producto,cf_prod_tipo_tipo,prod_tipo_preciounitario) values
-(1,3,5000),
-(6,13,3500),
-(9,8,4800),
-(7,1,3500),
-(8,9,7000);
+Insert into producto_tipo(Cf_prod_tipo_producto,cf_prod_tipo_tipo,prod_tipo_preciounitario,prod_tipo_imagen) values
+(1,3,5000,'Diapositiva1.JPG'),
+(2,9,3500,'Diapositiva2.JPG'),
+(3,11,4800,'Diapositiva3.JPG'),
+(4,2,3500,'Diapositiva4.JPG'),
+(5,14,7000,'Diapositiva5.JPG'),
+(6,12,5000,'Diapositiva6.JPG'),
+(7,1,3500,'Diapositiva7.JPG'),
+(8,13,4800,'Diapositiva8.JPG'),
+(9,5,3500,'Diapositiva9.JPG'),
+(10,4,7000,'Diapositiva10.JPG');
 
 Insert into diario_bd(diar_fechapublicacion,diar_fechafin) values
 ('2018-05-06', '2018-06-06'),
@@ -3039,3 +3044,43 @@ Insert into inventario_bd(Inve_cantidad,Cf_inv_tienda,Cf_inv_producto_tipo) valu
 (75,14,5),
 (86,7,2);
 
+
+Insert into ingrediente_bd(ingr_clave,ingr_nombre) values
+
+(1,'Leche'),
+(2,'Azucar'),
+(3,'Mastequilla'),
+(4,'Chocolate'),
+(5,'Azucar'),
+(6,'Jarabe de maíz'),
+(7,'Vainilla'),
+(8,'Picante'),
+(9,'Menta'),
+(10,'Miel'),
+(11,'Jengibre'),
+(12,'Limon'),
+(13,'Manzana'),
+(14,'Yogur'),
+(15,'Avena'),
+(16,'Avellana'),
+(17,'Naranja'),
+(18,'Patilla'),
+(19,'Nueces'),
+(20,'Mentol'),
+(21,'Melisa'),
+(22,'Eucalipto'),
+(23,'Fresa'),
+(24,'Piña'),
+(25,'Cereza'),
+(26,'Café'),
+(27,'Crema'),
+(28,'Melocotón'),
+(29,'Hojaldre '),
+(30,'Cacao'),
+(31,'Huevo'),
+(32,'Coco'),
+(33,'Manteca'),
+(34,'Extracto'),
+(35,'Frambuesa'),
+(36,'Aceite'),
+(37,'Vinagre');
