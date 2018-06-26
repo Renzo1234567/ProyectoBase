@@ -7,13 +7,13 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/Diapositiva1.PNG" alt="First slide">
+                    <img class="d-block w-100" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/publicidad0.PNG" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/Diapositiva2.PNG" alt="Second slide">
+                    <img class="d-block w-100" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/publicidad1.PNG" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/Diapositiva3.PNG" alt="Third slide">
+                    <img class="d-block w-100" src="<?php echo base_url() ?>public/img/carrusel-ejemplo/publicidad2.PNG" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
