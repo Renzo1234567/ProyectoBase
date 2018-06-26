@@ -1597,14 +1597,14 @@ Insert into producto_bd(prod_nombre,prod_descripcion) values
 
 ('Chupetas Rimbombin','Caramelo con palo'),
 ('Ricolin', 'Caramelo de frutas con vitamina C'),
-('Los Firi Firi', 'Tabletas sabor a menta','Diapositiva3.JPG'),
-('Chupetas de Corazón','Chupetas con forma de un corazón, con sabor a fresa','Diapositiva4.JPG'),
-('Los pirulitos', 'Caramelos blandos','Diapositiva5.JPG'),
-('Ricura', 'Bola de caramelo picante','Diapositiva6.JPG'),
-('El original', 'Caramelos cítricos','Diapositiva7.JPG'),
-('Dulcin', 'Caramelos masticables','Diapositiva8.JPG'),
-('Choco Candy', 'Caramelos de Chocolate','Diapositiva9.JPG'),
-('Blue', 'Caramelos rellenos','Diapositiva10.JPG');
+('Los Firi Firi', 'Tabletas sabor a menta'),
+('Chupetas de Corazón','Chupetas con forma de un corazón, con sabor a fresa'),
+('Los pirulitos', 'Caramelos blandos'),
+('Ricura', 'Bola de caramelo picante'),
+('El original', 'Caramelos cítricos'),
+('Dulcin', 'Caramelos masticables'),
+('Choco Candy', 'Caramelos de Chocolate'),
+('Blue', 'Caramelos rellenos');
 
 Insert into producto_tipo(Cf_prod_tipo_producto,cf_prod_tipo_tipo,prod_tipo_preciounitario,prod_tipo_imagen) values
 (1,3,5000,'Diapositiva1.JPG'),
