@@ -50,13 +50,13 @@ create table producto_bd
 prod_id serial,
 prod_nombre varchar(255) not null,
 prod_descripcion varchar(255) not null,
-prod_imagen varchar(255),
 constraint cp_prod_id primary key(prod_id)
 );
 
 create table producto_tipo(
 prod_tipo_clave serial,
 prod_tipo_preciounitario numeric not null,
+prod_tipo_imagen varchar(255),
 cf_prod_tipo_producto integer not null,
 cf_prod_tipo_tipo integer not null,
 constraint cp_prod_tipo_clave primary key(prod_tipo_clave),
@@ -213,7 +213,9 @@ constraint cp_depa_clave primary key(depa_clave)
 
 create table departamento_tienda (
 cf_depa_tien_departamento integer not null,
-cf_depa_tien_tienda integer not null
+cf_depa_tien_tienda integer not null,
+constraint cf_depa_tien_departamento foreign key(cf_depa_tien_departamento) references departamento_bd(depa_clave),
+constraint cf_depa_tien_tienda foreign key(cf_depa_tien_tienda) references tienda_bd(tien_clave)
 );
 
 create table telefono_bd(
@@ -383,10 +385,25 @@ constraint cf_inv_producto_tipo foreign key(cf_inv_producto_tipo) references pro
 
 create table asistencia_bd(
 asis_clave serial,
-asis_fecha date not null,
+asis_fecha date default CURRENT_DATE,
 asis_horario_inicio time not null,
 asis_horario_fin time not null,
 cf_asis_empleado numeric,
 constraint cp_asis_clave primary key(asis_clave),
 constraint cf_asis_empleado foreign key (cf_asis_empleado) references empleado_bd(empl_ci)
 );
+
+create table ingrediente_bd(
+ingr_clave numeric,
+ingr_nombre varchar(255),
+constraint cp_ingr_clave primary key(ingr_clave)
+);
+
+create table ingrediente_producto_tipo(
+ingr_prod_tipo_cantidad numeric(255),
+cf_ingr_prod_tipo integer,
+cf_ingr_prod_tipo_ingr numeric,
+constraint cf_ingr_prod_tipo foreign key(cf_ingr_prod_tipo) references producto_tipo(prod_tipo_clave),
+constraint cf_ingr_prod_tipo_ingr foreign key(cf_ingr_prod_tipo_ingr ) references ingrediente_bd(ingr_clave)
+);
+
