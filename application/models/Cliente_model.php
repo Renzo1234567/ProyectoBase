@@ -12,7 +12,7 @@ class Cliente_model extends MY_Model
     
     /**
      * Retorna una lista de prodcutos dada una condicion en SQL
-     * /
+     *
     public function get_where($where) {
         $sql = "SELECT * FROM punto_bd WHERE $where";
         $result = pg_query($this->conn, $sql);

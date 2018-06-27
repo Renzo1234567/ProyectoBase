@@ -63,17 +63,48 @@ class Producto_model extends MY_Model
         else
             return pg_fetch_assoc($result);            
     }
+
+    /**
+     * Retorna todo los tipo que existen para añadir a un producto
+     */
+    public function get_types() {
+        $sql = 'SELECT * FROM tipo_bd';
+        $result = pg_query($this->conn, $sql);
+
+        //Si no hay resultados devuelve un arreglo vacio
+        if(!$result)
+            return array();
+        
+        $return = array();
+        while($row = pg_fetch_assoc($result))
+            $return[] = $row;
+
+        return $return;
+    }
+
+    /**
+     * Obtiene el id del ultimo producto insertado
+     * @return int id de la ultimo producto insertado
+     */
+    private function get_last_producto() {
+        $sql = 'SELECT MAX(prod_id) FROM producto_bd';
+        $result = pg_query($this->conn, $sql);
+
+        return (int) pg_fetch_assoc($result)['max'];
+    }
     
     /**
-     * Inserta un producto
+     * Inserta un producto basico
+     * @param $_POST['nombre']
+     * @param $_POST['descripcion']
      */
-    public function insert() {
+    public function insert_producto() {
         $nombre = $this->input->post('prod_nombre');
         $descripcion = $this->input->post('prod_descripcion');
         $img = $_FILES['imagen']['name'];
         
-        $sql = "INSERT INTO producto_bd (prod_nombre, prod_descripcion, prod_imagen)
-                VALUES ('$nombre', '$descripcion', '$img');";
+        $sql = "INSERT INTO producto_bd (prod_nombre, prod_descripcion)
+                VALUES ('$nombre', '$descripcion');";
         $return = pg_query($this->conn, $sql);
         
         //Return false if have error
@@ -81,7 +112,25 @@ class Producto_model extends MY_Model
     }
     
     /**
-     * Inserta un producto
+     * Inserta un producto con datos especificos
+     */
+    public function insert_producto_tipo() {
+        
+        $precio = $this->input->post('prod_tipo_preciounitario');
+        $cf_producto = $this->get_last_producto();
+        $cf_tipo = $this->input->post('cf_prod_tipo_tipo');
+        $img = $_FILES['imagen']['name'];
+        
+        $sql = "INSERT INTO producto_tipo (prod_tipo_preciounitario, prod_tipo_imagen, cf_prod_tipo_producto, cf_prod_tipo_tipo)
+                VALUES ($precio, '$img', $cf_producto, $cf_tipo);";
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+    
+    /**
+     * Actualizar un producto
      */
     public function update($id) {
         $nombre = $this->input->post('prod_nombre');
@@ -108,7 +157,7 @@ class Producto_model extends MY_Model
     }
     
     /**
-     * Inserta un producto
+     * Eliminar un producto
      */
     public function delete($id) {        
         $sql = "DELETE FROM producto_bd WHERE prod_id = '$id'";

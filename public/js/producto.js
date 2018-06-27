@@ -67,7 +67,7 @@ function createItem() {
     var other_data = $( '.create-form' ).serializeArray();
     $.each(other_data, function(key, input){
         data.append(input.name, input.value);
-    });
+    });    
     
     $.ajax({
         url: BASE_URL + "producto/create",

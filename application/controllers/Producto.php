@@ -39,25 +39,35 @@ class Producto extends MY_Controller
     public function create()
     {
         if ($this->input->post())
-        {            
+        {   
             if($_FILES && count($_FILES) === 1) {
                 $has_error = $this->guardar_imagen();
                 if($has_error) {
                     echo 'Hubo un error: Problema con la imagen';
                     return;
                 }
-            }   
+            } else {
+                echo 'Hubo un error: La imagen es requerida';
+                return;
+            }  
             
-            $has_error = $this->producto_model->insert();
+            $has_error = $this->producto_model->insert_producto();
             if($has_error) {
-                echo 'Hubo un error: Insersión fallida';
+                echo 'Hubo un error: Insersión fallida de producto';
+                return;
+            }
+
+            $has_error = $this->producto_model->insert_producto_tipo();
+            if($has_error) {
+                echo 'Hubo un error: Insersión fallida del producto con el tipo solicitado';
                 return;
             }
                 
         }
         else
         {
-            $this->load->view('producto/create');
+            $tipos_posibles = $this->producto_model->get_types();
+            $this->load->view('producto/create', array('tipos_posibles' => $tipos_posibles));
         }
     }
 
@@ -76,6 +86,7 @@ class Producto extends MY_Controller
      */
     public function edit($id = null)
     {
+        //Si ha vendiado datos (Los guarda)
         if ($this->input->post())
         {
             $id = $this->input->post('prod_id');
@@ -94,9 +105,11 @@ class Producto extends MY_Controller
                 return;
             }
         }
+        //Carga el formulario (Si es primera vez que ingresa)
         else if(isset($id) && $id > 0)
         {
             $producto = $this->producto_model->get_where_id($id);
+            $producto['tipos_posibles'] = $this->producto_model->get_types();
             $this->load->view('producto/edit', $producto);
         }
     }

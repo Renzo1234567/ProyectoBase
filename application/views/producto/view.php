@@ -29,9 +29,9 @@
         <div class="col-sm-4">
             <b>Imagen</b>
             <p>
-            <img src="<?php echo base_url() . 'public/img/producto/' . $prod_imagen; ?>" 
+            <img src="<?php echo base_url() . 'public/img/producto/' . $prod_tipo_imagen; ?>" 
                 alt="<?php echo $prod_nombre ?>" 
-                width="50" />
+                width="120" />
             </p>
         </div>
         <div class="col-sm-4">
