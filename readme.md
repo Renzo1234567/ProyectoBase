@@ -578,4 +578,4 @@ Se debe entregar:
 reportes, etc). La lista de requerimientos a evaluar será
 entregada en clases.
 
-
+(TRELLO)[https://trello.com/b/ySTlwn6O/candy-ucab]
