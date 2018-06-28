@@ -25,10 +25,23 @@ class Consulta extends MY_Controller {
     
     public function ejecutar() {
         $consulta = $this->input->post('consulta');
+        $rows = $this->consulta_model->ejecutar($consulta);
+
+        if(count($rows) > 0) {
+            $cols = array();
+            foreach($rows[0] as $col => $no_me_ineresa) {
+                $cols[] = $col;
+            }
+
+            $data = array(
+                'rows' => $rows,
+                'cols' => $cols
+            );
+
+            $this->template_light('consulta/ejecutar', $data);
+        }
+
         
-        $result = $this->consulta_model->ejecutar($consulta);
-        
-        var_dump($result);
         
     }
     

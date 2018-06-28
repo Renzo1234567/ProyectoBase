@@ -14,7 +14,7 @@ class Consulta_model extends MY_Model
         $this->sql = array(
             'consulta-1' => 'SELECT * FROM lugar_bd',
             'consulta-2' => 'SELECT * FROM producto_bd',
-            'consulta-3' => 'SELECT * FROM tipo_bd',
+            'consulta-3' => 'SELECT * FROM natural_bd',
         );
     }
     
