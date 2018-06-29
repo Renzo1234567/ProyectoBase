@@ -51,13 +51,13 @@ class Usuario_model extends MY_Model
      */
     public function get_rol_permisos($rol) {
         $sql = "SELECT * 
-                FROM rol_bd, permiso_bd, permiso_rol
-                WHERE rol_codigo = cf_perm_rol_rol 
-                    AND cf_perm_rol_permiso = perm_clave 
-                    AND rol_codigo = $rol";
-
+                FROM rol_bd 
+                    LEFT JOIN permiso_rol ON rol_codigo = cf_perm_rol_rol 
+                    LEFT JOIN permiso_bd ON cf_perm_rol_permiso = perm_clave
+                WHERE rol_codigo = $rol;";
+                    
         $result = pg_query($this->conn, $sql);
-
+        
         $return = array();
 
         if($result) {
@@ -152,6 +152,114 @@ class Usuario_model extends MY_Model
         return !$return;
     }
     
+    //CRUD ROLES
+
+    /**
+     * Retorna todos los roles ordenados
+     * 
+     * @param string $where Condicion para retornar algunos roles (si hace falta filtrar por usuario)
+     * @return array lista de permisos
+     */
+    public function get_list_of_roles($where = ' 1 = 1 ') {
+        $sql = 'SELECT * 
+                FROM rol_bd 
+                WHERE ' . $where . ' ' . '
+                ORDER BY rol_codigo DESC;';
+
+        $result = pg_query($this->conn, $sql);
+
+        //Si no hay resultados devuelve un arreglo vacio
+        if(!$result)
+            return array();
+        
+        $return = array();
+        while($row = pg_fetch_assoc($result))
+            $return[] = $row;
+
+        return $return;
+    }
+    
+    /**
+     * Retorna todos los permisos disponibles
+     * 
+     * @param string $where Condicion para retornar algunos permisos (si hace falta filtrar por usuario)
+     * @return array lista de permisos
+     */
+    public function get_list_of_permisos($where = ' 1 = 1 ') {
+        $sql = 'SELECT * 
+                FROM permiso_bd 
+                WHERE ' . $where . ' ' . '
+                ORDER BY perm_clave DESC;';
+
+        $result = pg_query($this->conn, $sql);
+
+        //Si no hay resultados devuelve un arreglo vacio
+        if(!$result)
+            return array();
+        
+        $return = array();
+        while($row = pg_fetch_assoc($result))
+            $return[] = $row;
+
+        return $return;
+    }
+
+    /**
+     * Obtiene el id del ultimo rol insertado
+     * @return int
+     */
+    private function get_last_rol() {
+        $sql = 'SELECT MAX(rol_codigo) FROM rol_bd';
+        $result = pg_query($this->conn, $sql);
+
+        return (int) pg_fetch_assoc($result)['max'];
+    }
+
+    /**
+     * Inserta un rol
+     * @param $_POST['nombre']
+     * @param $_POST['descripcion']
+     */
+    public function insertar_rol() {
+        $nombre = $this->input->post('rol_nombre');
+        $descripcion = $this->input->post('rol_descripcion');
+        
+        $sql = "INSERT INTO rol_bd (rol_nombre, rol_descripcion)
+                VALUES ('$nombre', '$descripcion');";
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+
+    /**
+     * Vincula el ultimo rol con los permisos pasados por POST
+     */
+    public function vincular_rol_permisos() {
+        
+        $permisos = $this->input->post('permisos');
+        if(count($permisos) === 0) {
+            //Retorna TRUE => have_error . SI no hay permisos
+            return TRUE;
+        }
+
+        $cf_rol = $this->get_last_rol();
+
+        $sql = '';
+        foreach($permisos as $cf_permiso) {
+            $sql .= "INSERT INTO permiso_rol (cf_perm_rol_permiso, 	cf_perm_rol_rol)
+                    VALUES ($cf_permiso, $cf_rol);";
+        }
+
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+
+    //END CRUD ROLES
+
+
 }
 	
 

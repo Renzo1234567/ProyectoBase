@@ -101,7 +101,6 @@ class Producto_model extends MY_Model
     public function insert_producto() {
         $nombre = $this->input->post('prod_nombre');
         $descripcion = $this->input->post('prod_descripcion');
-        $img = $_FILES['imagen']['name'];
         
         $sql = "INSERT INTO producto_bd (prod_nombre, prod_descripcion)
                 VALUES ('$nombre', '$descripcion');";
