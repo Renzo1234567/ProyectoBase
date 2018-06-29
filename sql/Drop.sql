@@ -84,4 +84,6 @@ Drop table ingrediente_bd CASCADE;
 
 Drop table ingrediente_producto_tipo CASCADE;
 
+Drop table marca_bd CASCADE;
+
 
