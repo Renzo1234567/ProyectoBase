@@ -158,6 +158,7 @@ empl_nombre1 varchar(255) not null,
 empl_nombre2 varchar(255),
 empl_apellido1 varchar(255) not null,
 empl_apellido2 varchar(255),
+empl_salario numeric,
 cf_empl_tienda integer,
 constraint cp_empl_ci primary key(empl_ci),
 constraint cf_empl_tienda foreign key(cf_empl_tienda) references tienda_bd(tien_clave)
@@ -264,14 +265,22 @@ constraint cp_pres_id primary key(pres_id),
 constraint cf_pres_usuario foreign key(cf_pres_usuario) references usuario_bd(usua_token)
 );
 
+create table marca_bd(
+marc_clave serial,
+marc_nombre varchar(255),
+Constraint cp_marc_clave primary key(marc_clave)
+);
+
 create table tarjeta_bd
 (
 tarj_codigo serial,
 tarj_numero varchar(255) not null,
 tarj_tipo varchar(1) not null,
 cf_tarj_banco integer,
+cf_tarj_marca integer,
 constraint cp_tarj_codigo primary key(tarj_codigo),
 constraint cf_tarj_banco foreign key(cf_tarj_banco) references banco_bd(banc_codigo),
+constraint cf_tarj_marca foreign key(cf_tarj_marca) references marca_bd(marc_clave),
 constraint check_tarjeta_tipo check (tarj_tipo in ('d','c'))
 );
 
@@ -406,4 +415,6 @@ cf_ingr_prod_tipo_ingr numeric,
 constraint cf_ingr_prod_tipo foreign key(cf_ingr_prod_tipo) references producto_tipo(prod_tipo_clave),
 constraint cf_ingr_prod_tipo_ingr foreign key(cf_ingr_prod_tipo_ingr ) references ingrediente_bd(ingr_clave)
 );
+
+
 
