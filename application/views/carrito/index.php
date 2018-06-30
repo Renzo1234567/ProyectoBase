@@ -30,11 +30,11 @@
                                     <tr>
                                         <td><?php echo $key + 1?></td>
                                         <td><?php echo $producto['nombre'] ?></td>
-                                        <td><?php echo $producto['id'] ?> Bs</td>
+                                        <td><?php echo $producto['precio'] ?> Bs</td>
                                         <td><?php echo $producto['cantidad'] ?></td>
-                                        <td><?php echo $producto['cantidad'] * $producto['id'] ?> Bs</td>
+                                        <td><?php echo $producto['cantidad'] * $producto['precio'] ?> Bs</td>
                                     </tr>
-                                    <?php $subtotal += $producto['cantidad'] * $producto['id'] ; ?>
+                                    <?php $subtotal += $producto['cantidad'] * $producto['precio'] ; ?>
                                 <?php endforeach; ?>
                                 <tr class="table-light">
                                     <td colspan="4" class="text-right"><b>Sub total: </b></td>

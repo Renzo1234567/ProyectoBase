@@ -15,6 +15,7 @@ class Home extends MY_Controller
         $this->load->model('producto_model');
         $productos = $this->producto_model->get_list(); //next step: Solo tomar 9
         
+        //Cuestiones de diseño de la pagina
         if(count($productos) < 9 ) {
             echo 'No existen suficientes productos';
             die;
@@ -23,6 +24,7 @@ class Home extends MY_Controller
             'productos' => $productos
         );
 
+        //var_dump($productos); die;
         $this->template('home/index', $data);
     }
 

@@ -23,6 +23,7 @@ class Carrito extends MY_Controller
                     array(
                         'id' => $this->input->post('producto-id'),
                         'cantidad' => $this->input->post('cantidad'),
+                        'precio' => $this->input->post('producto-precio'),
                         'nombre' => $this->input->post('producto-nombre')
                     )
                 )
@@ -40,6 +41,7 @@ class Carrito extends MY_Controller
                 $item = array(
                         'id' => $this->input->post('producto-id'),
                         'cantidad' => $this->input->post('cantidad'),
+                        'precio' => $this->input->post('producto-precio'),
                         'nombre' => $this->input->post('producto-nombre')
                     );
                 $_SESSION['carrito'][] = $item;

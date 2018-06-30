@@ -91,14 +91,21 @@
                         <img class="card-img-top" src="<?php echo base_url() ?>public/img/producto/<?php echo $producto['prod_tipo_imagen'] ?>" alt="Imagen de <?php echo $producto['prod_nombre'] ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $producto['prod_nombre'] ?></h5>
-                            <p class="card-text"><?php echo $producto['prod_descripcion'] ?></p>
+                            <p class="card-text">
+                                <?php echo $producto['prod_descripcion'] ?> <br>
+                                <small><b><?php echo $producto['prod_tipo_preciounitario'] ?> Bs.</b></small>
+                            </p>
                             <button data-id="<?php echo $producto['prod_id'] ?>" class="btn btn-primary agregar-prodcuto-carrito">Agregar al carrito</button>
+                            <!-- Formulario para agregar productos al carrito -->
                             <form style="display: none" class="agregar-prodcuto-form">
                                 <div class="form-group">
-                                    <input type="number" name="cantidad" value="1" > <br>
-                                    <input type="text" name="producto-id" value="<?php echo $producto['prod_id'] ?>" hidden="" >
-                                    <input type="text" name="producto-nombre" value="<?php echo $producto['prod_nombre'] ?>" hidden="" >
-                                    <input type="submit" value="Agregar" class="btn btn-success" > 
+                                    <input type="number" name="cantidad" class="form-control" value="1" >
+                                    <input type="hidden" name="producto-id" value="<?php echo $producto['prod_id'] ?>">
+                                    <input type="hidden" name="producto-nombre" value="<?php echo $producto['prod_nombre'] ?>">
+                                    <input type="hidden" name="producto-precio" value="<?php echo $producto['prod_tipo_preciounitario'] ?>">
+                                </div>
+                                <div class="form-group">
+                                  <input type="submit" class="form-control btn btn-success" value="Agregar">
                                 </div>
                             </form>
                         </div>
