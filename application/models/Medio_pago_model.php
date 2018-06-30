@@ -7,6 +7,21 @@ class Medio_pago_model extends MY_Model
     {
         parent::__construct();
     }
+
+    /**
+     * Retorna un medio de pago simple
+     */
+    public function get_medio_pago($id) {
+        $sql = "SELECT * FROM mediospago WHERE medi_clave = $id";
+
+        $result = pg_query($this->conn, $sql);
+
+        //Si no hay resultados devuelve un arreglo vacio
+        if(!$result)
+            return array();
+        else
+            return pg_fetch_assoc($result);  
+    }
     
     /**
      * Retorna la lista total de tarjetas de un cliente

@@ -63,7 +63,6 @@ class Carrito extends MY_Controller
     public function pagar() {
         if(isset($_SESSION['usua_token']) && isset($_SESSION['carrito'])) {
 
-            
             $this->load->model('medio_pago_model');
             
             $bancos = $this->medio_pago_model->get_bancos();
@@ -80,6 +79,19 @@ class Carrito extends MY_Controller
         } else {
             redirect(base_url('#acceso-denegado'));
         }        
+    }
+
+    public function hacer_pago($id) {
+        $this->load->model('medio_pago_model');
+        //Hacer muchas cosas aqui
+
+        //Agregar a tarjeta usada como medio de pago
+        //Llenar las tablas correspondientes
+
+        $x = $this->medio_pago_model->get_medio_pago($id);
+        var_dump($x);
+
+        redirect(base_url() . 'carrito/recibo');
     }
     
     /**
