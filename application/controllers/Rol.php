@@ -79,18 +79,48 @@ class Rol extends MY_Controller
     {
         if ($this->input->post())
         {
-            $id = $this->input->post('punt_clave'); 
-            
-            $has_error = $this->usuario_model->update($id);
+            $id = $this->input->post('codigo'); 
+
+            $has_error = $this->usuario_model->update_rol($id);
             if($has_error) {
                 echo 'Hubo un error: Actualización fallida';
+                return;
+            }  
+
+            $has_error = $this->usuario_model->desvincular_rol_permisos();
+            if($has_error) {
+                echo 'Hubo un error: Desinculacion con los permisos fallida';
+                return;
+            }
+
+            $has_error = $this->usuario_model->vincular_rol_permisos($id);
+            if($has_error) {
+                echo 'Hubo un error: Vinculacion con los permisos fallida';
                 return;
             }
         }
         else if(isset($id) && $id > 0)
         {
-            $punto = $this->usuario_model->get_where_id($id);
-            $this->load->view('punto/edit', $punto);
+            $rol = $this->usuario_model->get_rol_permisos($id);
+            $permisos = $this->usuario_model->get_list_of_permisos();
+
+            //Marcamos los permisos que tiene el usuario en el select
+            foreach($permisos as $key => $permiso) {
+                $permisos[$key]['selected'] = false;
+                foreach($rol['permisos'] as $mi_permiso) {
+                    if($mi_permiso['clave'] === $permiso['perm_clave']) {
+                        $permisos[$key]['selected'] = true;
+                        break;
+                    } 
+                }
+            }
+            
+            $data = array(
+                'rol' => $rol,
+                'permisos' => $permisos
+            );
+
+            $this->load->view('rol/edit', $data);
         }
     }
 
@@ -99,9 +129,15 @@ class Rol extends MY_Controller
      */
     public function delete($id)
     {
-        $has_error = $this->usuario_model->delete($id);
-        if($has_error)
-                echo 'Hubo un error: Eliminación fallida';
+        $has_error = $this->usuario_model->desvincular_rol_permisos($id);
+        if($has_error) {
+            echo 'Hubo un error: Desinculacion con los permisos fallida';
+            return;
+        }
+
+        $has_error = $this->usuario_model->delete_rol($id);
+            if($has_error)
+                echo 'Hubo un error: Eliminación de rol fallida';
     }
 
 }

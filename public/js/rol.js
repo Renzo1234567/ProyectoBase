@@ -46,6 +46,7 @@ function loadEdit(id) {
         url: BASE_URL + "rol/edit/" + id,
     }).done(function(response) {
         detail.html(response);
+        $('.select2').select2();
         $('.edit-form').submit(function( event ) {
             event.preventDefault();
             updateItem();
@@ -92,8 +93,14 @@ function createItem() {
  */
 function updateItem() {
     
-    var id = $('input[name="punt_clave"]').val();
-    var data = $( '.edit-form' ).serialize();
+    var id = $('input[name="codigo"]').val();
+    var select2 = $('.select2').val();
+    var data = {
+        codigo: id,
+        rol_nombre: $('input[name="rol_nombre"]').val(),
+        rol_descripcion: $('input[name="rol_descripcion"]').val(),
+        permisos: select2
+    };
     
     $.ajax({
         url: BASE_URL + "rol/edit",

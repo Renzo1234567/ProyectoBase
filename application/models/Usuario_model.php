@@ -9,7 +9,7 @@ class Usuario_model extends MY_Model
     }
 
     /**
-     * Retorna la lista total de productos ordenados descendente
+     * Retorna la lista total de usuarios ordenados descendente
      */
     public function get_list() {
         $sql = 'SELECT * FROM usuario_bd ORDER BY prod_id DESC;';
@@ -85,7 +85,7 @@ class Usuario_model extends MY_Model
     }
     
     /**
-     * Retorna 1 producto dada su clave primaria
+     * Retorna 1 usuario dada su clave primaria
      */
     public function get_where_id($id) {
         $sql = "SELECT * FROM usuario_bd WHERE usua_token = $id";
@@ -98,60 +98,7 @@ class Usuario_model extends MY_Model
             return pg_fetch_assoc($result);            
     }
     
-    /**
-     * Inserta un producto
-     */
-    public function insert() {
-        $nombre = $this->input->post('prod_nombre');
-        $descripcion = $this->input->post('prod_descripcion');
-        $img = $_FILES['imagen']['name'];
         
-        $sql = "INSERT INTO usuario_bd (prod_nombre, prod_descripcion, prod_imagen)
-                VALUES ('$nombre', '$descripcion', '$img');";
-        $return = pg_query($this->conn, $sql);
-        
-        //Return false if have error
-        return !$return;
-    }
-    
-    /**
-     * Inserta un producto
-     */
-    public function update($id) {
-        $nombre = $this->input->post('prod_nombre');
-        $descripcion = $this->input->post('prod_descripcion');
-        
-        if($_FILES && count($_FILES) === 1) {
-            $img = $_FILES['imagen']['name'];
-            $sql = "UPDATE usuario_bd SET 
-                prod_nombre = '$nombre', 
-                prod_descripcion = '$descripcion', 
-                prod_imagen = '$img'
-                WHERE prod_id = $id;";
-        } else {
-            $sql = "UPDATE usuario_bd SET 
-                prod_nombre = '$nombre', 
-                prod_descripcion = '$descripcion'
-                WHERE prod_id = $id;";
-        }        
-        
-        $return = pg_query($this->conn, $sql);
-        
-        //Return false if have error
-        return !$return;
-    }
-    
-    /**
-     * Inserta un producto
-     */
-    public function delete($id) {        
-        $sql = "DELETE FROM usuario_bd WHERE prod_id = '$id'";
-        $return = pg_query($this->conn, $sql);
-        
-        //Return false if have error
-        return !$return;
-    }
-    
     //CRUD ROLES
 
     /**
@@ -235,7 +182,7 @@ class Usuario_model extends MY_Model
     /**
      * Vincula el ultimo rol con los permisos pasados por POST
      */
-    public function vincular_rol_permisos() {
+    public function vincular_rol_permisos($rol_id = null) {
         
         $permisos = $this->input->post('permisos');
         if(count($permisos) === 0) {
@@ -243,7 +190,10 @@ class Usuario_model extends MY_Model
             return TRUE;
         }
 
-        $cf_rol = $this->get_last_rol();
+        if($rol_id === null)
+            $cf_rol = $this->get_last_rol();
+        else 
+            $cf_rol = $rol_id;
 
         $sql = '';
         foreach($permisos as $cf_permiso) {
@@ -253,6 +203,58 @@ class Usuario_model extends MY_Model
 
         $return = pg_query($this->conn, $sql);
         
+        //Return false if have error
+        return !$return;
+    }
+
+    /**
+     * Actualiza los datos basicos del rol
+     */
+    public function update_rol($id) {
+        $nombre = $this->input->post('rol_nombre');
+        $descripcion = $this->input->post('rol_descripcion');
+        
+        $sql = "UPDATE rol_bd 
+                SET rol_nombre = '$nombre', 
+                    rol_descripcion = '$descripcion'
+                WHERE rol_codigo = $id;";      
+        
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+
+    /**
+     * Desvincula todos los permisos de un rol
+     */
+    public function desvincular_rol_permisos($rol_id = null) {
+        if($rol_id === null)
+            $cf_rol = $this->input->post('codigo');
+        else 
+            $cf_rol = $rol_id;
+
+        $sql = "DELETE FROM permiso_rol WHERE cf_perm_rol_rol = $cf_rol;";
+
+        $return = pg_query($this->conn, $sql);
+
+        //Return false if have error
+        return !$return;
+    }
+    
+    /**
+     * Elimina un rol basico
+     */
+    public function delete_rol($rol_id = null) {
+        if($rol_id === null)
+            $cf_rol = $this->input->post('codigo');
+        else 
+            $cf_rol = $rol_id;
+
+        $sql = "DELETE FROM rol_bd WHERE rol_codigo = $cf_rol;";
+
+        $return = pg_query($this->conn, $sql);
+
         //Return false if have error
         return !$return;
     }
