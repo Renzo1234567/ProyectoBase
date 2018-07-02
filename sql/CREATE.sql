@@ -418,8 +418,12 @@ ingr_prod_tipo_cantidad numeric(255),
 cf_ingr_prod_tipo integer,
 cf_ingr_prod_tipo_ingrediente numeric,
 constraint cf_ingr_prod_tipo foreign key(cf_ingr_prod_tipo) references producto_tipo(prod_tipo_clave),
-constraint cf_ingr_prod_tipo_ingr foreign key(cf_ingr_prod_tipo_ingr ) references ingrediente_bd(ingr_clave)
+constraint cf_ingr_prod_tipo_ingrediente foreign key(cf_ingr_prod_tipo_ingrediente ) references ingrediente_bd(ingr_clave)
 );
+
+
+
+
 
 
 
