@@ -152,6 +152,20 @@ constraint cp_carn_clave primary key(carn_clave),
 constraint cf_carn_tienda_cliente foreign key(cf_carn_tienda_cliente) references tienda_cliente(tien_clien_clave)
 );
 
+create table departamento_bd (
+depa_clave serial,
+depa_nombre varchar(255) not null,
+constraint cp_depa_clave primary key(depa_clave)
+);
+
+create table departamento_tienda (
+depa_tien_clave serial,
+cf_depa_tien_departamento integer not null,
+cf_depa_tien_tienda integer not null,
+constraint cp_depa_tien_clave primary key(depa_tien_clave),
+constraint cf_depa_tien_departamento foreign key(cf_depa_tien_departamento) references departamento_bd(depa_clave),
+constraint cf_depa_tien_tienda foreign key(cf_depa_tien_tienda) references tienda_bd(tien_clave)
+);
 create table empleado_bd(
 empl_ci numeric,
 empl_nombre1 varchar(255) not null,
@@ -159,9 +173,9 @@ empl_nombre2 varchar(255),
 empl_apellido1 varchar(255) not null,
 empl_apellido2 varchar(255),
 empl_salario numeric,
-cf_empl_tienda integer,
+cf_empl_depa_tien integer,
 constraint cp_empl_ci primary key(empl_ci),
-constraint cf_empl_tienda foreign key(cf_empl_tienda) references tienda_bd(tien_clave)
+constraint cf_empl_depa_tien foreign key(cf_empl_depa_tien) references departamento_tienda(depa_tien_clave)
 );
 
 create table usuario_bd(
@@ -206,18 +220,6 @@ constraint cf_empl_hora_empleado foreign key(cf_empl_hora_empleado) references e
 constraint cf_empl_hora_horario foreign key(cf_empl_hora_horario) references horario_bd(hora_clave)
 );
 
-create table departamento_bd (
-depa_clave serial,
-depa_nombre varchar(255) not null,
-constraint cp_depa_clave primary key(depa_clave)
-);
-
-create table departamento_tienda (
-cf_depa_tien_departamento integer not null,
-cf_depa_tien_tienda integer not null,
-constraint cf_depa_tien_departamento foreign key(cf_depa_tien_departamento) references departamento_bd(depa_clave),
-constraint cf_depa_tien_tienda foreign key(cf_depa_tien_tienda) references tienda_bd(tien_clave)
-);
 
 create table telefono_bd(
 tele_codigo serial,
@@ -274,6 +276,7 @@ Constraint cp_marc_clave primary key(marc_clave)
 create table tarjeta_bd
 (
 tarj_codigo serial,
+tarj_nombre varchar(255),
 tarj_numero varchar(255) not null,
 tarj_tipo varchar(1) not null,
 cf_tarj_banco integer,
@@ -286,6 +289,7 @@ constraint check_tarjeta_tipo check (tarj_tipo in ('d','c'))
 
 create table cheque_bd(
 cheq_codigo serial,
+cheq_nombre varchar(255),
 cheq_numero varchar(255) not null,
 cf_cheq_banco integer not null,
 constraint cp_cheq_codigo primary key(cheq_codigo),
@@ -307,7 +311,7 @@ constraint cf_comp_fisc_tienda foreign key(cf_comp_fisc_tienda) references tiend
 
 create table compra_bd(
 comp_id serial,
-comp_montotal numeric(255,100) not null,
+comp_montotal numeric not null,
 cf_comp_juridico numeric,
 cf_comp_natural numeric,
 cf__comp_comp_fisica integer,
@@ -346,7 +350,7 @@ cf_clie_medi_juridico numeric,
 cf_clie_medi_natural numeric,
 cf_clie_medi_tarjeta integer,
 cf_clie_medi_cheque integer,
-efecivo numeric(1),
+efecivo numeric,
 Constraint cp_medi_clave primary key(medi_clave),
 Constraint cf_clie_medi_juridico foreign key(cf_clie_medi_juridico) references juridico_bd(juri_rif),
 Constraint cf_clie_medi_natural foreign key(cf_clie_medi_natural) references natural_bd(natu_rif),
@@ -356,7 +360,7 @@ Constraint cf_clie_medi_cheque foreign key(cf_clie_medi_cheque) references chequ
 
 create table pago_bd(
 pago_codigo serial,
-pago_monto numeric(255,100),
+pago_monto numeric,
 cf_pago_mediospago integer,
 cf_pago_compra integer,
 cf_pago_clie_punt integer,
@@ -365,6 +369,7 @@ constraint cf_pago_mediospago foreign key(cf_pago_mediospago) references mediosp
 constraint cf_pago_compra foreign key(cf_pago_compra) references compra_bd(comp_id),
 constraint cf_pago_clie_punt foreign key(cf_pago_clie_punt) references cliente_punto(clie_punt_clave)
 );
+
 
 create table ordenreposicion_bd(
 orde_clave serial,
@@ -395,8 +400,8 @@ constraint cf_inv_producto_tipo foreign key(cf_inv_producto_tipo) references pro
 create table asistencia_bd(
 asis_clave serial,
 asis_fecha date default CURRENT_DATE,
-asis_horario_inicio time not null,
-asis_horario_fin time not null,
+asis_horario_inicio time ,
+asis_horario_fin time ,
 cf_asis_empleado numeric,
 constraint cp_asis_clave primary key(asis_clave),
 constraint cf_asis_empleado foreign key (cf_asis_empleado) references empleado_bd(empl_ci)
@@ -411,10 +416,12 @@ constraint cp_ingr_clave primary key(ingr_clave)
 create table ingrediente_producto_tipo(
 ingr_prod_tipo_cantidad numeric(255),
 cf_ingr_prod_tipo integer,
-cf_ingr_prod_tipo_ingr numeric,
+cf_ingr_prod_tipo_ingrediente numeric,
 constraint cf_ingr_prod_tipo foreign key(cf_ingr_prod_tipo) references producto_tipo(prod_tipo_clave),
 constraint cf_ingr_prod_tipo_ingr foreign key(cf_ingr_prod_tipo_ingr ) references ingrediente_bd(ingr_clave)
 );
+
+
 
 
 
