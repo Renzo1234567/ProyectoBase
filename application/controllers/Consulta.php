@@ -15,9 +15,19 @@ class Consulta extends MY_Controller {
     public function index() {
         $data = array(
             'consultas' => array(
-                'consulta-1' => 'consulta 1',
-                'consulta-2' => 'consulta 2',
-                'consulta-3' => 'consulta 3',
+                'consulta-1' => 'Ingresos Vs Egresos',
+                'consulta-2' => 'Reporte de asistencia',
+                'consulta-3' => 'Reporte de empleados',
+                'consulta-4' => 'Los 10 clientes frecuentes por tienda',
+                'consulta-5' => 'Los 5 mejores clientes segun monto total en compras',
+                'consulta-6' => 'Clientes con mayor cantidad de puntos',
+                'consulta-7' => 'Marca más común de tarjetas de crédito',
+                'consulta-8' => 'Las tiendas que más recibieron pagos con puntos',
+                'consulta-9' => 'Mejores clientes en base a la suma de compras en línea y las compras físicas',
+                'consulta-10' => 'Ingrediente más utilizado en los productos',
+                'consulta-11' => 'Productos más vendido por tienda',
+                'consulta-12' => 'Ranking de Productos más vendido por tienda',
+                'consulta-13' => 'Listado por tiendas de clientes con presupuestos efectivos',
             )
         );
         $this->template_light('consulta/index', $data);
