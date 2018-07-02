@@ -2855,7 +2855,7 @@ Insert into tarjeta_bd(tarj_nombre,tarj_numero,tarj_tipo,cf_tarj_marca,cf_tarj_b
 ('Tarjeta','0200405265','c',2,4),
 ('Tarjeta','0268800088','c',3,5);
 
-Insert into cheque_bd(cheq_numero,cf_cheq_banco) values
+Insert into cheque_bd(Cheq_nombre,cheq_numero,cf_cheq_banco) values
 ('Cheque','008-2512665',5),
 ('Cheque','007-6950025',1),
 ('Cheque','001-2552215',3),
@@ -3156,7 +3156,7 @@ Insert into inventario_bd(Inve_cantidad,Cf_inv_tienda,Cf_inv_producto_tipo) valu
 (100,3,3),
 (40,18,4),
 (75,14,5),
-(86,7,2);
+(86,7,2),
 (35,1,6),
 (40,3,7),
 (70,18,8),
@@ -3251,4 +3251,6 @@ insert into ingrediente_producto_tipo(ingr_prod_tipo_cantidad,cf_ingr_prod_tipo,
 (5,9,31),
 (7,9,32),
 (9,9,33);
+
+
 
