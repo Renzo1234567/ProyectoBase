@@ -57,6 +57,27 @@ class Tienda_model extends MY_Model
         else
             return pg_fetch_assoc($result);            
     }
+
+    /**
+     * Retorna todo el inventario de una tienda
+     */
+    public function get_inventario($tienda_id) {
+        $sql = "SELECT * 
+                FROM inventario_bd, producto_tipo 
+                WHERE cf_inv_producto_tipo = prod_tipo_clave 
+                    AND cf_inv_tienda = $tienda_id";
+
+        $result = pg_query($this->conn, $sql);
+
+        if(!$result)
+            return array();
+        
+        $return = array();
+        while($row = pg_fetch_assoc($result))
+            $return[] = $row;
+
+        return $return;
+    }
     
     /**
      * Inserta un producto
@@ -87,6 +108,22 @@ class Tienda_model extends MY_Model
                 WHERE tien_clave = $id;";
               
         
+        $return = pg_query($this->conn, $sql);
+        
+        //Return false if have error
+        return !$return;
+    }
+
+    public function descontar_inventario($carrito, $tienda_id) {
+        $sql = '';
+        foreach($carrito as $producto) {
+            $producto = (object) $producto;
+            $sql = "UPDATE inventario_bd
+                    SET inve_cantidad = inve_cantidad - $producto->cantidad
+                    WHERE cf_inv_tienda = $tienda_id 
+                        AND cf_inv_producto_tipo = $producto->id;";
+        }
+
         $return = pg_query($this->conn, $sql);
         
         //Return false if have error

@@ -86,10 +86,23 @@ class Carrito extends MY_Controller
         $this->load->model('tienda_model');
         //Hacer muchas cosas aqui
 
+        $tienda_id = $_SESSION['tienda']['tien_clave'];
+        $carrito = $_SESSION['carrito'];
+
         //Agregar a tarjeta usada como medio de pago
         //Descontar del inventario de mi tienda $_SESSION['tienda']
+        $inventario = $this->tienda_model->get_inventario($tienda_id);
+        if(!$this->check_inventario($carrito, $inventario)) {
+            echo "No hay suficientes productos en el inventraio";
+            return;
+        }
+        $has_error = $this->tienda_model->descontar_inventario($carrito, $tienda_id);
+        if($has_error) {
+            echo "Actualizacion de inventario fallida";
+            return;
+        }
+
         //Añadir a la tabla de compras
-        
         $medio_pago = $this->medio_pago_model->get_medio_pago($id);
 
         //redirect(base_url() . 'carrito/recibo');
@@ -101,6 +114,44 @@ class Carrito extends MY_Controller
     public function recibo($id) {
         //Obtener datos de una compra
         $this->template('carrito/recibo');
+    }
+
+    public function destroy_cart() {
+        if(isset($_SESSION['carrito'])) {
+            unset($_SESSION['carrito']);
+        } 
+        redirect(base_url() . 'carrito');
+    }
+
+    /**
+     * Verifica que todos los pedidos del carrito esten en una tienda con suficiente cantidad
+     */
+    private function check_inventario($carrtio, $inventario) {
+        $existe_suficiente = FALSE;
+        foreach($carrtio as $deseado) {
+            //Decimos de ante mano que no existe
+            $existe_suficiente = FALSE;
+            foreach($inventario as $haber) {
+                //Si el producto del carrito está en la tienda
+                if($deseado['id'] == $haber['cf_inv_producto_tipo']) {
+                    //Si la cantidad solicitada es menor que la disponibilidad en la tienda
+                    if($deseado['cantidad'] <=  $haber['inve_cantidad']) {
+                        //Comprobamos que si exite y pasamos al siguiente producto del carrtito
+                        $existe_suficiente = TRUE;
+                        break;
+                    } else {
+                        echo 'Lo sentimos, no hay sofucientes ' . $deseado['nombre'] . ' en esta tienda. ';
+                        return FALSE;
+                    }
+                }
+            }
+            if(!$existe_suficiente) {
+                echo 'Lo sentimos, en esta tienda no quedan mas ' . $deseado['nombre'] . '. ';
+                return FALSE;
+            }
+        }
+        //En teoria si llega aqui es porque existen suficientes
+        return $existe_suficiente;
     }
 
     public function debug_session() {

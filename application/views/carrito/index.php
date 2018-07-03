@@ -59,7 +59,11 @@
             </div>
             <div class="row">
                 <div class="col-12 text-right">
-                    
+                    <?php if(isset($_SESSION['carrito'])): ?>
+                        <a href="<?php echo base_url(); ?>carrito/destroy_cart" class="btn btn-danger">
+                            Vaciar carrtio
+                        </a>
+                    <?php endif; ?>
                     <?php if(isset($_SESSION['usua_token']) && isset($_SESSION['carrito'])): ?>
                         <a href="<?php echo base_url(); ?>carrito/pagar" class="btn btn-success">
                             Realizar compra
