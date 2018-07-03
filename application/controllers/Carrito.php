@@ -84,13 +84,13 @@ class Carrito extends MY_Controller
     public function hacer_pago($id) {
         $this->load->model('medio_pago_model');
         $this->load->model('tienda_model');
-        //Hacer muchas cosas aqui
+        $this->load->model('compra_model');
+        $this->load->model('pago_model');
 
         $tienda_id = $_SESSION['tienda']['tien_clave'];
         $carrito = $_SESSION['carrito'];
 
-        //Agregar a tarjeta usada como medio de pago
-        //Descontar del inventario de mi tienda $_SESSION['tienda']
+        //Chequear suficiencia en inventario
         $inventario = $this->tienda_model->get_inventario($tienda_id);
         if(!$this->check_inventario($carrito, $inventario)) {
             echo "No hay suficientes productos en el inventraio";
@@ -102,7 +102,25 @@ class Carrito extends MY_Controller
             return;
         }
 
+        //Cargar pago
+        $monto_total = 0;
+        foreach($carrito as $producto) {
+            $monto_total += $producto['precio'] * 1.12; //Precio mas IVA
+        }
+        $has_error = $this->compra_model->insert($monto_total);
+        if($has_error) {
+            echo "Hubo un problema al registrar su compra. ";
+            return;
+        }
+
+        echo "Success"; die; 
+
+        //Cargar compra
+
+
         //Añadir a la tabla de compras
+        //Añadir primero a la tabla de pago
+
         $medio_pago = $this->medio_pago_model->get_medio_pago($id);
 
         //redirect(base_url() . 'carrito/recibo');
