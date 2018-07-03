@@ -30,6 +30,7 @@ class Consulta extends MY_Controller {
                 'consulta-13' => 'Listado por tiendas de clientes con presupuestos efectivos',
                 'consulta-14' => 'Estatus que genera mas retrasos',
                 'consulta-15' => 'Método de pago más utilizado en las tiendas físicas',
+                'consulta-16' => 'Balance general de puntos otorgados y puntos canjeados por tienda'
             )
         );
         $this->template_light('consulta/index', $data);
