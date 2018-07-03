@@ -37,4 +37,15 @@ class Home extends MY_Controller
         echo "Hola";
     }
 
+    /**
+     * Script que inyecta SQL para crecer la base de datos
+     */
+    public function make_stronger() {
+        
+        $this->load->model('make_model');
+
+        //Aumentar a 50.000.000 en el inventario
+        $this->make_model->update_inventario_to(50000000);
+    }
+
 }
