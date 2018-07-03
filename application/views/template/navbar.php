@@ -10,7 +10,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="<?php echo base_url() ?>home/admin">Tablero</a>
-                    <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item" href="<?php echo base_url(); ?>sign/perfil">Perfil</a>
                     <a class="dropdown-item" href="<?php echo base_url() ?>medio_pago">Medios de pago</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo base_url() ?>sign/out">Cerrar sesión</a>
