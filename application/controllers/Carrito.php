@@ -105,8 +105,12 @@ class Carrito extends MY_Controller
         //Cargar pago
         $monto_total = 0;
         foreach($carrito as $producto) {
-            $monto_total += $producto['precio'] * 1.12; //Precio mas IVA
+            $monto_total += $producto['precio'] * $producto['cantidad'] * 1.12; //Precio mas IVA
+            var_dump($monto_total);
+            echo '<br>';
         }
+
+        var_dump($monto_total);
         $has_error = $this->compra_model->insert($monto_total);
         if($has_error) {
             echo "Hubo un problema al registrar su compra. ";
