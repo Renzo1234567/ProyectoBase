@@ -257,6 +257,7 @@ constraint cf_clie_punt_juridico foreign key (cf_clie_punt_juridico) references 
 constraint cf_clie_punt_natural foreign key (cf_clie_punt_natural) references natural_bd(natu_rif)
 );
 
+
 create table presupuesto_bd
 (
 pres_id serial,
@@ -358,17 +359,29 @@ Constraint cf_clie_medi_tarjeta foreign key(cf_clie_medi_tarjeta) references tar
 Constraint cf_clie_medi_cheque foreign key(cf_clie_medi_cheque) references cheque_bd(cheq_codigo)
 );
 
+
+create table punto_cantidad(
+punt_cant_clave serial,
+punt_cant_cantidad numeric,
+cf_punt_cant_clie_punt integer not null,
+constraint cp_punt_cant_clave primary key(punt_cant_clave),
+constraint cf_punt_cant_clie_punt  foreign key(cf_punt_cant_clie_punt) references cliente_punto(clie_punt_clave)
+
+);
+
 create table pago_bd(
 pago_codigo serial,
 pago_monto numeric,
 cf_pago_mediospago integer,
-cf_pago_compra integer,
-cf_pago_clie_punt integer,
+cf_pago_compra integer not null,
+cf_pago_punt_cantidad integer,
 constraint cp_pago_codigo primary key(pago_codigo),
 constraint cf_pago_mediospago foreign key(cf_pago_mediospago) references mediospago(medi_clave),
 constraint cf_pago_compra foreign key(cf_pago_compra) references compra_bd(comp_id),
-constraint cf_pago_clie_punt foreign key(cf_pago_clie_punt) references cliente_punto(clie_punt_clave)
+constraint cf_pago_punt_cantidad foreign key(cf_pago_punt_cantidad) references punto_cantidad(punt_cant_clave)
+ 
 );
+
 
 
 create table ordenreposicion_bd(
@@ -420,12 +433,4 @@ cf_ingr_prod_tipo_ingrediente numeric,
 constraint cf_ingr_prod_tipo foreign key(cf_ingr_prod_tipo) references producto_tipo(prod_tipo_clave),
 constraint cf_ingr_prod_tipo_ingrediente foreign key(cf_ingr_prod_tipo_ingrediente ) references ingrediente_bd(ingr_clave)
 );
-
-
-
-
-
-
-
-
 
