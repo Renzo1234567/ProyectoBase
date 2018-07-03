@@ -83,21 +83,23 @@ class Carrito extends MY_Controller
 
     public function hacer_pago($id) {
         $this->load->model('medio_pago_model');
+        $this->load->model('tienda_model');
         //Hacer muchas cosas aqui
 
         //Agregar a tarjeta usada como medio de pago
-        //Llenar las tablas correspondientes
+        //Descontar del inventario de mi tienda $_SESSION['tienda']
+        //Añadir a la tabla de compras
+        
+        $medio_pago = $this->medio_pago_model->get_medio_pago($id);
 
-        $x = $this->medio_pago_model->get_medio_pago($id);
-        var_dump($x);
-
-        redirect(base_url() . 'carrito/recibo');
+        //redirect(base_url() . 'carrito/recibo');
     }
     
     /**
      * Cargar los medios de pago de un cliente
      */
-    public function recibo() {
+    public function recibo($id) {
+        //Obtener datos de una compra
         $this->template('carrito/recibo');
     }
 

@@ -31,6 +31,14 @@
     <!-- end carrousel -->
 
     <hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>
+                <i>Tienda: <?php echo $_SESSION['tienda']['tien_nombre']; ?></i>
+            </p>
+        </div>
+    </div>
+    <hr>
 
     <!-- Main area -->
     <div class="row">

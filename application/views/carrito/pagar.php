@@ -64,6 +64,14 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>
+                <i>Tienda: <?php echo $_SESSION['tienda']['tien_nombre']; ?></i>
+            </p>
+        </div>
+    </div>
 </div>
 <hr>
 <script src="<?php echo base_url(); ?>public/js/carrito.js"></script>

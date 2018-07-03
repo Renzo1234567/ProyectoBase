@@ -13,7 +13,11 @@ class Home extends MY_Controller
     public function index()
     {
         $this->load->model('producto_model');
+        $this->load->model('tienda_model');
+
         $productos = $this->producto_model->get_list(); //next step: Solo tomar 9
+        $tienda = $this->tienda_model->get_where_id(1);
+        $_SESSION['tienda'] = $tienda;
         
         //Cuestiones de diseño de la pagina
         if(count($productos) < 9 ) {
