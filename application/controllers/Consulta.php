@@ -28,6 +28,8 @@ class Consulta extends MY_Controller {
                 'consulta-11' => 'Productos más vendido por tienda',
                 'consulta-12' => 'Ranking de Productos más vendido por tienda',
                 'consulta-13' => 'Listado por tiendas de clientes con presupuestos efectivos',
+                'consulta-14' => 'Estatus que genera mas retrasos',
+                'consulta-15' => 'Método de pago más utilizado en las tiendas físicas',
             )
         );
         $this->template_light('consulta/index', $data);
