@@ -3107,15 +3107,28 @@ Insert into mediospago(cf_clie_medi_juridico,cf_clie_medi_natural,cf_clie_medi_t
 (null,301251002,5,null),
 (null,315268405,4,null);
 
-Insert into pago_bd(Pago_monto,Cf_pago_compra,Cf_Pago_clie_punt,cf_pago_mediospago) values
-(2500,1,null,1),
+
+Insert into punto_cantidad (punt_cant_cantidad,cf_punt_cant_clie_punt) values
+
+(50,1),
+(30,2),
+(35,3),
+(15,4),
+(25,5),
+(45,6),
+(20,7),
+(15,8),
+(20,9);
+
+Insert into pago_bd(Pago_monto,Cf_pago_compra,cf_pago_punt_cantidad,cf_pago_mediospago) values
+(2500,1,1,1),
 (3800,2,2,2),
-(4810,3,4,3),
-(1500,4,5,4),
-(3500,5,1,5),
+(4810,3,3,3),
+(1500,4,4,4),
+(3500,5,5,5),
 (4000,6,2,1),
-(6500,7,3,2),
-(7000,8,4,3),
+(6500,7,8,2),
+(7000,8,9,3),
 (6000,9,null,5),
 (4000,10,null,1),
 (6800,11,null,1),
@@ -3127,13 +3140,13 @@ Insert into pago_bd(Pago_monto,Cf_pago_compra,Cf_Pago_clie_punt,cf_pago_mediospa
 (5500,17,null,6),
 (3800,18,null,7),
 (4450,19,null,8),
-(1000,20,1,3),
-(5000,21,2,3),
-(9800,22,2,5),
-(7400,23,3,3),
-(10000,24,5,5),
-(4750,25,1,1),
-(2850,26,4,4);
+(1000,20,7,3),
+(5000,21,null,3),
+(9800,22,null,5),
+(7400,23,null,3),
+(10000,24,null,5),
+(4750,25,null,1),
+(2850,26,null,4);
 
 
 
