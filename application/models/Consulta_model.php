@@ -185,6 +185,40 @@ CLIE.natu_rif= COM.cf_comp_natural AND
 PRE.cf_pre_pro_presupuesto = PS.pres_id
 Group by T.tien_nombre,CLIE.natu_rif
 ORDER BY 1 DESC, 3 DESC) AS Consulta',
+
+'consulta-14' => 'SELECT Consulta.nombre
+FROM
+(SELECT ES.esta_nombre AS nombre,(CE.comp_esta_fechafin - CE.comp_esta_fechaini) AS Cuenta
+FROM compra_estatus CE ,estatus_bd Es
+ORDER BY Cuenta DESC
+LIMIT 1) AS Consulta',
+
+'consulta-15' => 'SELECT Consulta.nombre
+FROM(SELECT Consulta.nombre,Consulta.cuenta
+FROM
+(SELECT T.tarj_nombre AS nombre, COUNT(T.*) AS cuenta
+FROM tarjeta_bd T ,Mediospago MP, Pago_bd PAG,Compra_bd COM
+WHERE MP.cf_clie_medi_tarjeta = T.tarj_codigo AND
+MP.medi_clave = PAG.cf_pago_mediospago AND
+PAG.cf_pago_compra = COM.comp_id AND
+COM.cf__comp_comp_fisica  IS NOT null
+GROUP BY T.tarj_nombre
+
+UNION
+
+SELECT CHE.cheq_nombre, COUNT(CHE.*)
+FROM cheque_bd CHE,Mediospago MP, Pago_bd PAG,Compra_bd COM
+WHERE MP.cf_clie_medi_cheque = CHE.cheq_codigo AND
+ MP.medi_clave = PAG.cf_pago_mediospago AND
+ PAG.cf_pago_compra = COM.comp_id AND
+ COM.cf__comp_comp_fisica  IS NOT null
+ 
+GROUP BY CHE.cheq_nombre) AS Consulta
+ORDER BY 2 DESC
+LIMIT 1) AS Consulta',
+
+
+'consulta-16' => '',
         );
     }
     
@@ -206,10 +240,5 @@ ORDER BY 1 DESC, 3 DESC) AS Consulta',
     
 }
 	
-
-
-	
-
-
 
 
