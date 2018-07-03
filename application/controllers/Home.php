@@ -53,7 +53,7 @@ class Home extends MY_Controller
         //Script para vincular crear bastantes productos en todas las tiendas
         $productos = $this->producto_model->get_list();
         $tiendas = $this->tienda_model->get_list();
-        //$this->make_model->set_inventario($productos, $tiendas);
+        $this->make_model->set_inventario($productos, $tiendas);
     }
 
 }
