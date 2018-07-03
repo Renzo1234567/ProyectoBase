@@ -43,9 +43,17 @@ class Home extends MY_Controller
     public function make_stronger() {
         
         $this->load->model('make_model');
+        $this->load->model('producto_model');
+        $this->load->model('tienda_model');
 
         //Aumentar a 50.000.000 en el inventario
-        $this->make_model->update_inventario_to(50000000);
+        //$this->make_model->update_inventario_to(50000000);
+
+
+        //Script para vincular crear bastantes productos en todas las tiendas
+        $productos = $this->producto_model->get_list();
+        $tiendas = $this->tienda_model->get_list();
+        //$this->make_model->set_inventario($productos, $tiendas);
     }
 
 }
