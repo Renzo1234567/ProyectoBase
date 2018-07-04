@@ -13,9 +13,9 @@ clASs Consulta_model extends MY_Model
         parent::__construct();
         $this->sql = array(
             'consulta-1' => "SELECT SUM(p.pago_monto) AS Ingresos,SUM(e.empl_salario) AS Egresos
-FROM empleado_bd e,pago_bd p',
+FROM empleado_bd e,pago_bd p",
             
-            'consulta-2' => 'SELECT ASIS.ASis_horario_inicio AS Hora_de_entrada, ASIS.ASis_horario_fin AS Hora_de_Salida,EMP.empl_ci AS Cedula,EMP.empl_nombre1 AS Primer_Nombre,EMP.empl_nombre2 AS Segundo_Nombre,EMP.empl_apellido1 AS Primer_Apellido,EMP.empl_apellido2 AS Segundo_Apellido,D.depa_nombre
+            'consulta-2' => "SELECT ASIS.ASis_horario_inicio AS Hora_de_entrada, ASIS.ASis_horario_fin AS Hora_de_Salida,EMP.empl_ci AS Cedula,EMP.empl_nombre1 AS Primer_Nombre,EMP.empl_nombre2 AS Segundo_Nombre,EMP.empl_apellido1 AS Primer_Apellido,EMP.empl_apellido2 AS Segundo_Apellido,D.depa_nombre
 FROM empleado_bd EMP, ASistencia_bd ASIS,departamento_bd D, departamento_tienda DT,tienda_bd t
 WHERE ASIS.cf_ASis_empleado=EMP.empl_ci AND
 DT.depa_tien_clave  = EMP.cf_empl_depa_tien AND
@@ -85,7 +85,8 @@ SELECT CLIE.juri_rif, CP.clie_punt_cantidad
 FROM  juridico_bd CLIE, cliente_punto CP
 WHERE CP.Cf_clie_punt_juridico = CLIE.juri_rif
 GROUP BY CLIE.juri_rif,CP.clie_punt_cantidad) AS Consulta 
-ORDER BY 2 DESC",
+ORDER BY 2 DESC
+LIMIT 10;",
 
             'consulta-7' => "SELECT Consulta.marca
 FROM (SELECT MAR.marc_nombre AS MARCA,COUNT(MAR.marc_nombre)
@@ -95,29 +96,31 @@ MP.cf_clie_medi_natural = CLIE.natu_rif AND
 mar.marc_clave = TJ.cf_tarj_marca AND
 TJ.tarj_tipo = 'c'
 GROUP BY MAR.marc_nombre
-ORDER BY 1 DESC LIMIT 1) AS Consulta",
+ORDER BY COUNT(MAR.marc_nombre) DESC LIMIT 1) AS Consulta",
 
             'consulta-8' => "SELECT Consulta.tienda FROM
 (SELECT  consulta.tienda AS tienda, consulta.conteo AS conteo
  FROM
-(SELECT T.tien_nombre AS tienda, COUNT(PAG.cf_pago_clie_punt) AS conteo
-FROM tienda_bd t, natural_bd CLIE,compra_bd COM, pago_bd PAG,Cliente_punto CP
+(SELECT T.tien_nombre AS tienda, COUNT(PAG.cf_pago_punt_cantidad) AS conteo
+FROM tienda_bd t, natural_bd CLIE,compra_bd COM, pago_bd PAG,Cliente_punto CP, punto_cantidad PC
 WHERE t.tien_clave = CLIE.cf_natu_tienda AND
 COM.cf_comp_natural = CLIE.natu_rif AND
 COM.comp_id = PAG.cf_pago_compra AND
-CP.clie_punt_clave = PAG.pago_codigo AND
-PAG.cf_pago_clie_punt IS NOT NULL
+CP.clie_punt_clave = PC.cf_punt_cant_clie_punt AND
+PC.punt_cant_clave  = PAG.cf_pago_punt_cantidad  AND
+PAG.cf_pago_punt_cantidad IS NOT NULL
 GROUP BY T.tien_nombre
  
  UNION
 
- SELECT T.tien_nombre AS tienda, COUNT(PAG.cf_pago_clie_punt) AS conteo
-FROM tienda_bd t, juridico_bd CLIE,compra_bd COM, pago_bd PAG,Cliente_punto CP
+ SELECT T.tien_nombre AS tienda, COUNT(PAG.cf_pago_punt_cantidad) AS conteo
+FROM tienda_bd t, juridico_bd CLIE,compra_bd COM, pago_bd PAG,Cliente_punto CP,punto_cantidad PC
 WHERE t.tien_clave = CLIE.cf_juri_tienda AND
 COM.cf_comp_juridico = CLIE.juri_rif AND
 COM.comp_id = PAG.cf_pago_compra AND
-CP.clie_punt_clave = PAG.pago_codigo AND
-PAG.cf_pago_clie_punt IS NOT NULL
+CP.clie_punt_clave = PC.cf_punt_cant_clie_punt AND
+PC.punt_cant_clave  = PAG.cf_pago_punt_cantidad  AND
+PAG.cf_pago_punt_cantidad IS NOT NULL
 GROUP BY T.tien_nombre
 
 ) AS CONSULTA
@@ -142,7 +145,7 @@ LIMIT 10;",
 FROM
 (SELECT IG.Ingr_nombre AS ingrediente, SUM(INP.ingr_prod_tipo_cantidad)
 FROM ingrediente_bd IG, producto_tipo PRO,ingrediente_producto_tipo INP
-WHERE IG.ingr_clave = INP.cf_ingr_prod_tipo_ingr AND
+WHERE IG.ingr_clave = INP.cf_ingr_prod_tipo_ingrediente AND
 INP.cf_ingr_prod_tipo = PRO.prod_tipo_clave
 GROUP BY IG.Ingr_nombre
 ORDER BY SUM(INP.ingr_prod_tipo_cantidad) DESC
@@ -248,3 +251,6 @@ ORDER BY T.tien_nombre DESC,L.* DESC",
     }
     
 }
+	
+
+
