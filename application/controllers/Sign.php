@@ -32,9 +32,7 @@ class Sign extends MY_Controller
                 unset($rol_permisos['descripcion']);
 
                 if(isset($user_data['cf_usua_empleado'])) {
-                    //Tiene privilegio sobre los empleados
-                    //Do something
-                    //...
+                    
                     $tipo = "trabajador";
                 } else if(isset($user_data['cf_usua_natural'])) {
                     //En segundo orden los clientes naturales
@@ -50,10 +48,21 @@ class Sign extends MY_Controller
                     $contraseña=$user_data['usua_contraseña'];
 
 
+                    
+                    $_SESSION['natu_nombre1'] = $nombre1;
+                    $user_name = $nombre1;
+                    $_SESSION['natu_rif']=$data_id;
+                    $_SESSION['natu_nombre2']=$nombre2;
+                    $_SESSION['natu_apellido1']=$apellido1;
+                    $_SESSION['natu_apellido2']=$apellido2;
+                    $_SESSION['natu_cedula']=$cedula;
+                    $_SESSION['natu_correo']=$correo1;
+                    $_SESSION['contraseña']=$contraseña;
+
                 } else if(isset($user_data['cf_usua_juridico'])) {
                     //Por ultimo clientes juridicos
                     $cliente = $this->cliente_model->get_juridico_where_id($user_data['cf_usua_juridico']);
-                    $nombre = $cliente['juri_rif'];
+                    $user_name = $cliente['juri_rif'];
                     $tipo = "cliente juridico";
                     $data_id = $cliente['juri_rif'];
                 } else {
@@ -64,17 +73,9 @@ class Sign extends MY_Controller
                 $_SESSION['email'] = $this->input->post('email');
                 $_SESSION['usua_token'] = $user_data['usua_token'];
                 $_SESSION['rol'] = $rol_permisos;
-                $_SESSION['natu_nombre1'] = $nombre1;
                 $_SESSION['tipo'] = $tipo;
                 $_SESSION['data_id'] = $data_id;
-                $_SESSION['natu_nombre2']=$nombre2;
-                $_SESSION['natu_apellido1']=$apellido1;
-                $_SESSION['natu_apellido2']=$apellido2;
-                $_SESSION['natu_cedula']=$cedula;
-                $_SESSION['nombre_usuario']=$nombre1;
-                $_SESSION['natu_rif']=$data_id;
-                $_SESSION['natu_correo']=$correo1;
-                $_SESSION['contraseña']=$contraseña;
+                $_SESSION['nombre_usuario']=$user_name;
             
             
             }
@@ -90,7 +91,7 @@ class Sign extends MY_Controller
             
         }
         
-            }
+    }
             
         
     

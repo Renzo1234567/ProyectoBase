@@ -33,8 +33,7 @@ class Home extends MY_Controller
     }
 
     public function admin() {
-        //$this->template_light();
-        echo "Hola";
+        $this->template_light('home/admin');        
     }
 
     /**
