@@ -42,57 +42,11 @@
 
     <!-- Main area -->
     <div class="row">
-        <!-- Filters -->
-        <div class="col-md-3">
-            <form>
-                <div class="form-group">
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" id="form-search" placeholder="Buscar caramelos">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="item-1">
-                    <label class="form-check-label" for="item-1">
-                        Item 1
-                    </label>
-                </div>
-                <br>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="item-2">
-                    <label class="form-check-label" for="item-2">
-                        Item 2
-                    </label>
-                </div>
-                <br>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="item-3">
-                    <label class="form-check-label" for="item-3">
-                        Item 3
-                    </label>
-                </div>
-                <br>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="item-4">
-                    <label class="form-check-label" for="item-4">
-                        Item 4
-                    </label>
-                </div>
-                <div class="text-right">
-                    <button type="submit" class="btn btn-default mt-2">Limpiar</button>
-                    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
-                </div>
-            </form>
-        </div>
         <!-- Products -->
-        <div class="col-md-9">
-            <?php for($i = 0; $i < 3; $i++): ?>            
+        <div class="col-md-12">
+            <?php for($i = 0; $i < count($productos) /  3; $i++): ?>            
             <div class="row">
-                <?php for($j = 0; $j < 3; $j++): ?>
+                <?php for($j = 0; $j < 3 && (($i * 3) + $j) < count($productos); $j++): ?>
                 <?php $producto = $productos[($i * 3) + $j]; ?>
                 <div class="col-md-4">
                     <div class="card text-center">

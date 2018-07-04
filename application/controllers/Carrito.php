@@ -96,7 +96,7 @@ class Carrito extends MY_Controller
 
         //Guardamos los datos en auxiliares
         $data_id = $_SESSION['data_id'];
-        $tipo = $_SESSION['tipo'];
+        $tipo_aux = $_SESSION['tipo'];
 
         if($tipo === "natural") {
             $cliente = $this->cliente_model->get_natural_where_id($id);
@@ -104,6 +104,7 @@ class Carrito extends MY_Controller
                 redirect(base_url() . 'carrito/pagar#cliente-no-encontraod');
                 return;
             }
+            $_SESSION['cliente'] = $cliente;
             $_SESSION['data_id'] = $cliente['natu_rif'];
             $_SESSION['tipo'] = "cliente natural";
         } else {
@@ -112,6 +113,7 @@ class Carrito extends MY_Controller
                 redirect(base_url() . 'carrito/pagar#cliente-no-encontraod');
                 return;
             }
+            $_SESSION['cliente'] = $cliente;
             $_SESSION['data_id'] = $cliente['juri_rif'];
             $_SESSION['tipo'] = "cliente juridico";
         }
@@ -124,14 +126,16 @@ class Carrito extends MY_Controller
         $data = array(
             'bancos' => $bancos,
             'tarjetas' => $tarjetas,
-            'cheques' => $cheques
+            'cheques' => $cheques,
+            'tipo_usuario' => $tipo
         );
 
-        $this->template('carrito/pagar', $data);
-        
         //Retornamos todos los datos
         $_SESSION['data_id'] = $data_id;
-        $_SESSION['tipo'] = $tipo;
+        $_SESSION['tipo'] = $tipo_aux;
+
+        $this->template('carrito/pagar_en_tienda', $data);
+        
     }
 
     public function hacer_pago($id) {
@@ -176,8 +180,84 @@ class Carrito extends MY_Controller
 
        
        $recibo = $this->compra_model->get_last_compra();
+        redirect(base_url() . 'carrito/recibo/' . $recibo);
+    }
+
+    public function hacer_pago_en_tienda($tipo, $id) {
+        $this->load->model('medio_pago_model');
+        $this->load->model('tienda_model');
+        $this->load->model('compra_model');
+        $this->load->model('cliente_model');
+
+        $tienda_id = $_SESSION['tienda']['tien_clave'];
+        $carrito = $_SESSION['carrito'];
+
+        //Guardamos los datos en auxiliares
+        $data_id = $_SESSION['data_id'];
+        $tipo_aux = $_SESSION['tipo'];
+
+        if($tipo === "natural") {
+            $cliente = $this->cliente_model->get_natural_where_id($_SESSION['cliente']['natu_rif']);
+            if(empty($cliente)) {
+                redirect(base_url() . 'carrito/pagar#cliente-no-encontraod');
+                return;
+            }
+            $_SESSION['cliente'] = $cliente;
+            $_SESSION['data_id'] = $cliente['natu_rif'];
+            $_SESSION['tipo'] = "cliente natural";
+        } else {
+            $cliente = $this->cliente_model->get_juridico_where_id($_SESSION['cliente']['juri_rif']);
+            if(empty($cliente)) {
+                redirect(base_url() . 'carrito/pagar#cliente-no-encontraod');
+                return;
+            }
+            $_SESSION['cliente'] = $cliente;
+            $_SESSION['data_id'] = $cliente['juri_rif'];
+            $_SESSION['tipo'] = "cliente juridico";
+        }
+
+        //Chequear suficiencia en inventario
+        $inventario = $this->tienda_model->get_inventario($tienda_id);
+        if(!$this->check_inventario($carrito, $inventario)) {
+            echo "No hay suficientes productos en el inventraio";
+            return;
+        }
+        $has_error = $this->tienda_model->descontar_inventario($carrito, $tienda_id);
+        if($has_error) {
+            echo "Actualizacion de inventario fallida";
+            return;
+        }
+
+        //Cargar la compra
+        //Aqui falta cargar la fecha de la compra
+        //Falta vincular la tienda a la que pertenece
+        $monto_total = 0;
+        foreach($carrito as $producto) {
+            $monto_total += $producto['precio'] * $producto['cantidad'] * 1.12; //Precio mas IVA
+        }
+        $has_error = $this->compra_model->insert($monto_total);
+        if($has_error) {
+            echo "Hubo un problema al registrar su compra. ";
+            return;
+        }
+        
+        //Cargar detalle de la compra (presupuesto producto)
+        //Aqui falta cargar el valor del producto para este preciso momento
+       $this->compra_model->insertar_detalle($carrito);
+
+       //Carga el pago de la compra
+       $this->compra_model->insertar_pago($monto_total, $id);
+
+       
+       $recibo = $this->compra_model->get_last_compra();
+
+        //Retornamos todos los datos
+        $_SESSION['data_id'] = $data_id;
+        $_SESSION['tipo'] = $tipo_aux;
 
         redirect(base_url() . 'carrito/recibo/' . $recibo);
+
+        
     }
     
     /**
