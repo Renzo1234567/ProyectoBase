@@ -85,7 +85,6 @@ class Carrito extends MY_Controller
         $this->load->model('medio_pago_model');
         $this->load->model('tienda_model');
         $this->load->model('compra_model');
-        $this->load->model('pago_model');
 
         $tienda_id = $_SESSION['tienda']['tien_clave'];
         $carrito = $_SESSION['carrito'];
@@ -102,32 +101,30 @@ class Carrito extends MY_Controller
             return;
         }
 
-        //Cargar pago
+        //Cargar la compra
+        //Aqui falta cargar la fecha de la compra
+        //Falta vincular la tienda a la que pertenece
         $monto_total = 0;
         foreach($carrito as $producto) {
             $monto_total += $producto['precio'] * $producto['cantidad'] * 1.12; //Precio mas IVA
-            var_dump($monto_total);
-            echo '<br>';
         }
-
-        var_dump($monto_total);
         $has_error = $this->compra_model->insert($monto_total);
         if($has_error) {
             echo "Hubo un problema al registrar su compra. ";
             return;
         }
+        
+        //Cargar detalle de la compra (presupuesto producto)
+        //Aqui falta cargar el valor del producto para este preciso momento
+       $this->compra_model->insertar_detalle($carrito);
 
-        echo "Success"; die; 
+       //Carga el pago de la compra
+       $this->compra_model->insertar_pago($monto_total, $id);
 
-        //Cargar compra
+       
+       $recibo = $this->compra_model->get_last_compra();
 
-
-        //Añadir a la tabla de compras
-        //Añadir primero a la tabla de pago
-
-        $medio_pago = $this->medio_pago_model->get_medio_pago($id);
-
-        //redirect(base_url() . 'carrito/recibo');
+        redirect(base_url() . 'carrito/recibo/' . $recibo);
     }
     
     /**
