@@ -23,6 +23,9 @@
                 <li>
                     <a href="<?php echo base_url(); ?>rol">Administrar roles</a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url(); ?>consulta">Reportes</a>
+                </li>
             </ul>
         </div>
     </div>
