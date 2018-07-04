@@ -1,6 +1,6 @@
 * Gestión de Usuarios
-* Gestión de Roles
-* Asignación de permisos
+* ~~Gestión de Roles~~
+* ~~Asignación de permisos~~
 * Inicio de sesión con validación de permisos
 * Orden de reposición automática de inventario.
 * Diario Dulce
