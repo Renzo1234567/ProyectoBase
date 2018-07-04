@@ -15,8 +15,10 @@ class Home extends MY_Controller
         $this->load->model('producto_model');
         $this->load->model('tienda_model');
 
-        $productos = $this->producto_model->get_list(); //next step: Solo tomar 9
-        $tienda = $this->tienda_model->get_where_id(1);
+        $tienda = isset($_SESSION['tienda']) ? $_SESSION['tienda']['tien_clave'] : 1;
+
+        $productos = $this->producto_model->get_list();
+        $tienda = $this->tienda_model->get_where_id($tienda);
         $_SESSION['tienda'] = $tienda;
         
         //Cuestiones de diseño de la pagina

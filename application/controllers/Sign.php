@@ -38,6 +38,8 @@ class Sign extends MY_Controller
                     $data_id = $empleado['empl_ci'];
                     $user_name = $empleado['empl_nombre1'];
                     $tipo = "empleado";
+                    $_SESSION['tienda'] = array();
+                    $_SESSION['tienda']['tien_clave'] = $empleado['cf_depa_tien_tienda'];
                 } else if(isset($user_data['cf_usua_natural'])) {
                     //En segundo orden los clientes naturales
                     $cliente = $this->cliente_model->get_natural_where_id($user_data['cf_usua_natural']);
