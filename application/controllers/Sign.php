@@ -24,6 +24,7 @@ class Sign extends MY_Controller
 
                 $this->load->model('usuario_model');
                 $this->load->model('cliente_model');
+                $this->load->model('empleado_model');
 
                 $where = "usua_correo = '" . $this->input->post('email') . "'";
                 $user_data = $this->usuario_model->get_where($where)[0];
@@ -32,8 +33,11 @@ class Sign extends MY_Controller
                 unset($rol_permisos['descripcion']);
 
                 if(isset($user_data['cf_usua_empleado'])) {
-                    
-                    $tipo = "trabajador";
+                    //Empleados
+                    $empleado = $this->empleado_model->get_where_id($user_data['cf_usua_empleado']);
+                    $data_id = $empleado['empl_ci'];
+                    $user_name = $empleado['empl_nombre1'];
+                    $tipo = "empleado";
                 } else if(isset($user_data['cf_usua_natural'])) {
                     //En segundo orden los clientes naturales
                     $cliente = $this->cliente_model->get_natural_where_id($user_data['cf_usua_natural']);
