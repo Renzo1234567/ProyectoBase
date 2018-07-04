@@ -63,22 +63,75 @@ class Carrito extends MY_Controller
     public function pagar() {
         if(isset($_SESSION['usua_token']) && isset($_SESSION['carrito'])) {
 
-            $this->load->model('medio_pago_model');
+            //Cliente
+            if($_SESSION['tipo'] !== "empleado") {
+                $this->load->model('medio_pago_model');
             
-            $bancos = $this->medio_pago_model->get_bancos();
-            $tarjetas = $this->medio_pago_model->get_mis_tarjetas();
-            $cheques = $this->medio_pago_model->get_mis_cheques();
-            
-            $data = array(
-                'bancos' => $bancos,
-                'tarjetas' => $tarjetas,
-                'cheques' => $cheques
-            );
+                $bancos = $this->medio_pago_model->get_bancos();
+                $tarjetas = $this->medio_pago_model->get_mis_tarjetas();
+                $cheques = $this->medio_pago_model->get_mis_cheques();
+                
+                $data = array(
+                    'bancos' => $bancos,
+                    'tarjetas' => $tarjetas,
+                    'cheques' => $cheques
+                );
+    
+                $this->template('carrito/pagar', $data);
+            } else {
+                $this->template('carrito/buscar_cliente');
+            }
 
-            $this->template('carrito/pagar', $data);
+            
         } else {
             redirect(base_url('#acceso-denegado'));
         }        
+    }
+
+    public function cliente($tipo) {
+        $this->load->model('cliente_model');        
+        $this->load->model('medio_pago_model');
+
+        $id = $this->input->get('id');
+
+        //Guardamos los datos en auxiliares
+        $data_id = $_SESSION['data_id'];
+        $tipo = $_SESSION['tipo'];
+
+        if($tipo === "natural") {
+            $cliente = $this->cliente_model->get_natural_where_id($id);
+            if(empty($cliente)) {
+                redirect(base_url() . 'carrito/pagar#cliente-no-encontraod');
+                return;
+            }
+            $_SESSION['data_id'] = $cliente['natu_rif'];
+            $_SESSION['tipo'] = "cliente natural";
+        } else {
+            $cliente = $this->cliente_model->get_juridico_where_id($id);
+            if(empty($cliente)) {
+                redirect(base_url() . 'carrito/pagar#cliente-no-encontraod');
+                return;
+            }
+            $_SESSION['data_id'] = $cliente['juri_rif'];
+            $_SESSION['tipo'] = "cliente juridico";
+        }
+
+        //Obtenemos datos como si fuesemos clientes
+        $bancos = $this->medio_pago_model->get_bancos();
+        $tarjetas = $this->medio_pago_model->get_mis_tarjetas();
+        $cheques = $this->medio_pago_model->get_mis_cheques();
+        
+        $data = array(
+            'bancos' => $bancos,
+            'tarjetas' => $tarjetas,
+            'cheques' => $cheques
+        );
+
+        $this->template('carrito/pagar', $data);
+        
+        //Retornamos todos los datos
+        $_SESSION['data_id'] = $data_id;
+        $_SESSION['tipo'] = $tipo;
     }
 
     public function hacer_pago($id) {

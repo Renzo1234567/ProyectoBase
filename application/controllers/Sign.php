@@ -50,8 +50,6 @@ class Sign extends MY_Controller
                     $data_id = $cliente['natu_rif'];
                     $correo1=$cliente['natu_correo'];
                     $contraseña=$user_data['usua_contraseña'];
-
-
                     
                     $_SESSION['natu_nombre1'] = $nombre1;
                     $user_name = $nombre1;

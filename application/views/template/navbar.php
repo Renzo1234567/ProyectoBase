@@ -9,9 +9,13 @@
                     <small><?php echo $_SESSION['nombre_usuario'] ?></small>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="<?php echo base_url() ?>home/admin">Tablero</a>
+                    <?php if($_SESSION['tipo'] === "empleado"): ?>
+                        <a class="dropdown-item" href="<?php echo base_url() ?>home/admin">Tablero</a>
+                    <?php endif; ?>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>sign/perfil">Perfil</a>
-                    <a class="dropdown-item" href="<?php echo base_url() ?>medio_pago">Medios de pago</a>
+                    <?php if($_SESSION['tipo'] !== "empleado"): ?>
+                        <a class="dropdown-item" href="<?php echo base_url() ?>medio_pago">Medios de pago</a>
+                    <?php endif; ?>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo base_url() ?>sign/out">Cerrar sesión</a>
                 </div>
