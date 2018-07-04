@@ -372,6 +372,7 @@ constraint cf_punt_cant_clie_punt  foreign key(cf_punt_cant_clie_punt) reference
 create table pago_bd(
 pago_codigo serial,
 pago_monto numeric,
+Pago_fecha date default CURRENT_DATE,
 cf_pago_mediospago integer,
 cf_pago_compra integer not null,
 cf_pago_punt_cantidad integer,
@@ -381,6 +382,7 @@ constraint cf_pago_compra foreign key(cf_pago_compra) references compra_bd(comp_
 constraint cf_pago_punt_cantidad foreign key(cf_pago_punt_cantidad) references punto_cantidad(punt_cant_clave)
  
 );
+
 
 
 
